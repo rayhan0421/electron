@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.robvanderwoude.com/schtasks.php#Create -->
+<html lang="en" class="js eventlistener no-ie8compat no-framed classlist adownload fileinput scriptasync scriptdefer csscalc mediaqueries displaytable display-table fileinputdirectory borderimage borderradius boxshadow boxsizing csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Batch files - SCHTASKS</title>
+<meta name="robots" content="index,follow">
+<script type="text/javascript">
+function toggleHighlight( ) {
+	var showWin7Button  = document.getElementById( "ShowWin7Button" );
+	var showWin7Text    = document.getElementById( "ShowWin7Text" );
+	var showNewFeatures = ( showWin7Button.value != "Highlight New Features" );
+	if ( showNewFeatures ) {
+		showWin7Button.value   = "Highlight New Features";
+		showWin7Text.innerHTML = "highlight new features in red";
+	} else {
+		showWin7Button.value   = "Remove Highlighting";
+		showWin7Text.innerHTML = "remove the new feature highlighting";
+	}
+	var allElements = document.getElementsByTagName( "*" );
+	for ( var i = 0; i < allElements.length; i++ ) {
+		var classes = allElements[i].className;
+		if ( classes.indexOf( "Win7" ) > -1 ) {
+			if ( showNewFeatures ) {
+				if ( classes.indexOf( "Code" ) > -1 ) {
+					allElements[i].style.color = "#005900";
+				} else {
+					allElements[i].style.color = "#000080";
+				}
+			} else {
+				allElements[i].style.color = "red";
+			}
+		}
+	}
+	return true;
+}
+</script>
+
+<meta name="viewport" content="width=device-width; initial-scale=1">
+<script type="text/javascript" src="./Batch files - SCHTASKS_files/noframes.min.js.download"></script>
+<script type="text/javascript" src="./Batch files - SCHTASKS_files/modernizr320custom1min.js.download"></script>
+<script type="text/javascript" src="./Batch files - SCHTASKS_files/cookies.min.js.download"></script>
+<link type="text/css" rel="stylesheet" href="./Batch files - SCHTASKS_files/default.1.0.7.css">
+<link type="text/css" rel="stylesheet" href="./Batch files - SCHTASKS_files/menu.1.0.0.css">
+<link type="text/css" rel="stylesheet" href="./Batch files - SCHTASKS_files/slicknav.css">
+
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<script type="text/javascript">
+window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"I accept cookies","learnMore":"More info","link":"sitepolicy.php#Cookies","theme":"dark-bottom"};
+</script>
+
+<script type="text/javascript" src="./Batch files - SCHTASKS_files/cookieconsent.min.js.download"></script>
+<!-- End Cookie Consent plugin -->
+<link rel="stylesheet" type="text/css" href="./Batch files - SCHTASKS_files/dark-bottom.css"></head>
+<body><div class="cc_banner-wrapper "><div class="cc_banner cc_container cc_container--open"><a href="http://www.robvanderwoude.com/schtasks.php#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">I accept cookies</a><p class="cc_message">This website uses cookies to ensure you get the best experience on our website <a data-cc-if="options.link" target="_self" class="cc_more_info" href="http://www.robvanderwoude.com/sitepolicy.php#Cookies">More info</a></p><a class="cc_logo" target="_blank" href="http://silktide.com/cookieconsent">Cookie Consent plugin for the EU cookie law</a></div></div>
+
+<div id="logocontainer">
+
+<img src="./Batch files - SCHTASKS_files/logo650x62.jpg" width="650" height="62" alt="Rob van der Woude&#39;s Scripting Pages">
+
+</div>
+
+<div id="menucontainer" class="DontPrint"><div class="slicknav_menu"><a href="http://www.robvanderwoude.com/schtasks.php#" aria-haspopup="true" tabindex="0" class="slicknav_btn slicknav_open" style="outline: none;"><span class="slicknav_menutxt">Menu</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav" aria-hidden="false" role="menu" style="display: block;">
+	<li><a href="http://www.robvanderwoude.com/" role="menuitem" tabindex="0">Home <img class="menuicon" src="./Batch files - SCHTASKS_files/homewhite16x16.png" alt=""></a></li>
+	<li><a href="http://www.robvanderwoude.com/news.php" role="menuitem" tabindex="0">News <img class="menuicon" src="./Batch files - SCHTASKS_files/informationwhite16x16.png" alt=""></a></li>
+	<li><a href="http://www.robvanderwoude.com/faq.php" role="menuitem" tabindex="0">FAQ <img class="menuicon" src="./Batch files - SCHTASKS_files/questionmarkwhite16x16.png" alt=""></a></li>
+	<li><a href="http://www.robvanderwoude.com/search.php" role="menuitem" tabindex="0">Search <img class="menuicon" src="./Batch files - SCHTASKS_files/magnifyingglasswhite16x16.png" alt=""></a></li>
+	<li class="submenu slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Scripting Languages <img class="menuicon" src="./Batch files - SCHTASKS_files/globewhite16x16.png" alt="">
+		<span class="slicknav_arrow">►</span></a><ul role="menu" class="slicknav_hidden" aria-hidden="true" style="display: none;">
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Batch Files
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/batchstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/battech.php" role="menuitem" tabindex="0">Batch Techniques</a></li>
+					<li><a href="http://www.robvanderwoude.com/batchhowto.php" role="menuitem" tabindex="0">Batch HowTos</a></li>
+					<li><a href="http://www.robvanderwoude.com/batchcommands.php" role="menuitem" tabindex="0">Commands</a></li>
+					<li><a href="http://www.robvanderwoude.com/commandlineswitches.php" role="menuitem" tabindex="0">Command Line Switches</a></li>
+					<li><a href="http://www.robvanderwoude.com/shutdown.php" role="menuitem" tabindex="0">Shutdown Commands</a></li>
+					<li><a href="http://www.robvanderwoude.com/shorts.php" role="menuitem" tabindex="0">Short Command Line Tips</a></li>
+					<li><a href="http://www.robvanderwoude.com/ntadmincommands.php" role="menuitem" tabindex="0">Admin One-Liners</a></li>
+					<li><a href="http://www.robvanderwoude.com/batexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/battech.php#Examples" role="menuitem" tabindex="0">Samples Collections</a></li>
+					<li><a href="http://www.robvanderwoude.com/batchtools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/batlinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksbat.php" role="menuitem" tabindex="0">Books</a></li>
+					<li><a href="http://www.robvanderwoude.com/challenges.php" role="menuitem" tabindex="0">Challenges</a></li>
+				</ul>
+			</li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">C#
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/csharpstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/csharpexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/storevisualstudio.php" role="menuitem" tabindex="0">Development Software</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookscs.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">KiXtart
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/kixtartstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/kixtartexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/kixtartlinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/kixtarttools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookskix.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Perl
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/perlstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/perlexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/perllinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/perltools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksperl.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">PowerShell
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/powershellstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/powershellexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/powershelllinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/powershelltools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksps.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Regular Expressions
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/regexpstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexpexp.php" role="menuitem" tabindex="0">Expressions</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexpexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexplinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexptools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksregexp.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Rexx
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/rexxstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/rexxexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/lsrexxutil.php" role="menuitem" tabindex="0">OS/2 LAN Server</a></li>
+					<li><a href="http://www.robvanderwoude.com/rexxlinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/rexxtools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksrexx.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">VBScript &amp; WSH
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/wshstart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/vbstech.php" role="menuitem" tabindex="0">VBScript Techniques</a></li>
+					<li><a href="http://www.robvanderwoude.com/wshexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/htaexamples.php" role="menuitem" tabindex="0">HTA &amp; WSC Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/wshlinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/wshtools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswsh.php" role="menuitem" tabindex="0">Books</a></li>
+					<li><a href="http://www.robvanderwoude.com/challenges.php#VBScript" role="menuitem" tabindex="0">Challenges</a></li>
+				</ul></li>
+		</ul></li>
+	<li class="submenu slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Technologies <img class="menuicon" src="./Batch files - SCHTASKS_files/gridwhite16x16.png" alt="">
+		<span class="slicknav_arrow">►</span></a><ul role="menu" class="slicknav_hidden" aria-hidden="true" style="display: none;">
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">WMI
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/wmistart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/wmiexamples.php" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/wmilinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/wmitools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswmi.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">ADSI
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/adsistart.php" role="menuitem" tabindex="0">Getting Started</a></li>
+					<li><a href="https://gallery.technet.microsoft.com/ScriptCenter/site/search/?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=activedirectory&amp;f%5B0%5D.Text=Active%20Directory" onclick="window.open(this.href); return false;" role="menuitem" tabindex="0">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/adsilinks.php" role="menuitem" tabindex="0">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/adsitools.php" role="menuitem" tabindex="0">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksadsi.php" role="menuitem" tabindex="0">Books</a></li>
+				</ul></li>
+			<li class="slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;">Silent Installs
+				<span class="slicknav_arrow">►</span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/unattended.php" role="menuitem" tabindex="0">General</a></li>
+					<li><a href="http://www.robvanderwoude.com/msiexec.php" role="menuitem" tabindex="0">Windows Installer</a></li>
+					<li><a href="http://www.robvanderwoude.com/unattendedapps.php" role="menuitem" tabindex="0">Specific Software</a></li>
+					<li><a href="http://www.robvanderwoude.com/softwarerequirements.php" role="menuitem" tabindex="0">Software Requirements</a></li>
+					<li><a href="http://www.robvanderwoude.com/hardwarerequirements.php" role="menuitem" tabindex="0">Hardware Requirements</a></li>
+				</ul></li>
+		</ul></li>
+	<li class="submenu slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://www.robvanderwoude.com/books.php" tabindex="0">Books <img class="menuicon" src="./Batch files - SCHTASKS_files/bookwhite16x16.png" alt=""></a>
+				<span class="slicknav_arrow">►</span></a><ul role="menu" class="slicknav_hidden" aria-hidden="true" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/booksbat.php" role="menuitem" tabindex="0">Batch Files</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswin.php" role="menuitem" tabindex="0">Windows</a></li>
+					<li><a href="http://www.robvanderwoude.com/resourcekits.php" role="menuitem" tabindex="0">Resource Kits</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookskix.php" role="menuitem" tabindex="0">KiXtart</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksperl.php" role="menuitem" tabindex="0">Perl</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksps.php" role="menuitem" tabindex="0">PowerShell</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksregexp.php" role="menuitem" tabindex="0">Regular Expressions</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksrexx.php" role="menuitem" tabindex="0">Rexx</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswsh.php" role="menuitem" tabindex="0">VBScript &amp; WSH</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookscs.php" role="menuitem" tabindex="0">C#</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswmi.php" role="menuitem" tabindex="0">WMI</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksadsi.php" role="menuitem" tabindex="0">ADSI</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksweb.php" role="menuitem" tabindex="0">HTML, JavaScript &amp; CSS</a></li>
+					<li><a href="http://www.robvanderwoude.com/storeofftopic.php" role="menuitem" tabindex="0">Off-Topic</a></li>
+				</ul></li>
+	<li class="submenu slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://www.robvanderwoude.com/schtasks.php#" tabindex="0">Scripting Tools <img class="menuicon" src="./Batch files - SCHTASKS_files/paperclipwhite16x16.png" alt=""></a>
+				<span class="slicknav_arrow">►</span></a><ul role="menu" class="slicknav_hidden" aria-hidden="true" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/batchtools.php" role="menuitem" tabindex="0">Batch Utilities</a></li>
+					<li><a href="http://www.robvanderwoude.com/resourcekits.php" role="menuitem" tabindex="0">Resource Kits</a></li>
+					<li><a href="http://www.robvanderwoude.com/scriptcompilers.php" role="menuitem" tabindex="0">Compilers</a></li>
+					<li><a href="http://www.robvanderwoude.com/scripteditors.php" role="menuitem" tabindex="0">Editors</a></li>
+					<li><a href="http://www.robvanderwoude.com/codegen.php" role="menuitem" tabindex="0">Code Generators</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexptools.php" role="menuitem" tabindex="0">Regular Expressions</a></li>
+					<li><a href="http://www.robvanderwoude.com/automationtools.php" role="menuitem" tabindex="0">Automation Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/vbsaddons.php" role="menuitem" tabindex="0">VBScript Add-Ons</a></li>
+					<li><a href="http://www.robvanderwoude.com/storevisualstudio.php" role="menuitem" tabindex="0">Visual Studio</a></li>
+					<li><a href="http://www.robvanderwoude.com/printtools.php" role="menuitem" tabindex="0">Printing Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/inventorytools.php" role="menuitem" tabindex="0">Inventory Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/shellextensions.php" role="menuitem" tabindex="0">Shell Extensions</a></li>
+					<li><a href="http://www.robvanderwoude.com/fileviewers.php" role="menuitem" tabindex="0">File Viewers</a></li>
+					<li><a href="http://www.robvanderwoude.com/backuptools.php" role="menuitem" tabindex="0">Backup</a></li>
+					<li><a href="http://www.robvanderwoude.com/securitytools.php" role="menuitem" tabindex="0">Security</a></li>
+					<li><a href="http://www.robvanderwoude.com/themakingof.php" role="menuitem" tabindex="0">The making Of...</a></li>
+				</ul></li>
+	<li class="submenu slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://www.robvanderwoude.com/schtasks.php#" tabindex="0">Miscellaneous</a>
+				<span class="slicknav_arrow">►</span></a><ul role="menu" class="slicknav_hidden" aria-hidden="true" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/tweaks.php" role="menuitem" tabindex="0">Tweaks</a></li>
+					<li><a href="http://www.robvanderwoude.com/speedtest.php" role="menuitem" tabindex="0">Link Speed Test</a></li>
+					<li><a href="http://www.robvanderwoude.com/webpub.php" role="menuitem" tabindex="0">Web Stuff</a></li>
+					<li><a href="http://www.robvanderwoude.com/convert.php" role="menuitem" tabindex="0">Conversions <img class="menuicon" src="./Batch files - SCHTASKS_files/calculatorwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.net/" role="menuitem" tabindex="0">My Photo Galleries <img class="menuicon" src="./Batch files - SCHTASKS_files/moviewhite16x16.png" alt=""></a></li>
+				</ul></li>
+	<li class="submenu slicknav_collapsed slicknav_parent"><a href="http://www.robvanderwoude.com/schtasks.php#" role="menuitem" aria-haspopup="true" tabindex="0" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://www.robvanderwoude.com/schtasks.php#" tabindex="0">About This Site <img class="menuicon" src="./Batch files - SCHTASKS_files/informationwhite16x16.png" alt=""></a>
+				<span class="slicknav_arrow">►</span></a><ul role="menu" class="slicknav_hidden" aria-hidden="true" style="display: none;">
+					<li><a href="http://www.robvanderwoude.com/disclaimer.php" role="menuitem" tabindex="0">Disclaimer</a></li>
+					<li><a href="http://www.robvanderwoude.com/news.php" role="menuitem" tabindex="0">News</a></li>
+					<li><a href="http://www.robvanderwoude.com/faq.php" role="menuitem" tabindex="0">FAQ <img class="menuicon" src="./Batch files - SCHTASKS_files/questionmarkwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/search.php" role="menuitem" tabindex="0">Search <img class="menuicon" src="./Batch files - SCHTASKS_files/magnifyingglasswhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/whatsnew.php" role="menuitem" tabindex="0">What's New</a></li>
+					<li><a href="http://www.robvanderwoude.com/objective.php" role="menuitem" tabindex="0">Objective <img class="menuicon" src="./Batch files - SCHTASKS_files/targetwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/sitepolicy.php" role="menuitem" tabindex="0">Site Policy</a></li>
+					<li><a href="http://www.robvanderwoude.com/yoursettings.php" role="menuitem" tabindex="0">Your Preferences</a></li>
+					<li><a href="http://www.robvanderwoude.com/credits.php" role="menuitem" tabindex="0">Credits</a></li>
+					<li><a href="http://www.robvanderwoude.com/themakingof.php" role="menuitem" tabindex="0">The Making Of...</a></li>
+					<li><a href="http://www.robvanderwoude.com/contact.php" role="menuitem" tabindex="0">Contact <img class="menuicon" src="./Batch files - SCHTASKS_files/mailwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/failedmail.php" role="menuitem" tabindex="0">Failed Mail</a></li>
+					<li><a href="http://www.robvanderwoude.com/donate.php" role="menuitem" tabindex="0">Donate <img class="menuicon" src="./Batch files - SCHTASKS_files/sunyellow16x16.png" alt=""></a></li>
+				</ul></li>
+	<li class="slicknav_txtnode">&nbsp;</li>
+</ul></div>
+
+<div id="nojsmenuhead">
+<a class="slicknav_btn slicknav_open" tabindex="0" href="http://www.robvanderwoude.com/schtasks.php#" style="outline: none;">
+<span class="slicknav_menutxt">Menu</span>
+<span class="slicknav_icon">
+<span class="slicknav_icon-bar"></span>
+<span class="slicknav_icon-bar"></span>
+<span class="slicknav_icon-bar"></span>
+</span>
+</a>
+</div>
+
+<ul id="menu">
+	<li><a href="http://www.robvanderwoude.com/">Home <img class="menuicon" src="./Batch files - SCHTASKS_files/homewhite16x16.png" alt=""></a></li>
+	<li><a href="http://www.robvanderwoude.com/news.php">News <img class="menuicon" src="./Batch files - SCHTASKS_files/informationwhite16x16.png" alt=""></a></li>
+	<li><a href="http://www.robvanderwoude.com/faq.php">FAQ <img class="menuicon" src="./Batch files - SCHTASKS_files/questionmarkwhite16x16.png" alt=""></a></li>
+	<li><a href="http://www.robvanderwoude.com/search.php">Search <img class="menuicon" src="./Batch files - SCHTASKS_files/magnifyingglasswhite16x16.png" alt=""></a></li>
+	<li class="submenu" id="menu_languages">Scripting Languages <img class="menuicon" src="./Batch files - SCHTASKS_files/globewhite16x16.png" alt="">
+		<ul>
+			<li id="menu_batchfiles">Batch Files
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/batchstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/battech.php">Batch Techniques</a></li>
+					<li><a href="http://www.robvanderwoude.com/batchhowto.php">Batch HowTos</a></li>
+					<li><a href="http://www.robvanderwoude.com/batchcommands.php">Commands</a></li>
+					<li><a href="http://www.robvanderwoude.com/commandlineswitches.php">Command Line Switches</a></li>
+					<li><a href="http://www.robvanderwoude.com/shutdown.php">Shutdown Commands</a></li>
+					<li><a href="http://www.robvanderwoude.com/shorts.php">Short Command Line Tips</a></li>
+					<li><a href="http://www.robvanderwoude.com/ntadmincommands.php">Admin One-Liners</a></li>
+					<li><a href="http://www.robvanderwoude.com/batexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/battech.php#Examples">Samples Collections</a></li>
+					<li><a href="http://www.robvanderwoude.com/batchtools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/batlinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksbat.php">Books</a></li>
+					<li><a href="http://www.robvanderwoude.com/challenges.php">Challenges</a></li>
+				</ul>
+			</li>
+			<li id="menu_csharp">C#
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/csharpstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/csharpexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/storevisualstudio.php">Development Software</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookscs.php">Books</a></li>
+				</ul></li>
+			<li id="menu_kixtart">KiXtart
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/kixtartstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/kixtartexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/kixtartlinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/kixtarttools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookskix.php">Books</a></li>
+				</ul></li>
+			<li id="menu_perl">Perl
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/perlstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/perlexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/perllinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/perltools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksperl.php">Books</a></li>
+				</ul></li>
+			<li id="menu_powershell">PowerShell
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/powershellstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/powershellexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/powershelllinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/powershelltools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksps.php">Books</a></li>
+				</ul></li>
+			<li id="menu_regexp">Regular Expressions
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/regexpstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexpexp.php">Expressions</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexpexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexplinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexptools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksregexp.php">Books</a></li>
+				</ul></li>
+			<li id="menu_rexx">Rexx
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/rexxstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/rexxexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/lsrexxutil.php">OS/2 LAN Server</a></li>
+					<li><a href="http://www.robvanderwoude.com/rexxlinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/rexxtools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksrexx.php">Books</a></li>
+				</ul></li>
+			<li id="menu_vbscript">VBScript &amp; WSH
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/wshstart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/vbstech.php">VBScript Techniques</a></li>
+					<li><a href="http://www.robvanderwoude.com/wshexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/htaexamples.php">HTA &amp; WSC Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/wshlinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/wshtools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswsh.php">Books</a></li>
+					<li><a href="http://www.robvanderwoude.com/challenges.php#VBScript">Challenges</a></li>
+				</ul></li>
+		</ul></li>
+	<li class="submenu" id="menu_technologies">Technologies <img class="menuicon" src="./Batch files - SCHTASKS_files/gridwhite16x16.png" alt="">
+		<ul>
+			<li id="menu_wmi">WMI
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/wmistart.php">Getting Started</a></li>
+					<li><a href="http://www.robvanderwoude.com/wmiexamples.php">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/wmilinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/wmitools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswmi.php">Books</a></li>
+				</ul></li>
+			<li id="menu_adsi">ADSI
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/adsistart.php">Getting Started</a></li>
+					<li><a href="https://gallery.technet.microsoft.com/ScriptCenter/site/search/?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=activedirectory&amp;f%5B0%5D.Text=Active%20Directory" onclick="window.open(this.href); return false;">Examples</a></li>
+					<li><a href="http://www.robvanderwoude.com/adsilinks.php">Links</a></li>
+					<li><a href="http://www.robvanderwoude.com/adsitools.php">Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksadsi.php">Books</a></li>
+				</ul></li>
+			<li id="menu_silentinstalls">Silent Installs
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/unattended.php">General</a></li>
+					<li><a href="http://www.robvanderwoude.com/msiexec.php">Windows Installer</a></li>
+					<li><a href="http://www.robvanderwoude.com/unattendedapps.php">Specific Software</a></li>
+					<li><a href="http://www.robvanderwoude.com/softwarerequirements.php">Software Requirements</a></li>
+					<li><a href="http://www.robvanderwoude.com/hardwarerequirements.php">Hardware Requirements</a></li>
+				</ul></li>
+		</ul></li>
+	<li class="submenu" id="menu_books"><a href="http://www.robvanderwoude.com/books.php">Books <img class="menuicon" src="./Batch files - SCHTASKS_files/bookwhite16x16.png" alt=""></a>
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/booksbat.php">Batch Files</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswin.php">Windows</a></li>
+					<li><a href="http://www.robvanderwoude.com/resourcekits.php">Resource Kits</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookskix.php">KiXtart</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksperl.php">Perl</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksps.php">PowerShell</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksregexp.php">Regular Expressions</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksrexx.php">Rexx</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswsh.php">VBScript &amp; WSH</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookscs.php">C#</a></li>
+					<li><a href="http://www.robvanderwoude.com/bookswmi.php">WMI</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksadsi.php">ADSI</a></li>
+					<li><a href="http://www.robvanderwoude.com/booksweb.php">HTML, JavaScript &amp; CSS</a></li>
+					<li><a href="http://www.robvanderwoude.com/storeofftopic.php">Off-Topic</a></li>
+				</ul></li>
+	<li class="submenu" id="menu_tools"><a href="http://www.robvanderwoude.com/schtasks.php#">Scripting Tools <img class="menuicon" src="./Batch files - SCHTASKS_files/paperclipwhite16x16.png" alt=""></a>
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/batchtools.php">Batch Utilities</a></li>
+					<li><a href="http://www.robvanderwoude.com/resourcekits.php">Resource Kits</a></li>
+					<li><a href="http://www.robvanderwoude.com/scriptcompilers.php">Compilers</a></li>
+					<li><a href="http://www.robvanderwoude.com/scripteditors.php">Editors</a></li>
+					<li><a href="http://www.robvanderwoude.com/codegen.php">Code Generators</a></li>
+					<li><a href="http://www.robvanderwoude.com/regexptools.php">Regular Expressions</a></li>
+					<li><a href="http://www.robvanderwoude.com/automationtools.php">Automation Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/vbsaddons.php">VBScript Add-Ons</a></li>
+					<li><a href="http://www.robvanderwoude.com/storevisualstudio.php">Visual Studio</a></li>
+					<li><a href="http://www.robvanderwoude.com/printtools.php">Printing Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/inventorytools.php">Inventory Tools</a></li>
+					<li><a href="http://www.robvanderwoude.com/shellextensions.php">Shell Extensions</a></li>
+					<li><a href="http://www.robvanderwoude.com/fileviewers.php">File Viewers</a></li>
+					<li><a href="http://www.robvanderwoude.com/backuptools.php">Backup</a></li>
+					<li><a href="http://www.robvanderwoude.com/securitytools.php">Security</a></li>
+					<li><a href="http://www.robvanderwoude.com/themakingof.php">The making Of...</a></li>
+				</ul></li>
+	<li class="submenu" id="menu_miscellaneous"><a href="http://www.robvanderwoude.com/schtasks.php#">Miscellaneous</a>
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/tweaks.php">Tweaks</a></li>
+					<li><a href="http://www.robvanderwoude.com/speedtest.php">Link Speed Test</a></li>
+					<li><a href="http://www.robvanderwoude.com/webpub.php">Web Stuff</a></li>
+					<li><a href="http://www.robvanderwoude.com/convert.php">Conversions <img class="menuicon" src="./Batch files - SCHTASKS_files/calculatorwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.net/">My Photo Galleries <img class="menuicon" src="./Batch files - SCHTASKS_files/moviewhite16x16.png" alt=""></a></li>
+				</ul></li>
+	<li class="submenu" id="menu_about"><a href="http://www.robvanderwoude.com/schtasks.php#">About This Site <img class="menuicon" src="./Batch files - SCHTASKS_files/informationwhite16x16.png" alt=""></a>
+				<ul>
+					<li><a href="http://www.robvanderwoude.com/disclaimer.php">Disclaimer</a></li>
+					<li><a href="http://www.robvanderwoude.com/news.php">News</a></li>
+					<li><a href="http://www.robvanderwoude.com/faq.php">FAQ <img class="menuicon" src="./Batch files - SCHTASKS_files/questionmarkwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/search.php">Search <img class="menuicon" src="./Batch files - SCHTASKS_files/magnifyingglasswhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/whatsnew.php">What's New</a></li>
+					<li><a href="http://www.robvanderwoude.com/objective.php">Objective <img class="menuicon" src="./Batch files - SCHTASKS_files/targetwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/sitepolicy.php">Site Policy</a></li>
+					<li><a href="http://www.robvanderwoude.com/yoursettings.php">Your Preferences</a></li>
+					<li><a href="http://www.robvanderwoude.com/credits.php">Credits</a></li>
+					<li><a href="http://www.robvanderwoude.com/themakingof.php">The Making Of...</a></li>
+					<li><a href="http://www.robvanderwoude.com/contact.php">Contact <img class="menuicon" src="./Batch files - SCHTASKS_files/mailwhite16x16.png" alt=""></a></li>
+					<li><a href="http://www.robvanderwoude.com/failedmail.php">Failed Mail</a></li>
+					<li><a href="http://www.robvanderwoude.com/donate.php">Donate <img class="menuicon" src="./Batch files - SCHTASKS_files/sunyellow16x16.png" alt=""></a></li>
+				</ul></li>
+	<li>&nbsp;</li>
+</ul>
+
+</div>
+
+<div id="Headroom"></div>
+
+<!-- ChangeDetection.com id="77m2rsxs9c" -->
+
+<h1>SCHTASKS</h1>
+
+<h3>Command line front-end for Windows' Task Scheduler</h3>
+
+<p>&nbsp;</p>
+
+<table>
+<tbody><tr>
+	<td class="Note">Note:</td>
+	<td>This page shows the command line options for the <em>Windows 7</em> version of <code>SCHTASKS</code>.<br>
+		Click <a href="http://www.robvanderwoude.com/schtasksxp.php">here</a> for the <a href="http://www.robvanderwoude.com/schtasksxp.php">Windows XP version of <code>SCHTASKS</code></a>.<span class="DontPrint"><br>
+		Click <input type="button" class="Button" id="ShowWin7Button" value="Highlight New Features" style="width: 12.5em;" onclick="toggleHighlight();"> to <span id="ShowWin7Text">highlight new features in red</span>.</span></td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+
+
+
+<h2>Syntax:</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/<em>parameter</em> [<em>arguments</em>]</td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Enables an administrator to create, delete, query, change, run and end scheduled tasks on a local or remote system.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#Create" class="Code">/Create</a></td>
+	<td>Creates a new scheduled task.</td>
+</tr>
+<tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#Delete" class="Code">/Delete</a></td>
+	<td>Deletes the scheduled task(s).</td>
+</tr>
+<tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#Query" class="Code">/Query</a></td>
+	<td>Displays all scheduled tasks.</td>
+</tr>
+<tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#Change" class="Code">/Change</a></td>
+	<td>Changes the properties of scheduled task.</td>
+</tr>
+<tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#Run" class="Code">/Run</a></td>
+	<td>Runs the scheduled task immediately.</td>
+</tr>
+<tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#End" class="Code">/End</a></td>
+	<td>Stops the currently running scheduled task.</td>
+</tr>
+<tr>
+	<td><a href="http://www.robvanderwoude.com/schtasks.php#ShowSid" class="Code Win7">/ShowSid</a></td>
+	<td class="Win7">Shows the security identifier corresponding to a scheduled task name.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help/usage.</td>
+</tr>
+</tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code"><a href="http://www.robvanderwoude.com/schtasks.php#Run"><code>/Run</code></a> /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code"><a href="http://www.robvanderwoude.com/schtasks.php#End"><code>/End</code></a> /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code"><a href="http://www.robvanderwoude.com/schtasks.php#Create"><code>/Create</code></a> /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code"><a href="http://www.robvanderwoude.com/schtasks.php#Delete"><code>/Delete</code></a> /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code"><a href="http://www.robvanderwoude.com/schtasks.php#Query"><code>/Query</code></a> /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code"><a href="http://www.robvanderwoude.com/schtasks.php#Change"><code>/Change</code></a> /?</td>
+</tr>
+<tr>
+	<td class="Code Win7">SCHTASKS</td>
+	<td class="Code Win7"><a href="http://www.robvanderwoude.com/schtasks.php#ShowSid" class="Code Win7">/ShowSid</a> /?</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="Run">/RUN</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Run [/S&nbsp;<em>system</em> [/U&nbsp;<em>username</em> [/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span>]]] <span class="Code Win7">[/I]</span> /TN&nbsp;<em>taskname</em></td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Runs a scheduled task immediately.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">/S&nbsp;<em>system</em></td>
+	<td>Specifies the remote system to connect to.</td>
+</tr>
+<tr>
+	<td class="Code">/U&nbsp;<em>username</em></td>
+	<td>Specifies the user context under which the schtasks.exe should execute.</td>
+</tr>
+<tr>
+	<td class="Code">/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span></td>
+	<td>Specifies the password for the given user context.<span class="Win7"><br>
+		Prompts for input if omitted.</span></td>
+</tr>
+<tr>
+	<td class="Code Win7">/I</td>
+	<td class="Win7">Runs the task immediately by ignoring any constraint.</td>
+</tr>
+<tr>
+	<td class="Code">/TN&nbsp;<em>taskname</em></td>
+	<td>Identifies the scheduled task to run now.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help message.</td>
+</tr>
+</tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Run /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Run /TN&nbsp;"Start&nbsp;Backup"</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Run /S&nbsp;<em>system</em> /U&nbsp;<em>user</em> /P&nbsp;<em>password</em> <span class="Code Win7">/I</span> /TN&nbsp;"Backup&nbsp;and&nbsp;Restore"</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="End">/END</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/End [/S&nbsp;<em>system</em> [/U&nbsp;<em>username</em> [/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span>]]] /TN&nbsp;<em>taskname</em></td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Stops a running scheduled task.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">/S&nbsp;<em>system</em></td>
+	<td>Specifies the remote system to connect to.</td>
+</tr>
+<tr>
+	<td class="Code">/U&nbsp;<em>username</em></td>
+	<td>Specifies the user context under which the schtasks.exe should execute.</td>
+</tr>
+<tr>
+	<td class="Code">/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span></td>
+	<td>Specifies the password for the given user context.<span class="Win7"><br>
+		Prompts for input if omitted.</span></td>
+</tr>
+<tr>
+	<td class="Code">/TN&nbsp;<em>taskname</em></td>
+	<td>Specifies the scheduled task to terminate.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help/usage.</td>
+</tr>
+</tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/End /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/End /TN&nbsp;"Start&nbsp;Backup"</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/End /S&nbsp;<em>system</em> /U&nbsp;<em>user</em> /P&nbsp;<em>password</em> /TN&nbsp;"Backup&nbsp;and&nbsp;Restore"</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="Create">/CREATE</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create [/S&nbsp;<em>system</em> [/U&nbsp;<em>username</em> [/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span>]]] [/RU&nbsp;<em>username</em> [/RP&nbsp;[<em>password</em>]]] /SC&nbsp;<em>schedule</em> [/MO&nbsp;<em>modifier</em>] [/D&nbsp;<em>day</em>] [/I&nbsp;<em>idletime</em>] /TN&nbsp;<em>taskname</em> /TR&nbsp;<em>taskrun</em> [/ST&nbsp;<em>starttime</em>] [/M&nbsp;<em>months</em>] [/SD&nbsp;<em>startdate</em>] <span class="Code Win7">[/RI&nbsp;<em>interval</em>] [ {/ET&nbsp;<em>endtime</em> | /DU&nbsp;<em>duration</em>} [/K] [/XML&nbsp;<em>xmlfile</em>] [/V1]]</span> [/SD&nbsp;<em>startdate</em>] [/ED&nbsp;<em>enddate</em>] <span class="Code Win7">[/IT | /NP] [/Z] [/F]</span></td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Enables an administrator to create scheduled tasks on a local or remote systems.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">/S&nbsp;<em>system</em></td>
+	<td>Specifies the remote system to connect to.<br>
+		If omitted the system parameter defaults to the local system.</td>
+</tr>
+<tr>
+	<td class="Code">/U&nbsp;<em>username</em></td>
+	<td>Specifies the user context under which the schtasks.exe should execute.</td>
+</tr>
+<tr>
+	<td class="Code">/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span></td>
+	<td>Specifies the password for the given user context.<span class="Win7"><br>
+		Prompts for input if omitted.</span></td>
+</tr>
+<tr>
+	<td class="Code">/RU&nbsp;<em>username</em></td>
+	<td>Specifies the "run as" user account (user context) under which the task runs.<br>
+		For the system account, valid values are "", "NT AUTHORITY\SYSTEM" or "SYSTEM".<br>
+		For v2 tasks, "NT AUTHORITY\LOCALSERVICE" and "NT AUTHORITY\NETWORKSERVICE" are also available as well as the well known SIDs for all three.</td>
+</tr>
+<tr>
+	<td class="Code">/RP&nbsp;[<em>password</em>]</td>
+	<td>Specifies the password for the "run as" user.<br>
+		To prompt for the password, the value must be either "*" or none.<br>
+		This password is ignored for the system account.<br>
+		Must be combined with either <code>/RU</code> or <span class="Code Win7">/XML</span> switch.</td>
+</tr>
+<tr>
+	<td class="Code">/SC&nbsp;<em>schedule</em></td>
+	<td>Specifies the schedule frequency.<br>
+		Valid schedule types: MINUTE, HOURLY, DAILY, WEEKLY, MONTHLY, ONCE, ONSTART, ONLOGON, ONIDLE, <span class="Win7">ONEVENT</span>.</td>
+</tr>
+<tr>
+	<td class="Code">/MO&nbsp;<em>modifier</em></td>
+	<td>Refines the schedule type to allow finer control over schedule recurrence.<br>
+		Valid values are listed in the "Modifiers" section below.<br>
+</td></tr>
+<tr>
+	<td class="Code">/D&nbsp;<em>days</em></td>
+	<td>Specifies the day of the week to run the task.<br>
+		Valid values: MON, TUE, WED, THU, FRI, SAT, SUN and for MONTHLY schedules 1 - 31 (days of the month).<span class="Win7"><br>
+		Wildcard "*" specifies all days.</span></td>
+</tr>
+<tr>
+	<td class="Code">/M&nbsp;<em>months</em></td>
+	<td>Specifies month(s) of the year.<br>
+		Defaults to the first day of the month.<br>
+		Valid values: JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC.<span class="Win7"><br>
+		Wildcard "*" specifies all months.</span></td>
+</tr>
+<tr>
+	<td class="Code">/I&nbsp;<em>idletime</em></td>
+	<td>Specifies the amount of idle time to wait before running a scheduled ONIDLE task.<br>
+		Valid range: 1 - 999 minutes.</td>
+</tr>
+<tr>
+	<td class="Code">/TN&nbsp;<em>taskname</em></td>
+	<td>Specifies a name which uniquely identifies this scheduled task.</td>
+</tr>
+<tr>
+	<td class="Code">/TR&nbsp;<em>taskrun</em></td>
+	<td>Specifies the path and file name of the program to be run at the scheduled time.<br>
+		Example: C:\windows\system32\calc.exe</td>
+</tr>
+<tr>
+	<td class="Code">/ST&nbsp;<em>starttime</em></td>
+	<td>Specifies the time to run the task.<br>
+		The time format is HH:MM:SS (24 hour time) for example, 14:30:00 for 2:30 PM.<br>
+		Defaults to current time if <code>/ST</code> is not specified.<br>
+		This option is required with <code>/SC ONCE</code>.</td>
+</tr>
+<tr>
+	<td class="Code">/SD&nbsp;<em>startdate</em></td>
+	<td>Specifies the first date on which the task runs.<br>
+		The format is "dd/mm/yyyy".</td>
+</tr>
+<tr>
+	<td class="Code Win7">/RI&nbsp;<em>interval</em></td>
+	<td class="Win7">Specifies the repetition interval in minutes.<br>
+		This is not applicable for schedule types: MINUTE, HOURLY, ONSTART, ONLOGON, ONIDLE, ONEVENT.<br>
+		Valid range: 1 - 599940 minutes.<br>
+		If either <span class="Code Win7">/ET</span> or <span class="Code Win7">/DU</span> is specified, then it defaults to 10 minutes.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/ET&nbsp;<em>endtime</em></td>
+	<td class="Win7">Specifies the end time to run the task.<br>
+		The time format is HH:mm (24 hour time) for example, 14:50 for 2:50 PM.<br>
+		This is not applicable for schedule types: ONSTART, ONLOGON, ONIDLE, ONEVENT.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/DU&nbsp;<em>duration</em></td>
+	<td class="Win7">Specifies the duration to run the task.<br>
+		The time format is HH:mm.<br>
+		This is not applicable with <span class="Code Win7">/ET</span> and for schedule types: ONSTART, ONLOGON, ONIDLE, ONEVENT.<br>
+		For <span class="Code Win7">/V1</span> tasks, if <span class="Code Win7">/RI</span> is specified, duration defaults to 1 hour.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/K</td>
+	<td class="Win7">Terminates the task at the endtime or duration time.<br>
+		This is not applicable for schedule types: ONSTART, ONLOGON, ONIDLE, ONEVENT.<br>
+		Either <span class="Code Win7">/ET</span> or <span class="Code Win7">/DU</span> must be specified.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/SD&nbsp;<em>startdate</em></td>
+	<td class="Win7">Specifies the first date on which the task runs.<br>
+		The format is dd/mm/yyyy.<br>
+		Defaults to the current date.<br>
+		This is not applicable for schedule types: ONCE, ONSTART, ONLOGON, ONIDLE, ONEVENT.</td>
+</tr>
+<tr>
+	<td class="Code">/ED&nbsp;<em>enddate</em></td>
+	<td>Specifies the last date when the task should run.<br>
+		The format is "dd/mm/yyyy".</td>
+</tr>
+<tr>
+	<td class="Code Win7">/EC&nbsp;<em>ChannelName</em></td>
+	<td class="Win7">Specifies the event channel for OnEvent triggers.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/IT</td>
+	<td class="Win7">Enables the task to run interactively only if the <span class="Code">/RU</span> user is currently logged on at the time the job runs.<br>
+		This task runs only if the user is logged in.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/NP</td>
+	<td class="Win7">No password is stored.<br>
+		The task runs non-interactively as the given user.<br>
+		Only local resources are available.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/Z</td>
+	<td class="Win7">Marks the task for deletion after its final run.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/XML&nbsp;<em>xmlfile</em></td>
+	<td class="Win7">Creates a task from the task XML specified in a file.<br>
+		Can be combined with <span class="Code">/RU</span> and <span class="Code">/RP</span> switches, or with <span class="Code">/RP</span> alone, when task XML already contains the principal.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/V1</td>
+	<td class="Win7">Creates a task visible to pre-Vista platforms.<br>
+		Not compatible with <span class="Code Win7">/XML</span>.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/F</td>
+	<td class="Win7">Forcefully creates the task and suppresses warnings if the specified task already exists.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/RL&nbsp;<em>level</em></td>
+	<td class="Win7">Sets the Run Level for the job.<br>
+		Valid values are LIMITED and HIGHEST.
+		The default is LIMITED.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/DELAY&nbsp;<em>delaytime</em></td>
+	<td class="Win7">Specifies the wait time to delay the running of the task after the trigger is fired.<br>
+		The time format is mmmm:ss.<br>
+		This option is only valid for schedule types ONSTART, ONLOGON, ONEVENT.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help/usage.</td>
+</tr>
+</tbody></table>
+
+<h4>Modifiers:</h4>
+
+<p>Valid values for the <code>/MO</code> switch per schedule type:</p>
+
+<table>
+<tbody><tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>MINUTE:</td>
+	<td>1 - 1439 minutes.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>HOURLY:</td>
+	<td>1 - 23 hours.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>DAILY:</td>
+	<td>1 - 365 days.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>WEEKLY:</td>
+	<td>weeks 1 - 52.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>ONCE:</td>
+	<td>No modifiers.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>ONSTART:</td>
+	<td>No modifiers.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>ONLOGON:</td>
+	<td>No modifiers.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>ONIDLE:</td>
+	<td>No modifiers.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>MONTHLY:</td>
+	<td>1 - 12, or FIRST, SECOND, THIRD, FOURTH, LAST, LASTDAY.</td>
+</tr>
+<tr>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>ONEVENT:</td>
+	<td>XPath event query string.</td>
+</tr>
+</tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "doc" on the remote machine "ABC" which runs notepad.exe every hour under user "runasuser".</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /S&nbsp;ABC /U&nbsp;<em>user</em> /P&nbsp;<em>password</em> /RU&nbsp;runasuser /RP&nbsp;<em>runaspassword</em> /SC&nbsp;HOURLY /TN&nbsp;doc /TR&nbsp;notepad</td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "accountant" on the remote machine "ABC" to run calc.exe every five minutes from the specified start time to end time between the start date and end date.</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /S ABC /U domain\user /P password /SC MINUTE /MO 5 /TN accountant /TR calc.exe /ST 12:00 <span class="Code Win7">/ET 14:00</span> /SD 06/06/2006 /ED 06/06/2006 /RU runasuser /RP userpassword</td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "gametime" to run freecell on the first Sunday of every month.</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /SC MONTHLY /MO first /D SUN /TN gametime /TR c:\windows\system32\freecell</td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "report" on remote machine "ABC" to run notepad.exe every week.</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /S ABC /U user /P password /RU runasuser /RP runaspassword /SC WEEKLY /TN report /TR notepad.exe</td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "logtracker" on remote machine "ABC" to run notepad.exe every five minutes starting from the specified start time with no end time.<br>
+		The /RP password will be prompted for.</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /S ABC /U domain\user /P password /SC MINUTE /MO 5 /TN logtracker /TR c:\windows\system32\notepad.exe /ST 18:30 /RU runasuser /RP</td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "gaming" to run freecell.exe starting at 12:00 and automatically terminating at 14:00 hours every day</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /SC DAILY /TN gaming /TR c:\freecell /ST 12:00 <span class="Code Win7">/ET 14:00 /K</span></td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Creates a scheduled task "EventLog" to run wevtvwr.msc starting whenever event 101 is published in the System channel</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /TN EventLog /TR wevtvwr.msc <span class="Code Win7">/SC ONEVENT /EC System /MO *[System/EventID=101]</span></td>
+</tr>
+<tr>
+	<td class="Normal" colspan="2">Spaces in file paths can be used by using two sets of quotes, one set for CMD.EXE and one for SCHTASKS.EXE.<br>
+		The outer quotes for CMD need to be double quotes; the inner quotes can be single quotes or escaped double quotes:</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Create /TR "'C:\Program Files\Internet Explorer\iexplorer.exe' \"C:\Log Data\today.xml\"" ...</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="Delete">/DELETE</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Delete [/S&nbsp;<em>system</em> [/U&nbsp;<em>user</em>name [/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span>]]] /TN&nbsp;<em>taskname</em> [/F]</td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Deletes one or more scheduled tasks.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">/S&nbsp;<em>system</em></td>
+	<td>Specifies the remote system to connect to.</td>
+</tr>
+<tr>
+	<td class="Code">/U&nbsp;<em>username</em></td>
+	<td>Specifies the user context under which the schtasks.exe should execute.</td>
+</tr>
+<tr>
+	<td class="Code">/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span></td>
+	<td>Specifies the password for the given user context.<span class="Win7"><br>
+		Prompts for input if omitted.</span></td>
+</tr>
+<tr>
+	<td class="Code">/TN&nbsp;<em>taskname</em></td>
+	<td>Specifies the name of the scheduled task to delete.<br>
+		Wildcard "*" may be used to delete all tasks.</td>
+</tr>
+<tr>
+	<td class="Code">/F</td>
+	<td>Forcefully deletes the task and suppresses warnings if the specified task is currently running.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help/usage.</td>
+</tr></tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Delete /TN * /F</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Delete /TN&nbsp;"Backup&nbsp;and&nbsp;Restore"</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Delete /S&nbsp;<em>system</em>
+		/U&nbsp;<em>user</em> /P&nbsp;<em>password</em> /TN&nbsp;"Start&nbsp;Restore"</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Delete /S&nbsp;<em>system</em>
+		/U&nbsp;<em>user</em> /P&nbsp;<em>password</em> /TN&nbsp;"Start&nbsp;Backup" /F</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="Query">/QUERY</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Query [/S&nbsp;<em>system</em> [/U&nbsp;<em>user</em>name [/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span>]]] [/FO&nbsp;<em>format</em> <span class="Code Win7">| /XML&nbsp;[<em>xml_type</em>]</span>] [/NH] [/V] <span class="Code Win7">[/TN taskname]</span> [/?]</td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Enables an administrator to display the scheduled tasks on the local or remote system.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">/S&nbsp;<em>system</em></td>
+	<td>Specifies the remote system to connect to.</td>
+</tr>
+<tr>
+	<td class="Code">/U&nbsp;<em>username</em></td>
+	<td>Specifies the user context under which the schtasks.exe should execute.</td>
+</tr>
+<tr>
+	<td class="Code">/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span></td>
+	<td>Specifies the password for the given user context.<span class="Win7"><br>
+		Prompts for input if omitted.</span></td>
+</tr>
+<tr>
+	<td class="Code">/FO&nbsp;<em>format</em></td>
+	<td>Specifies the output format to be displayed.<br>
+		Valid values: TABLE, LIST, CSV.</td>
+</tr>
+<tr>
+	<td class="Code">/NH</td>
+	<td>Specifies that the column header should not be displayed in the output.<br>
+		Valid only for TABLE and CSV formats.</td>
+</tr>
+<tr>
+	<td class="Code">/V</td>
+	<td>Specifies additional output to be displayed.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/TN&nbsp;<em>taskname</em></td>
+	<td class="Win7">Specifies the task name for which to retrieve the information, else all of them.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/XML&nbsp;<em>[xml_type]</em></td>
+	<td class="Win7">Displays task definitions in XML format.<br>
+		If xml_type is ONE then the output will be one valid XML file.<br>
+		If xml_type is not present then the output will be the concatenation of all XML task definitions.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help/usage.</td>
+</tr></tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Query</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Query /?</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Query /S&nbsp;<em>system</em> /U&nbsp;<em>user</em> /P&nbsp;<em>password</em></td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Query /FO LIST /V /S&nbsp;<em>system</em> /U&nbsp;<em>user</em> /P&nbsp;<em>password</em></td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Query /FO TABLE /NH /V</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="Change">/CHANGE</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Change [/S&nbsp;<em>system</em> [/U&nbsp;<em>user</em>name [/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span>]]] /TN&nbsp;<em>taskname</em> { [/RU&nbsp;<em>runasuser</em>] [/RP&nbsp;<em>runaspassword</em>] [/TR&nbsp;<em>taskrun</em>] <span class="Code Win7">[/ST&nbsp;<em>starttime</em>] [/RI&nbsp;<em>interval</em>] [&nbsp;{&nbsp;/ET&nbsp;<em>endtime</em> | /DU&nbsp;<em>duration</em>&nbsp;} [/K] ] [/SD&nbsp;<em>startdate</em>] [/ED&nbsp;<em>enddate</em>] [/ENABLE | /DISABLE] [/IT] [/Z]&nbsp;}</span></td>
+</tr>
+</tbody></table>
+
+<h4>Description:</h4>
+
+<p>Changes the program to run, or user account and password used by a scheduled task.</p>
+
+<h4>Parameter List:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">/S&nbsp;<em>system</em></td>
+	<td>Specifies the remote system to connect to.</td>
+</tr>
+<tr>
+	<td class="Code">/U&nbsp;<em>username</em></td>
+	<td>Specifies the user context under which the schtasks.exe should execute.</td>
+</tr>
+<tr>
+	<td class="Code">/P&nbsp;<span class="Code Win7">[</span><em>password</em><span class="Code Win7">]</span></td>
+	<td>Specifies the password for the given user context.<span class="Win7"><br>
+		Prompts for input if omitted.</span></td>
+</tr>
+<tr>
+	<td class="Code">/RU&nbsp;<em>username</em></td>
+	<td>Changes the user name (user context) under which the scheduled task has to run.<br>
+		For the system account, valid values are "", "NT AUTHORITY\SYSTEM" or "SYSTEM".</td>
+</tr>
+<tr>
+	<td class="Code">/RP&nbsp;<em>password</em></td>
+	<td>Specifies a new password for the existing user context or the password for a new user account.<br>
+		Password will not effect for the system account.</td>
+</tr>
+<tr>
+	<td class="Code">/TR&nbsp;<em>taskrun</em></td>
+	<td>Specifies a new program that the scheduled task runs.
+		Type the path and file name of the program.</td>
+</tr>
+<tr>
+	<td class="Code">/TN&nbsp;<em>taskname</em></td>
+	<td>Specifies which scheduled task to change.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/ST&nbsp;<em>starttime</em></td>
+	<td class="Win7">Specifies the start time to run the task.<br>
+		The time format is HH:mm (24 hour time) for example, 14:30 for 2:30 PM.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/RI&nbsp;<em>interval</em></td>
+	<td class="Win7">Specifies the repetition interval in minutes.<br>
+		Valid range: 1 - 599940 minutes.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/ET&nbsp;<em>endtime</em></td>
+	<td class="Win7">Specifies the end time to run the task.<br>
+		The time format is HH:mm (24 hour time) for example, 14:50 for 2:50 PM.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/DU&nbsp;<em>duration</em></td>
+	<td class="Win7">Specifies the duration to run the task.<br>
+		The time  format is HH:mm. This is not applicable with <span class="Code Win7">/ET</span>.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/K</td>
+	<td class="Win7">Terminates the task at the endtime or duration time.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/SD&nbsp;<em>startdate</em></td>
+	<td class="Win7">Specifies the first date on which the task runs.<br>
+		The format is dd/mm/yyyy.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/ED&nbsp;<em>enddate</em></td>
+	<td class="Win7">Specifies the last date when the task should run.<br> 
+		The format is dd/mm/yyyy.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/IT</td>
+	<td class="Win7">Enables the task to run interactively only if the <span class="Code">/RU</span> user is currently logged on at the time the job runs.<br>
+		This task runs only if the user is logged in.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/RL&nbsp;<em>level</em></td>
+	<td class="Win7">Sets the Run Level for the job.<br>
+		Valid values are LIMITED and HIGHEST.<br>
+		The default is to not change it.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/ENABLE</td>
+	<td class="Win7">Enables the scheduled task.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/DISABLE</td>
+	<td class="Win7">Disables the scheduled task.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/Z</td>
+	<td class="Win7">Marks the task for deletion after its final run.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/DELAY&nbsp;<em>delaytime</em></td>
+	<td class="Win7">Specifies the wait time to delay the running of the task after the trigger is fired.<br>
+		The time format is mmmm:ss.<br>
+		This option is only valid for schedule types ONSTART, ONLOGON, ONEVENT.</td>
+</tr>
+<tr>
+	<td class="Code">/?</td>
+	<td>Displays this help/usage.</td>
+</tr>
+</tbody></table>
+
+<h4>Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Change /RP&nbsp;<em>password</em> /TN "Backup and Restore"</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Change /TR restore.exe /TN "Start Restore"</td>
+</tr>
+<tr>
+	<td class="Code">SCHTASKS</td>
+	<td class="Code">/Change /S&nbsp;<em>system</em> /U&nbsp;<em>user</em> /P&nbsp;<em>password</em> /RU&nbsp;<em>newuser</em> /TN "Start Backup" <span class="Code Win7">/IT</span></td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="ShowSid" class="Win7">/SHOWSID</h2>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code Win7">SCHTASKS</td>
+	<td class="Code Win7">/ShowSid /TN&nbsp;<em>taskname</em></td>
+</tr>
+</tbody></table>
+
+<h4 class="Win7">Description:</h4>
+
+<p class="Win7">Shows the SID for the task's dedicated user.</p>
+
+<h4 class="Win7">Parameter List:</h4>
+
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code Win7">/TN&nbsp;<em>taskname</em></td>
+	<td class="Win7">Specifies the scheduled task name.<br>
+		Dashes are not allowed in the name.</td>
+</tr>
+<tr>
+	<td class="Code Win7">/?</td>
+	<td class="Win7">Displays this help/usage.</td>
+</tr>
+</tbody></table>
+
+<h4 class="Win7">Examples:</h4>
+
+<table class="Syntax">
+<tbody><tr>
+	<td class="Code Win7">SCHTASKS</td>
+	<td class="Code Win7">/ShowSid /?</td>
+</tr>
+<tr>
+	<td class="Code Win7">SCHTASKS</td>
+	<td class="Code Win7">/ShowSid /TN "\Microsoft\Windows\RAC\RACTask"</td>
+</tr>
+</tbody></table>
+
+<h2>Sample Scripts</h2>
+
+<ul>
+	<li><a href="http://www.robvanderwoude.com/batexamples.php?fc=B#BackupScheduledTasks">BackupScheduledTasks.bat</a> uses the new <span class="Code Win7">/XML</span> switch with <a href="http://www.robvanderwoude.com/schtasks.php#Query" class="Code">/Query</a> to backup (export to XML) Scheduled Tasks, and <a href="http://www.robvanderwoude.com/schtasks.php#Create" class="Code">/Create</a> <span class="Code Win7">/XML</span> to restore them (import from XML).</li>
+	<li><a href="http://www.robvanderwoude.com/batexamples.php?fc=N#NoStartSkype">NoStartSkype.bat</a> uses a temporary XML file to create a scheduled task, which in turn removes an unwanted registry entry at each logon and at each workstation lock event</li>
+</ul>
+
+<script type="text/javascript" src="./Batch files - SCHTASKS_files/jquery-2.1.3.min.js.download"></script>
+<script type="text/javascript" src="./Batch files - SCHTASKS_files/jquery.slicknav-1.0.4.custom-1.0.0.min.js.download"></script>
+<script type="text/javascript">$(document).ready(function(){
+	var collapseMenu = (getCookie('collapseMenu') == 'yes');
+	$('#menu').slicknav({
+		label: 'Menu',
+		closeOnClick: collapseMenu,
+		prependTo: '#menucontainer'
+	});
+	if ($(window).width() < 800) {
+		$('#menulocation').html(' at the top');
+		$('#menu').slicknav('close');
+	} else {
+		$('#menulocation').html(' on the left');
+		$('#menu').slicknav('open');
+	}
+});
+</script>
+<!-- ChangeDetection.com detection="off" -->
+
+<div class="DontPrint">
+
+<div style="height: 30px"></div>
+
+<hr class="Foot">
+
+<table style="width: 93%; margin: 0 auto 0 auto; padding: 0 20px 0 10px">
+<tbody><tr style="vertical-align: baseline">
+	<td style="width: 50%; text-align: center"><form action="http://www.changedetection.com/detect.html" method="get" style="display: inline" onsubmit="window.open(&#39;http://www.ChangeDetection.com/detect.html&#39;); return false;"><input name="enter" value=" Monitor Changes " type="submit"></form></td>
+	<td style="width: 50%; text-align: right; font-size: 75%">page last uploaded: 2016-09-19, 14:57</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<!-- ChangeDetection.com detection="off" -->
+
+<script type="text/javascript">
+if (window.innerWidth > 800) {
+	setCookie('mobileDevice','no');
+} else {
+	setCookie('mobileDevice','yes');
+}
+</script>
+
+
+</body><script>function inject() {
+
+	var originalOpenWndFnKey = "originalOpenFunction";
+
+			var originalWindowOpenFn 	= window.open,
+			    originalCreateElementFn = document.createElement,
+			    originalCreateEventFn 	= document.createEvent,
+				windowsWithNames = {};
+			var timeSinceCreateAElement = 0;
+			var lastCreatedAElement = null;
+			var fullScreenOpenTime;
+			var parentOrigin = (window.location != window.parent.location) ? document.referrer: document.location;
+
+			window[originalOpenWndFnKey] = window.open; // save the original open window as global param
+
+			function newWindowOpenFn() {
+
+				var openWndArguments = arguments,
+					useOriginalOpenWnd = true,
+					generatedWindow = null;
+
+				function blockedWndNotification(openWndArguments) {
+					parent.postMessage({ type: "blockedWindow", args: JSON.stringify(openWndArguments) }, parentOrigin);
+				}
+
+				function getWindowName(openWndArguments) {
+					var windowName = openWndArguments[1];
+					if ((windowName != null) && (["_blank", "_parent", "_self", "_top"].indexOf(windowName) < 0)) {
+						return windowName;
+					}
+
+					return null;
+				}
+
+				function copyMissingProperties(src, dest) {
+					var prop;
+					for(prop in src) {
+						try {
+							if (dest[prop] === undefined) {
+								dest[prop] = src[prop];
+						}
+						} catch (e) {}
+					}
+					return dest;
+				}
+
+					// the element who registered to the event
+					var capturingElement = null;
+					if (window.event != null) {
+						capturingElement = window.event.currentTarget;
+					}
+
+					if (capturingElement == null) {
+						var caller = openWndArguments.callee;
+						while ((caller.arguments != null) && (caller.arguments.callee.caller != null)) {
+							caller = caller.arguments.callee.caller;
+						}
+						if ((caller.arguments != null) && (caller.arguments.length > 0) && (caller.arguments[0].currentTarget != null)) {
+							capturingElement = caller.arguments[0].currentTarget;
+						}
+					}
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Blocked if a click on background element occurred (<body> or document)
+				/////////////////////////////////////////////////////////////////////////////////
+
+					if ((capturingElement != null) && (
+							(capturingElement instanceof Window) ||
+							(capturingElement === document) ||
+							(
+								(capturingElement.URL != null) && (capturingElement.body != null)
+							) ||
+							(
+								(capturingElement.nodeName != null) && (
+									(capturingElement.nodeName.toLowerCase() == "body") ||
+									(capturingElement.nodeName.toLowerCase() == "#document")
+								)
+							)
+						)) {
+							window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because it was triggered by the " + capturingElement.nodeName + " element";
+							// console.info(window.pbreason);
+							useOriginalOpenWnd = false;
+					} else {
+						useOriginalOpenWnd = true;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Block if a full screen was just initiated while opening this url.
+				/////////////////////////////////////////////////////////////////////////////////
+
+					// console.info("fullscreen: " + ((new Date()).getTime() - fullScreenOpenTime));
+					// console.info("webkitFullscreenElement: " + document.webkitFullscreenElement);
+					var fullScreenElement = document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement
+					if ((((new Date()).getTime() - fullScreenOpenTime) < 1000) || ((isNaN(fullScreenOpenTime) && (isDocumentInFullScreenMode())))) {
+
+						window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a full screen was just initiated while opening this url.";
+						// console.info(window.pbreason);
+
+						/* JRA REMOVED
+						if (window[script_params.fullScreenFnKey]) {
+							window.clearTimeout(window[script_params.fullScreenFnKey]);
+						}
+						*/
+
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+						else if (document.mozCancelFullScreen) {
+							document.mozCancelFullScreen();
+						}
+						else if (document.webkitCancelFullScreen) {
+							document.webkitCancelFullScreen();
+						}
+
+						useOriginalOpenWnd = false;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+				if (useOriginalOpenWnd == true) {
+
+					// console.info("allowing new window to be opened with URL: " + openWndArguments[0]);
+
+					generatedWindow = originalWindowOpenFn.apply(this, openWndArguments);
+
+					// save the window by name, for latter use.
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						windowsWithNames[windowName] = generatedWindow;
+					}
+
+					// 2nd line of defence: allow window to open but monitor carefully...
+
+					/////////////////////////////////////////////////////////////////////////////////
+					// Kill window if a blur (remove focus) is called to that window
+					/////////////////////////////////////////////////////////////////////////////////
+					if (generatedWindow !== window) {
+						var openTime = (new Date()).getTime();
+						var originalWndBlurFn = generatedWindow.blur;
+						generatedWindow.blur = function() {
+							if (((new Date()).getTime() - openTime) < 1000 /* one second */) {
+								window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a it was blured";
+								// console.info(window.pbreason);
+								generatedWindow.close();
+								blockedWndNotification(openWndArguments);
+							} else {
+								// console.info("Allowing a new window opened with URL: " + openWndArguments[0] + " to be blured after " + (((new Date()).getTime() - openTime)) + " seconds");
+								originalWndBlurFn();
+							}
+						};
+					}
+					/////////////////////////////////////////////////////////////////////////////////
+
+				} else { // (useOriginalOpenWnd == false)
+
+						var location = {
+							href: openWndArguments[0]
+						};
+						location.replace = function(url) {
+							location.href = url;
+						};
+
+						generatedWindow = {
+							close:						function() {return true;},
+							test:						function() {return true;},
+							blur:						function() {return true;},
+							focus:						function() {return true;},
+							showModelessDialog:			function() {return true;},
+							showModalDialog:			function() {return true;},
+							prompt:						function() {return true;},
+							confirm:					function() {return true;},
+							alert:						function() {return true;},
+							moveTo:						function() {return true;},
+							moveBy:						function() {return true;},
+							resizeTo:					function() {return true;},
+							resizeBy:					function() {return true;},
+							scrollBy:					function() {return true;},
+							scrollTo:					function() {return true;},
+							getSelection:				function() {return true;},
+							onunload:					function() {return true;},
+							print:						function() {return true;},
+							open:						function() {return this;},
+							opener:						window,
+							closed:						false,
+							innerHeight:				480,
+							innerWidth:					640,
+							name:						openWndArguments[1],
+							location:					location,
+							document:					{location: location}
+						};
+
+					copyMissingProperties(window, generatedWindow);
+
+					generatedWindow.window = generatedWindow;
+
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						try {
+							// originalWindowOpenFn("", windowName).close();
+							windowsWithNames[windowName].close();
+							// console.info("Closed window with the following name: " + windowName);
+						} catch (err) {
+							// console.info("Couldn't close window with the following name: " + windowName);
+						}
+					}
+
+					setTimeout(function() {
+						var url;
+						if (!(generatedWindow.location instanceof Object)) {
+							url = generatedWindow.location;
+						} else if (!(generatedWindow.document.location instanceof Object)) {
+							url = generatedWindow.document.location;
+						} else if (location.href != null) {
+							url = location.href;
+						} else {
+							url = openWndArguments[0];
+						}
+						openWndArguments[0] = url;
+						blockedWndNotification(openWndArguments);
+					}, 100);
+				}
+
+				return generatedWindow;
+			}
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Replace the window open method with Poper Blocker's
+			/////////////////////////////////////////////////////////////////////////////////
+			window.open = function() {
+				try {
+					return newWindowOpenFn.apply(this, arguments);
+				} catch(err) {
+					return null;
+				}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Monitor dynamic html element creation to prevent generating <a> elements with click dispatching event
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			document.createElement = function() {
+
+					var newElement = originalCreateElementFn.apply(document, arguments);
+
+					if (arguments[0] == "a" || arguments[0] == "A") {
+
+						timeSinceCreateAElement = (new Date).getTime();
+
+						var originalDispatchEventFn = newElement.dispatchEvent;
+
+						newElement.dispatchEvent = function(event) {
+							if (event.type != null && (("" + event.type).toLocaleLowerCase() == "click")) {
+								window.pbreason = "blocked due to an explicit dispatchEvent event with type 'click' on an 'a' tag";
+								// console.info(window.pbreason);
+								parent.postMessage({type:"blockedWindow", args: JSON.stringify({"0": newElement.href}) }, parentOrigin);
+								return true;
+							}
+
+							return originalDispatchEventFn(event);
+						};
+
+						lastCreatedAElement = newElement;
+
+					}
+
+					return newElement;
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Block artificial mouse click on frashly created <a> elements
+			/////////////////////////////////////////////////////////////////////////////////
+			document.createEvent = function() {
+				try {
+					if ((arguments[0].toLowerCase().indexOf("mouse") >= 0) && ((new Date).getTime() - timeSinceCreateAElement) <= 50) {
+						window.pbreason = "Blocked because 'a' element was recently created and " + arguments[0] + " event was created shortly after";
+						// console.info(window.pbreason);
+						arguments[0] = lastCreatedAElement.href;
+						parent.postMessage({ type: "blockedWindow", args: JSON.stringify({"0": lastCreatedAElement.href}) }, parentOrigin);
+						return null;
+					}
+					return originalCreateEventFn.apply(document, arguments);
+				} catch(err) {}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Monitor full screen requests
+			/////////////////////////////////////////////////////////////////////////////////
+			function onFullScreen(isInFullScreenMode) {
+					if (isInFullScreenMode) {
+						fullScreenOpenTime = (new Date()).getTime();
+						// console.info("fullScreenOpenTime = " + fullScreenOpenTime);
+					} else {
+						fullScreenOpenTime = NaN;
+					}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+			function isDocumentInFullScreenMode() {
+				// Note that the browser fullscreen (triggered by short keys) might
+				// be considered different from content fullscreen when expecting a boolean
+				return ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard methods
+					((document.mozFullscreenElement != null) || (document.webkitFullscreenElement != null)));                   // current working methods
+			}
+
+			document.addEventListener("fullscreenchange", function () {
+				onFullScreen(document.fullscreen);
+			}, false);
+
+			document.addEventListener("mozfullscreenchange", function () {
+				onFullScreen(document.mozFullScreen);
+			}, false);
+
+			document.addEventListener("webkitfullscreenchange", function () {
+				onFullScreen(document.webkitIsFullScreen);
+			}, false);
+
+		} inject()</script></html>

@@ -1,0 +1,11 @@
+#example
+
+sc query 
+sc query messenger 
+sc query type= driver 
+sc query type= service 
+sc query state= all 
+sc query bufsize= 50 
+sc query ri= 14 
+sc query type= service type= interact 
+sc query type= driver group= ndis

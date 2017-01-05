@@ -1,0 +1,15 @@
+# need adminstrator permission
+# run as adminstrator the cmd 
+# when using bat to exe use configure admin minifest
+
+
+example :
+
+  create: schtasks /create /sc onlogon /tn "demo task" /tr "C:\Windows\System32\calc.exe" 
+  delete : schtasks /delete /tn "demo task" /f 
+  
+
+
+
+
+#/f for do it forcefully 

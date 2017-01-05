@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://www.duckware.com/dk9.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>DK9</title></head><body><script>
+(function(){
+  var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var SEP="\x07";
+  function startsWith( s, find ) {
+    return 0===s.lastIndexOf(find, 0);
+    }
+  function endsWith( s, find ) {
+     var nPos = s.length-find.length;
+     return (nPos>=0) && (s.indexOf(find,nPos)==nPos);
+     }
+  function getHostOf(url) {
+    var p1 = url ? url.indexOf("://") : -1;
+    var p2 = (p1>0) ? url.indexOf("/",p1+3) : -1;
+    return p2>0 ? url.substring(p1+3,p2) : "";
+    }
+  function getPageOf(url) {
+    var p1 = url ? url.indexOf("://") : -1;
+    var p2 = (p1>0) ? url.indexOf("/",p1+3) : -1;
+    var rest = p2>0 ? url.substring(p2) : "";
+    var p3 = rest.indexOf("?");
+    var ret = (p3>0) ? rest.substring(0,p3) : rest;
+    if (ret.length>1 && startsWith(ret,"/")) {
+      ret = ret.substring(1);
+      }
+    return ret;
+    }
+  function getLocalStorage() {
+    try { return window.localStorage; } catch (err) {}
+    return null;
+    }
+  function getSessionStorage() {
+    try { return window.sessionStorage; } catch (err) {}
+    return null;
+    }
+  function addPath( add ) {
+    var ls = getLocalStorage();
+    if (ls) {
+      ls.path = getPath()+" "+add;
+      if (ls.path.length>5000) {
+        ls.path = "..."+ls.path.substring(ls.path.length-4000);
+        }
+      }
+    }
+  function getPath() {
+    var ls = getLocalStorage();
+    return ls ? (ls.path||"") : "";
+    }
+  function z2( n ) {
+    var s = ""+n;
+    return ((s.length<2)?"0":"")+s;
+    }
+  function recordNewSession() {
+    var ss = getSessionStorage();
+    if (ss && !ss.tStart) {
+      var d = new Date();
+      ss.tStart = d.getTime();
+      var ddmmmyyyy = z2(d.getDate())+"/"+MONTHS[d.getMonth()]+"/"+d.getFullYear();
+      var hhmmss = z2(d.getHours())+":"+z2(d.getMinutes())+":"+z2(d.getSeconds());
+      addPath( "["+ddmmmyyyy+":"+hhmmss+"]" );
+      }
+    }
+  function recordHost(host) {
+    var ls = getLocalStorage();
+    if (ls && host && ls.onhost!=host) {
+      ls.onhost = host;
+      addPath( "["+host.toUpperCase()+"]" );
+      }
+    }
+  function recordPage(url) {
+    addPath( getPageOf(url) );
+    }
+  function doPathWork( ref, loc ) {
+    recordNewSession();
+    recordHost(getHostOf(ref));
+    recordHost(getHostOf(loc));
+    recordPage(loc);
+    }
+  function isValidOrigin(s) {
+    return true; //todo
+    }
+  function haveMessage(e) {
+    if (isValidOrigin(e.origin)) {
+      var lines = e.data.split(SEP);
+      if (lines.length==2) {
+        doPathWork( lines[0], lines[1] );
+        window.parent.postMessage("dk9path"+SEP+getPath(),"*");
+        }
+      }
+    }
+  function getUID() {
+    var ls = getLocalStorage();
+    if (ls && !ls.uid) {
+      ls.uid = new Date().getTime().toString(36).toUpperCase();
+      }
+    return (ls && ls.uid) ? ls.uid : "";
+    }
+  function doPageLoadedWork() {
+    new Image().src = "dk9.gif?t="+(new Date().getTime())+"&u="+getUID();
+    }
+  if (window.parent && window.addEventListener && window.postMessage) {
+    window.addEventListener('load',doPageLoadedWork,false);
+    window.addEventListener("message", haveMessage);
+    window.parent.postMessage("dk9ready","*");
+    }
+  })();
+</script> 
+</body></html>

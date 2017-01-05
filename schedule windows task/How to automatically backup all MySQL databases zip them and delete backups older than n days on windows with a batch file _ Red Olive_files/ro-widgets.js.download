@@ -1,0 +1,477 @@
+// Transitions header background when past hero block
+jQuery(document).ready(function($){
+	$.widget('RO.validate', {
+		_create: function(){
+			var self = this;
+
+			self.element.find('.js-required').each(function(indx){
+				$(this).find('label').append('<span class="validation-msg" />');
+			});
+
+			self.element.find('.js-required').find('input').on('focus', function(){
+				$(this).prev('label').find('.validation-msg').removeClass('invalid');
+			})
+
+			self.element.on('submit', function(){
+				return self._validateFields();
+			});
+		},
+
+		_validateFields: function(){
+			var self = this,
+				$element = self.element,
+				validForm = true;
+
+			$('input.box-link').val('PROCESSING...').prop('disabled', true);
+
+			//Checks for empty fields
+			$element.find('.js-required').each(function(){
+				var currIndex = $(this),
+					currField = currIndex.find('input'),
+					currVal = currField.val(),
+					currMessage = currIndex.find('.validation-msg');
+
+				if(!currVal){
+					currMessage.addClass('invalid').text('*required');
+					validForm = false;
+				}
+			});
+
+			//Checks Email value
+			$element.find('.js-email').each(function(){
+				var currIndex = $(this),
+					currField = currIndex.find('input'),
+					currVal = currField.val(),
+					currMessage = currIndex.find('.validation-msg'),
+					email_check = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
+
+				if( !email_check.test(currVal) ){
+					currMessage.addClass('invalid').text('*invalid email');
+					validForm = false;
+				}
+			});
+
+			//Checks Phone value
+			$element.find('.js-phone').each(function(){
+				var currIndex = $(this),
+					currField = currIndex.find('input'),
+					currMessage = currIndex.find('.validation-msg'),
+					phone_check = /^[0-9-()+]{3,20}/;
+
+				if( !phone_check.test(currField.val()) ){
+					currMessage.addClass('invalid').text('*invalid phone');
+					validForm = false;
+				}
+			});
+
+			if (!validForm) {
+				$('input.box-link').val('SUBMIT').prop('disabled', false);
+			};
+
+			return validForm;
+		}
+	});
+
+	$.widget('RO.rfq', {
+		_create:function(){
+			var self = this,
+				$element = self.element,
+				$slideout = $('#js-rfq-slideout');
+
+			$element.on('click', function(e){
+				e.preventDefault();
+				$(window).scrollTop(0);
+				$('#menu').removeClass('show');
+				$slideout.slideDown();
+			});
+			$('#js-rfq-close').on('click', function(e){
+				e.preventDefault();
+				$slideout.slideUp();
+				$('#js-header').removeClass('activated');
+			});
+		}
+	});
+
+	$.widget('RO.changeHeader', {
+		_create: function(){
+				var self = this,
+					$header = self.element,
+					headerChangePostion = $('#js-trans-header').outerHeight(true);
+
+				$(window).scroll(function(){
+					var windowTop = $(window).scrollTop();
+
+					if (windowTop >= headerChangePostion - $header.height()) {
+						$header.addClass('activated');
+					} else {
+						$header.removeClass('activated');
+					}
+				});
+		}
+	});
+
+	// Home What We Do
+	$.widget('RO.whatWeDo', {
+		_create: function(){
+			var self = this,
+				windowHeight = window.outerHeight,
+				$element = self.element,
+				step = 750,
+				elementHeight = step * 5 + 100;
+
+			$element.height(elementHeight).find('#js-wwdWrapper').height(windowHeight);
+
+			$(window).scroll(function(){
+				var windowTop = $(window).scrollTop(),
+					windowBottom  = windowTop + windowHeight,
+					elementTop = $element.offset().top,
+					elementBottom = elementTop + elementHeight,
+					block2Top = elementTop + step,
+					block3Top = elementTop + step * 2,
+					block4Top = elementTop + step * 3;
+
+				if (windowTop >= elementTop) {
+					if(!$element.hasClass('activated')){
+						$element.addClass('activated');
+						self._changeActive(1);
+					}
+				} else {
+					$element.removeClass('activated');
+				}
+
+				if (windowBottom >= elementBottom){
+					$element.addClass('bottom');
+				} else {
+					$element.removeClass('bottom');
+				}
+
+				if(windowTop >= block4Top){
+					self._changeActive(4);
+				}
+				else if (windowTop >= block3Top){
+					self._changeActive(3);
+				}
+				else if (windowTop >= block2Top ){
+					self._changeActive(2);
+				}
+				else if (windowTop >= elementTop ){
+					self._changeActive(1);
+				}
+			});
+
+		},
+
+		_changeActive: function(numRequest){
+			var self = this,
+				$element = self.element;
+
+			if (self.currentBlock != numRequest){
+			$element
+				.attr('data-currentBlock', numRequest)
+				.find('.js-wwd-icon.activated, video.activated, .js-copy.activated')
+					.removeClass('activated')
+					.end()
+				.find('[data-block="' + numRequest + '"]')
+					.addClass('activated')
+					.end()
+				.find('video[data-block="' + numRequest + '"]').get(0).play();
+
+			self.currentBlock = numRequest;
+			}
+		}
+	});
+
+
+	// Creates slide/fade in functionality for elements based on scroll position
+	$.widget('RO.scrollAction', {
+		options: {
+			exactProximity: null, //If exact scroll height desired
+			percentProximity: .95, //window height percentage for scroll height - overridden by exactProximity
+			slideDirection: null,
+			slideDistance: null
+		},
+
+		_create: function() {
+
+			var self = this, //widget vars
+				$element = self.element,
+				//option vars
+				o = self.options,
+				direction = o.slideDirection,
+				distance = o.slideDistance,
+				//misc
+				animArgs = {'opacity':'1'},
+				defaultArgs = {'opacity':'0'},
+				viewportShow = o.exactProximity || $element.offset().top - ($(window).outerHeight(true) * o.percentProximity),
+				viewPortHide = $element.offset().top + ($element.outerHeight() - 50);
+
+			//Set default element styles on page load
+			defaultArgs[direction] = '-=' + distance || '0px';
+			$element.css(defaultArgs);
+
+			//create animation arguments
+			animArgs[direction] = '+=' + distance;
+
+
+			$(window).scroll(function(){
+					var windowTop = $(window).scrollTop();
+
+					if (windowTop >= viewportShow && !$element.hasClass('activated') && windowTop <= viewPortHide) {
+						$element.velocity(animArgs, 200).addClass('activated');
+					}
+				});
+		}
+	});
+
+	$.widget('RO.scrollClassChange', {
+		options: {
+			exactProximity: null, //If exact scroll height desired
+			percentProximity: .85, //window height percentage for scroll height - overridden by exactProximity
+			addClass: 'activated'
+		},
+
+		_create: function() {
+
+			var self = this, //widget vars
+				$element = self.element,
+				//option vars
+				o = self.options,
+				addClass = o.addClass,
+				//misc
+				viewportProximity = o.exactProximity || $element.offset().top - ($(window).height() * o.percentProximity);
+
+			$(window).scroll(function(){
+					var windowTop = $(window).scrollTop();
+
+					if (windowTop >= viewportProximity && !$element.hasClass('activated')) {
+						$element.addClass(addClass);
+					}
+				});
+		}
+	});
+
+	$.widget('RO.caseStudyScroll', {
+
+		_create: function() {
+
+			var self = this,
+				$element = self.element,
+				elementTop = $element.offset().top;
+
+			self.windowHeight = $(window).height();
+			self._setCss();
+
+			var blockOffset = 150,
+				scrollBlock1 = $element.find('.js-scroll-block[data-scroll="1"]').offset().top + blockOffset,
+				scrollBlock2 = $element.find('.js-scroll-block[data-scroll="2"]').offset().top + blockOffset,
+				scrollBlock3 = $element.find('.js-scroll-block[data-scroll="3"]').offset().top + blockOffset,
+				scrollBlock4 = $element.find('.js-scroll-block[data-scroll="4"]').offset().top + blockOffset,
+				scrollLink1 = $element.find('.js-scroll-link[data-scroll="1"]'),
+				scrollLink2 = $element.find('.js-scroll-link[data-scroll="2"]'),
+				scrollLink3 = $element.find('.js-scroll-link[data-scroll="3"]'),
+				scrollLink4 = $element.find('.js-scroll-link[data-scroll="4"]'),
+				scrollGraphic1 = $element.find('.js-scroll-graphic[data-scroll="1"]'),
+				scrollGraphic2 = $element.find('.js-scroll-graphic[data-scroll="2"]'),
+				scrollGraphic3 = $element.find('.js-scroll-graphic[data-scroll="3"]'),
+				scrollGraphic4 = $element.find('.js-scroll-graphic[data-scroll="4"]');
+
+			var elementBottom = $element.offset().top + $element.outerHeight();
+
+			$(window).on('scroll', function(){
+				var windowTop = $(window).scrollTop(),
+					windowBottom = windowTop + self.windowHeight,
+					activeBlock = $element.find('.js-scroll-link.activated'),
+					activeGraphic = $element.find('.js-scroll-graphic.activated');
+
+				if(windowTop >= elementTop){
+					$element.addClass('activated');
+						if(windowBottom >= elementBottom){
+							$element.addClass('bottom');
+						} else {
+							$element.removeClass('bottom');
+						}
+				} else {
+					$element.removeClass('activated bottom');
+				}
+
+				if(windowBottom < scrollBlock2){
+					if(scrollLink1 != activeBlock && scrollGraphic1 != activeGraphic){
+						activeBlock.removeClass('activated');
+						activeGraphic.removeClass('activated');
+
+						scrollLink1.addClass('activated');
+						scrollGraphic1.addClass('activated');
+					}
+				}
+
+				if(windowBottom >= scrollBlock2 && windowBottom < scrollBlock3){
+					if(scrollLink2 != activeBlock && scrollGraphic2 != activeGraphic){
+						activeBlock.removeClass('activated');
+						activeGraphic.removeClass('activated');
+
+						scrollLink2.addClass('activated');
+						scrollGraphic2.addClass('activated');
+					}
+				}
+
+				if(windowBottom >= scrollBlock3 && windowBottom < scrollBlock4 ){
+					if(scrollLink3 != activeBlock && scrollGraphic3 != activeGraphic){
+						activeBlock.removeClass('activated');
+						activeGraphic.removeClass('activated');
+
+						scrollLink3.addClass('activated');
+						scrollGraphic3.addClass('activated');
+					}
+				}
+
+				if(windowBottom >= scrollBlock4){
+					if(scrollLink4 != activeBlock && scrollGraphic4 != activeGraphic){
+						activeBlock.removeClass('activated');
+						activeGraphic.removeClass('activated');
+
+						scrollLink4.addClass('activated');
+						scrollGraphic4.addClass('activated');
+					}
+				}
+			});
+		},
+
+		_setCss: function(){
+
+			var self = this,
+				$element = self.element,
+				widgetHeight = $element.find('#js-scrolling-wrap').outerHeight();
+
+			$element
+				//.height(widgetHeight)
+				.find('#js-scrollnav-wrap')
+					.height(self.windowHeight)
+				.find('#js-scrollnav')
+					.css('top', self.windowHeight * .4 + 'px')
+				.end()
+				.end()
+				.find('#js-graphic-wrap')
+					.height(self.windowHeight)
+				.find('#js-graphic')
+					.css('top', self.windowHeight * .05 + 'px');
+		}
+	});
+
+	// Creates fade in functionality for page hero
+	$.widget('RO.heroFadeIn', {
+		_create: function() {
+			var self = this,
+				$element = self.element,
+				$fuzzyBG = $element.find('#js-herofade-bg'),
+				$heroContent = $element.find('#js-herofade-content');
+
+			setTimeout(function(){
+				$fuzzyBG.velocity({'opacity': '1'});
+				$heroContent.velocity({'opacity':'1', 'margin-top': '0'});
+			}, 1000);
+		}
+	});
+
+	// Award counter
+	$.widget('RO.counter', {
+		_create: function() {
+			var self = this,
+				$element = self.element,
+				count = 0;
+
+			self.arrCount1 = [];
+			self.arrCount2 = [];
+			self.awardsObject = {
+				currentIndex: 0,
+				'0': {
+					name: 'addy',
+					count1: '1',
+					count2: '7',
+				},
+				'1': {
+					name: 'aiga',
+					count1: '0',
+					count2: '5',
+				},
+				'2': {
+					name: 'llounge',
+					count1: '0',
+					count2: '3',
+				},
+				'3': {
+					name: 'davey',
+					count1: '0',
+					count2: '2',
+				}
+			};
+
+			self._createNums();
+			//self._startRoll();
+		},
+
+		_createNums: function(){
+			var self = this,
+				currentIndex = self.awardsObject.currentIndex,
+				currentNum1 = self.arrCount1[self.arrCount1.length-1] || '0<br>',
+				currentNum2 = self.arrCount2[self.arrCount2.length-1] || '3<br>',
+				selectedNum1 = self.awardsObject[ self.awardsObject.currentIndex ]['count1'] + '<br>',
+				selectedNum2 = self.awardsObject[ self.awardsObject.currentIndex ]['count2'] + '<br>';
+
+			self.arrCount1 = [currentNum1];
+			self.arrCount2 = [currentNum2];
+
+			for(var i=0; i<=8; i++){
+				self.arrCount1.push(Math.floor((Math.random() * 10)) + '<br>');
+				self.arrCount2.push(Math.floor((Math.random() * 10)) + '<br>');
+			}
+
+			self.arrCount1.push(selectedNum1);
+			self.arrCount2.push(selectedNum2);
+
+			$('#js-count1')
+				.html(self.arrCount1.join(''))
+				.css('top','0');
+			$('#js-count2')
+				.html(self.arrCount2.join(''))
+				.css('top','0');
+
+			self._startRoll();
+		},
+
+		_startRoll: function(){
+			var self = this;
+
+			$('#js-count1').velocity({'top': (-133 * 10)}, 3000, 'easeOut');
+
+			setTimeout(function(){
+				$('#js-count2').velocity(
+					{'top': (-133 * 10)},
+					3000,
+					'easeInOut',
+					function(){
+						self._changeImg();
+					}
+				);
+			}, 200);
+		},
+
+		_changeImg: function(){
+			var self = this,
+				$element = self.element,
+				nextIndex = self.awardsObject.currentIndex + 1,
+				nextCount = self.awardsObject[nextIndex] ? nextIndex : 0;
+
+			setTimeout(function(){
+				$element.find('.js-award-img.activated')
+					.removeClass('activated')
+					.end()
+					.find('.js-award-img').eq(nextCount)
+					.addClass('activated');
+
+				self.awardsObject.currentIndex = nextCount;
+				self._createNums();
+			}, 500);
+		}
+	});
+
+});//end doc onload

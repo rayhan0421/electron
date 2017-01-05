@@ -1,0 +1,13 @@
+services.msc
+
+msconfig
+mstsc
+
+regedit
+
+
+
+
+
+
+

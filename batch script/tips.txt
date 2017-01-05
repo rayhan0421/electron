@@ -1,0 +1,10 @@
+1. we can run all cmd, sc amd ftp command in batch script
+
+2. we can automate computer with batch script 
+
+for example
+
+3. see windows scheduler
+
+4.use bat to exe app 
+5. use install forge for setup file

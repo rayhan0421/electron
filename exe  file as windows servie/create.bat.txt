@@ -1,0 +1,2 @@
+# example
+sc create NewService binpath= c:\windows\system32\NewServ.exe type= share start= auto depend= "+TDI Netbios"

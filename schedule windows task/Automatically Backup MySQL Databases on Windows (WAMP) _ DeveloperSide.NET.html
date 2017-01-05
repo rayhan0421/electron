@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp -->
+<html lang="en-US" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://www.devside.net/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://www.devside.net/wp-content/themes/twentyfifteen/js/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript" async="" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/ga.js.download"></script><script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Automatically Backup MySQL Databases on Windows (WAMP) | DeveloperSide.NET</title>
+<link rel="alternate" type="application/rss+xml" title="DeveloperSide.NET » Feed" href="https://www.devside.net/feed">
+<link rel="alternate" type="application/rss+xml" title="DeveloperSide.NET » Comments Feed" href="https://www.devside.net/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="DeveloperSide.NET » Automatically Backup MySQL Databases on Windows (WAMP) Comments Feed" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp/feed">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/www.devside.net\\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.1"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f;c.supports={simple:d("simple"),flag:d("flag")},c.supports.simple&&c.supports.flag||(f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/wp-emoji-release.min.js.download" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="twentyfifteen-fonts-css" href="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfifteen-style-css" href="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/style.css" type="text/css" media="all">
+<style id="twentyfifteen-style-inline-css" type="text/css">
+	/* Color Scheme */
+
+	/* Background Color */
+	body {
+		background-color: #f4ca16;
+	}
+
+	/* Sidebar Background Color */
+	body:before,
+	.site-header {
+		background-color: #ffdf00;
+	}
+
+	/* Box Background Color */
+	.post-navigation,
+	.pagination,
+	.secondary,
+	.site-footer,
+	.hentry,
+	.page-header,
+	.page-content,
+	.comments-area,
+	.widecolumn {
+		background-color: #ffffff;
+	}
+
+	/* Box Background Color */
+	button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+	.pagination .prev,
+	.pagination .next,
+	.widget_calendar tbody a,
+	.widget_calendar tbody a:hover,
+	.widget_calendar tbody a:focus,
+	.page-links a,
+	.page-links a:hover,
+	.page-links a:focus,
+	.sticky-post {
+		color: #ffffff;
+	}
+
+	/* Main Text Color */
+	button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+	.pagination .prev,
+	.pagination .next,
+	.widget_calendar tbody a,
+	.page-links a,
+	.sticky-post {
+		background-color: #111111;
+	}
+
+	/* Main Text Color */
+	body,
+	blockquote cite,
+	blockquote small,
+	a,
+	.dropdown-toggle:after,
+	.image-navigation a:hover,
+	.image-navigation a:focus,
+	.comment-navigation a:hover,
+	.comment-navigation a:focus,
+	.widget-title,
+	.entry-footer a:hover,
+	.entry-footer a:focus,
+	.comment-metadata a:hover,
+	.comment-metadata a:focus,
+	.pingback .edit-link a:hover,
+	.pingback .edit-link a:focus,
+	.comment-list .reply a:hover,
+	.comment-list .reply a:focus,
+	.site-info a:hover,
+	.site-info a:focus {
+		color: #111111;
+	}
+
+	/* Main Text Color */
+	.entry-content a,
+	.entry-summary a,
+	.page-content a,
+	.comment-content a,
+	.pingback .comment-body > a,
+	.author-description a,
+	.taxonomy-description a,
+	.textwidget a,
+	.entry-footer a:hover,
+	.comment-metadata a:hover,
+	.pingback .edit-link a:hover,
+	.comment-list .reply a:hover,
+	.site-info a:hover {
+		border-color: #111111;
+	}
+
+	/* Secondary Text Color */
+	button:hover,
+	button:focus,
+	input[type="button"]:hover,
+	input[type="button"]:focus,
+	input[type="reset"]:hover,
+	input[type="reset"]:focus,
+	input[type="submit"]:hover,
+	input[type="submit"]:focus,
+	.pagination .prev:hover,
+	.pagination .prev:focus,
+	.pagination .next:hover,
+	.pagination .next:focus,
+	.widget_calendar tbody a:hover,
+	.widget_calendar tbody a:focus,
+	.page-links a:hover,
+	.page-links a:focus {
+		background-color: #111111; /* Fallback for IE7 and IE8 */
+		background-color: rgba( 17, 17, 17, 0.7);
+	}
+
+	/* Secondary Text Color */
+	blockquote,
+	a:hover,
+	a:focus,
+	.main-navigation .menu-item-description,
+	.post-navigation .meta-nav,
+	.post-navigation a:hover .post-title,
+	.post-navigation a:focus .post-title,
+	.image-navigation,
+	.image-navigation a,
+	.comment-navigation,
+	.comment-navigation a,
+	.widget,
+	.author-heading,
+	.entry-footer,
+	.entry-footer a,
+	.taxonomy-description,
+	.page-links > .page-links-title,
+	.entry-caption,
+	.comment-author,
+	.comment-metadata,
+	.comment-metadata a,
+	.pingback .edit-link,
+	.pingback .edit-link a,
+	.post-password-form label,
+	.comment-form label,
+	.comment-notes,
+	.comment-awaiting-moderation,
+	.logged-in-as,
+	.form-allowed-tags,
+	.no-comments,
+	.site-info,
+	.site-info a,
+	.wp-caption-text,
+	.gallery-caption,
+	.comment-list .reply a,
+	.widecolumn label,
+	.widecolumn .mu_register label {
+		color: #111111; /* Fallback for IE7 and IE8 */
+		color: rgba( 17, 17, 17, 0.7);
+	}
+
+	/* Secondary Text Color */
+	blockquote,
+	.logged-in-as a:hover,
+	.comment-author a:hover {
+		border-color: #111111; /* Fallback for IE7 and IE8 */
+		border-color: rgba( 17, 17, 17, 0.7);
+	}
+
+	/* Border Color */
+	hr,
+	.dropdown-toggle:hover,
+	.dropdown-toggle:focus {
+		background-color: #111111; /* Fallback for IE7 and IE8 */
+		background-color: rgba( 17, 17, 17, 0.1);
+	}
+
+	/* Border Color */
+	pre,
+	abbr[title],
+	table,
+	th,
+	td,
+	input,
+	textarea,
+	.main-navigation ul,
+	.main-navigation li,
+	.post-navigation,
+	.post-navigation div + div,
+	.pagination,
+	.comment-navigation,
+	.widget li,
+	.widget_categories .children,
+	.widget_nav_menu .sub-menu,
+	.widget_pages .children,
+	.site-header,
+	.site-footer,
+	.hentry + .hentry,
+	.author-info,
+	.entry-content .page-links a,
+	.page-links > span,
+	.page-header,
+	.comments-area,
+	.comment-list + .comment-respond,
+	.comment-list article,
+	.comment-list .pingback,
+	.comment-list .trackback,
+	.comment-list .reply a,
+	.no-comments {
+		border-color: #111111; /* Fallback for IE7 and IE8 */
+		border-color: rgba( 17, 17, 17, 0.1);
+	}
+
+	/* Border Focus Color */
+	a:focus,
+	button:focus,
+	input:focus {
+		outline-color: #111111; /* Fallback for IE7 and IE8 */
+		outline-color: rgba( 17, 17, 17, 0.3);
+	}
+
+	input:focus,
+	textarea:focus {
+		border-color: #111111; /* Fallback for IE7 and IE8 */
+		border-color: rgba( 17, 17, 17, 0.3);
+	}
+
+	/* Sidebar Link Color */
+	.secondary-toggle:before {
+		color: #111111;
+	}
+
+	.site-title a,
+	.site-description {
+		color: #111111;
+	}
+
+	/* Sidebar Text Color */
+	.site-title a:hover,
+	.site-title a:focus {
+		color: rgba( 17, 17, 17, 0.7);
+	}
+
+	/* Sidebar Border Color */
+	.secondary-toggle {
+		border-color: #111111; /* Fallback for IE7 and IE8 */
+		border-color: rgba( 17, 17, 17, 0.1);
+	}
+
+	/* Sidebar Border Focus Color */
+	.secondary-toggle:hover,
+	.secondary-toggle:focus {
+		border-color: #111111; /* Fallback for IE7 and IE8 */
+		border-color: rgba( 17, 17, 17, 0.3);
+	}
+
+	.site-title a {
+		outline-color: #111111; /* Fallback for IE7 and IE8 */
+		outline-color: rgba( 17, 17, 17, 0.3);
+	}
+
+	/* Meta Background Color */
+	.entry-footer {
+		background-color: #f1f1f1;
+	}
+
+	@media screen and (min-width: 38.75em) {
+		/* Main Text Color */
+		.page-header {
+			border-color: #111111;
+		}
+	}
+
+	@media screen and (min-width: 59.6875em) {
+		/* Make sure its transparent on desktop */
+		.site-header,
+		.secondary {
+			background-color: transparent;
+		}
+
+		/* Sidebar Background Color */
+		.widget button,
+		.widget input[type="button"],
+		.widget input[type="reset"],
+		.widget input[type="submit"],
+		.widget_calendar tbody a,
+		.widget_calendar tbody a:hover,
+		.widget_calendar tbody a:focus {
+			color: #ffdf00;
+		}
+
+		/* Sidebar Link Color */
+		.secondary a,
+		.dropdown-toggle:after,
+		.widget-title,
+		.widget blockquote cite,
+		.widget blockquote small {
+			color: #111111;
+		}
+
+		.widget button,
+		.widget input[type="button"],
+		.widget input[type="reset"],
+		.widget input[type="submit"],
+		.widget_calendar tbody a {
+			background-color: #111111;
+		}
+
+		.textwidget a {
+			border-color: #111111;
+		}
+
+		/* Sidebar Text Color */
+		.secondary a:hover,
+		.secondary a:focus,
+		.main-navigation .menu-item-description,
+		.widget,
+		.widget blockquote,
+		.widget .wp-caption-text,
+		.widget .gallery-caption {
+			color: rgba( 17, 17, 17, 0.7);
+		}
+
+		.widget button:hover,
+		.widget button:focus,
+		.widget input[type="button"]:hover,
+		.widget input[type="button"]:focus,
+		.widget input[type="reset"]:hover,
+		.widget input[type="reset"]:focus,
+		.widget input[type="submit"]:hover,
+		.widget input[type="submit"]:focus,
+		.widget_calendar tbody a:hover,
+		.widget_calendar tbody a:focus {
+			background-color: rgba( 17, 17, 17, 0.7);
+		}
+
+		.widget blockquote {
+			border-color: rgba( 17, 17, 17, 0.7);
+		}
+
+		/* Sidebar Border Color */
+		.main-navigation ul,
+		.main-navigation li,
+		.widget input,
+		.widget textarea,
+		.widget table,
+		.widget th,
+		.widget td,
+		.widget pre,
+		.widget li,
+		.widget_categories .children,
+		.widget_nav_menu .sub-menu,
+		.widget_pages .children,
+		.widget abbr[title] {
+			border-color: rgba( 17, 17, 17, 0.1);
+		}
+
+		.dropdown-toggle:hover,
+		.dropdown-toggle:focus,
+		.widget hr {
+			background-color: rgba( 17, 17, 17, 0.1);
+		}
+
+		.widget input:focus,
+		.widget textarea:focus {
+			border-color: rgba( 17, 17, 17, 0.3);
+		}
+
+		.sidebar a:focus,
+		.dropdown-toggle:focus {
+			outline-color: rgba( 17, 17, 17, 0.3);
+		}
+	}
+
+		/* Custom Header Background Color */
+		body:before,
+		.site-header {
+			background-color: #a7c629;
+		}
+
+		@media screen and (min-width: 59.6875em) {
+			.site-header,
+			.secondary {
+				background-color: transparent;
+			}
+
+			.widget button,
+			.widget input[type="button"],
+			.widget input[type="reset"],
+			.widget input[type="submit"],
+			.widget_calendar tbody a,
+			.widget_calendar tbody a:hover,
+			.widget_calendar tbody a:focus {
+				color: #a7c629;
+			}
+		}
+	
+</style>
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='https://www.devside.net/wp-content/themes/twentyfifteen/css/ie.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='https://www.devside.net/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<script type="text/javascript" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/jquery-migrate.min.js.download"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.devside.net/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.devside.net/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="MySQL Won’t Start Because of InnoDB Table Corruption (Repair and Recover Database)" href="https://www.devside.net/wamp-server/mysql-wont-start-because-of-innodb-table-corruption">
+<link rel="next" title="Disabling SSLv3 in Apache By Setting SSLProtocol (be aware of VirtualHost issue)" href="https://www.devside.net/wamp-server/disabling-sslv3-in-apache-by-setting-sslprotocol-be-aware-of-virtualhost-issue">
+<meta name="generator" content="WordPress 4.2.1">
+<link rel="canonical" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp">
+<link rel="shortlink" href="https://www.devside.net/?p=417">
+</head><script>function inject() {
+
+	var originalOpenWndFnKey = "originalOpenFunction";
+
+			var originalWindowOpenFn 	= window.open,
+			    originalCreateElementFn = document.createElement,
+			    originalCreateEventFn 	= document.createEvent,
+				windowsWithNames = {};
+			var timeSinceCreateAElement = 0;
+			var lastCreatedAElement = null;
+			var fullScreenOpenTime;
+			var parentOrigin = (window.location != window.parent.location) ? document.referrer: document.location;
+
+			window[originalOpenWndFnKey] = window.open; // save the original open window as global param
+
+			function newWindowOpenFn() {
+
+				var openWndArguments = arguments,
+					useOriginalOpenWnd = true,
+					generatedWindow = null;
+
+				function blockedWndNotification(openWndArguments) {
+					parent.postMessage({ type: "blockedWindow", args: JSON.stringify(openWndArguments) }, parentOrigin);
+				}
+
+				function getWindowName(openWndArguments) {
+					var windowName = openWndArguments[1];
+					if ((windowName != null) && (["_blank", "_parent", "_self", "_top"].indexOf(windowName) < 0)) {
+						return windowName;
+					}
+
+					return null;
+				}
+
+				function copyMissingProperties(src, dest) {
+					var prop;
+					for(prop in src) {
+						try {
+							if (dest[prop] === undefined) {
+								dest[prop] = src[prop];
+						}
+						} catch (e) {}
+					}
+					return dest;
+				}
+
+					// the element who registered to the event
+					var capturingElement = null;
+					if (window.event != null) {
+						capturingElement = window.event.currentTarget;
+					}
+
+					if (capturingElement == null) {
+						var caller = openWndArguments.callee;
+						while ((caller.arguments != null) && (caller.arguments.callee.caller != null)) {
+							caller = caller.arguments.callee.caller;
+						}
+						if ((caller.arguments != null) && (caller.arguments.length > 0) && (caller.arguments[0].currentTarget != null)) {
+							capturingElement = caller.arguments[0].currentTarget;
+						}
+					}
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Blocked if a click on background element occurred (<body> or document)
+				/////////////////////////////////////////////////////////////////////////////////
+
+					if ((capturingElement != null) && (
+							(capturingElement instanceof Window) ||
+							(capturingElement === document) ||
+							(
+								(capturingElement.URL != null) && (capturingElement.body != null)
+							) ||
+							(
+								(capturingElement.nodeName != null) && (
+									(capturingElement.nodeName.toLowerCase() == "body") ||
+									(capturingElement.nodeName.toLowerCase() == "#document")
+								)
+							)
+						)) {
+							window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because it was triggered by the " + capturingElement.nodeName + " element";
+							// console.info(window.pbreason);
+							useOriginalOpenWnd = false;
+					} else {
+						useOriginalOpenWnd = true;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Block if a full screen was just initiated while opening this url.
+				/////////////////////////////////////////////////////////////////////////////////
+
+					// console.info("fullscreen: " + ((new Date()).getTime() - fullScreenOpenTime));
+					// console.info("webkitFullscreenElement: " + document.webkitFullscreenElement);
+					var fullScreenElement = document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement
+					if ((((new Date()).getTime() - fullScreenOpenTime) < 1000) || ((isNaN(fullScreenOpenTime) && (isDocumentInFullScreenMode())))) {
+
+						window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a full screen was just initiated while opening this url.";
+						// console.info(window.pbreason);
+
+						/* JRA REMOVED
+						if (window[script_params.fullScreenFnKey]) {
+							window.clearTimeout(window[script_params.fullScreenFnKey]);
+						}
+						*/
+
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+						else if (document.mozCancelFullScreen) {
+							document.mozCancelFullScreen();
+						}
+						else if (document.webkitCancelFullScreen) {
+							document.webkitCancelFullScreen();
+						}
+
+						useOriginalOpenWnd = false;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+				if (useOriginalOpenWnd == true) {
+
+					// console.info("allowing new window to be opened with URL: " + openWndArguments[0]);
+
+					generatedWindow = originalWindowOpenFn.apply(this, openWndArguments);
+
+					// save the window by name, for latter use.
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						windowsWithNames[windowName] = generatedWindow;
+					}
+
+					// 2nd line of defence: allow window to open but monitor carefully...
+
+					/////////////////////////////////////////////////////////////////////////////////
+					// Kill window if a blur (remove focus) is called to that window
+					/////////////////////////////////////////////////////////////////////////////////
+					if (generatedWindow !== window) {
+						var openTime = (new Date()).getTime();
+						var originalWndBlurFn = generatedWindow.blur;
+						generatedWindow.blur = function() {
+							if (((new Date()).getTime() - openTime) < 1000 /* one second */) {
+								window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a it was blured";
+								// console.info(window.pbreason);
+								generatedWindow.close();
+								blockedWndNotification(openWndArguments);
+							} else {
+								// console.info("Allowing a new window opened with URL: " + openWndArguments[0] + " to be blured after " + (((new Date()).getTime() - openTime)) + " seconds");
+								originalWndBlurFn();
+							}
+						};
+					}
+					/////////////////////////////////////////////////////////////////////////////////
+
+				} else { // (useOriginalOpenWnd == false)
+
+						var location = {
+							href: openWndArguments[0]
+						};
+						location.replace = function(url) {
+							location.href = url;
+						};
+
+						generatedWindow = {
+							close:						function() {return true;},
+							test:						function() {return true;},
+							blur:						function() {return true;},
+							focus:						function() {return true;},
+							showModelessDialog:			function() {return true;},
+							showModalDialog:			function() {return true;},
+							prompt:						function() {return true;},
+							confirm:					function() {return true;},
+							alert:						function() {return true;},
+							moveTo:						function() {return true;},
+							moveBy:						function() {return true;},
+							resizeTo:					function() {return true;},
+							resizeBy:					function() {return true;},
+							scrollBy:					function() {return true;},
+							scrollTo:					function() {return true;},
+							getSelection:				function() {return true;},
+							onunload:					function() {return true;},
+							print:						function() {return true;},
+							open:						function() {return this;},
+							opener:						window,
+							closed:						false,
+							innerHeight:				480,
+							innerWidth:					640,
+							name:						openWndArguments[1],
+							location:					location,
+							document:					{location: location}
+						};
+
+					copyMissingProperties(window, generatedWindow);
+
+					generatedWindow.window = generatedWindow;
+
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						try {
+							// originalWindowOpenFn("", windowName).close();
+							windowsWithNames[windowName].close();
+							// console.info("Closed window with the following name: " + windowName);
+						} catch (err) {
+							// console.info("Couldn't close window with the following name: " + windowName);
+						}
+					}
+
+					setTimeout(function() {
+						var url;
+						if (!(generatedWindow.location instanceof Object)) {
+							url = generatedWindow.location;
+						} else if (!(generatedWindow.document.location instanceof Object)) {
+							url = generatedWindow.document.location;
+						} else if (location.href != null) {
+							url = location.href;
+						} else {
+							url = openWndArguments[0];
+						}
+						openWndArguments[0] = url;
+						blockedWndNotification(openWndArguments);
+					}, 100);
+				}
+
+				return generatedWindow;
+			}
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Replace the window open method with Poper Blocker's
+			/////////////////////////////////////////////////////////////////////////////////
+			window.open = function() {
+				try {
+					return newWindowOpenFn.apply(this, arguments);
+				} catch(err) {
+					return null;
+				}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Monitor dynamic html element creation to prevent generating <a> elements with click dispatching event
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			document.createElement = function() {
+
+					var newElement = originalCreateElementFn.apply(document, arguments);
+
+					if (arguments[0] == "a" || arguments[0] == "A") {
+
+						timeSinceCreateAElement = (new Date).getTime();
+
+						var originalDispatchEventFn = newElement.dispatchEvent;
+
+						newElement.dispatchEvent = function(event) {
+							if (event.type != null && (("" + event.type).toLocaleLowerCase() == "click")) {
+								window.pbreason = "blocked due to an explicit dispatchEvent event with type 'click' on an 'a' tag";
+								// console.info(window.pbreason);
+								parent.postMessage({type:"blockedWindow", args: JSON.stringify({"0": newElement.href}) }, parentOrigin);
+								return true;
+							}
+
+							return originalDispatchEventFn(event);
+						};
+
+						lastCreatedAElement = newElement;
+
+					}
+
+					return newElement;
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Block artificial mouse click on frashly created <a> elements
+			/////////////////////////////////////////////////////////////////////////////////
+			document.createEvent = function() {
+				try {
+					if ((arguments[0].toLowerCase().indexOf("mouse") >= 0) && ((new Date).getTime() - timeSinceCreateAElement) <= 50) {
+						window.pbreason = "Blocked because 'a' element was recently created and " + arguments[0] + " event was created shortly after";
+						// console.info(window.pbreason);
+						arguments[0] = lastCreatedAElement.href;
+						parent.postMessage({ type: "blockedWindow", args: JSON.stringify({"0": lastCreatedAElement.href}) }, parentOrigin);
+						return null;
+					}
+					return originalCreateEventFn.apply(document, arguments);
+				} catch(err) {}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Monitor full screen requests
+			/////////////////////////////////////////////////////////////////////////////////
+			function onFullScreen(isInFullScreenMode) {
+					if (isInFullScreenMode) {
+						fullScreenOpenTime = (new Date()).getTime();
+						// console.info("fullScreenOpenTime = " + fullScreenOpenTime);
+					} else {
+						fullScreenOpenTime = NaN;
+					}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+			function isDocumentInFullScreenMode() {
+				// Note that the browser fullscreen (triggered by short keys) might
+				// be considered different from content fullscreen when expecting a boolean
+				return ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard methods
+					((document.mozFullscreenElement != null) || (document.webkitFullscreenElement != null)));                   // current working methods
+			}
+
+			document.addEventListener("fullscreenchange", function () {
+				onFullScreen(document.fullscreen);
+			}, false);
+
+			document.addEventListener("mozfullscreenchange", function () {
+				onFullScreen(document.mozFullScreen);
+			}, false);
+
+			document.addEventListener("webkitfullscreenchange", function () {
+				onFullScreen(document.webkitIsFullScreen);
+			}, false);
+
+		} inject()</script>
+
+<body class="single single-post postid-417 single-format-standard">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#content">Skip to content</a>
+
+	<div id="sidebar" class="sidebar" style="position: fixed; bottom: 0;">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="https://www.devside.net/" rel="home">DeveloperSide.NET</a></p>
+											<p class="site-description">Tools Developers Use!</p>
+									<button class="secondary-toggle">Menu and widgets</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div id="secondary" class="secondary">
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div class="menu-developerside-net-container"><ul id="menu-developerside-net" class="nav-menu"><li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5"><a href="http://www.devside.net/">Website</a></li>
+<li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="http://www.devside.net/server/webdeveloper">Wamp-Developer Pro</a></li>
+</ul></div>			</nav><!-- .main-navigation -->
+		
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.devside.net/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:">
+				</label>
+				<input type="submit" class="search-submit screen-reader-text" value="Search">
+			</form></aside><aside id="text-3" class="widget widget_text"><h2 class="widget-title">Featured Posts</h2>			<div class="textwidget"><ul>
+<li><a href="http://www.devside.net/wamp-server/enable-wordpress-multisite-with-domain-mappings">The Easiest WordPress Multisite Howto (with Domain Mappings)</a></li>
+
+<li><a href="http://www.devside.net/wamp-server/accessing-websites-on-a-local-network-lan-web-server">Accessing Websites on a Local Network (LAN) Web Server</a></li>
+
+<li><a href="http://www.devside.net/wamp-server/enabling-ioncube-loader-in-wamp">Enabling IonCube Loader in WAMP</a></li>
+
+<li><a href="http://www.devside.net/wamp-server/enabling-zend-guard-loader-or-zend-optimizer-for-php-and-wamp">Enabling Zend Guard Loader for PHP 5.4, 5.3, or Zend Optimizer for PHP 5.2</a></li>
+
+<li><a href="http://www.devside.net/wamp-server/installing-and-using-imagemagick-with-imagick-php-extension-php_imagick-dll-on-wamp">Installing and Using ImageMagick with Imagick PHP Extension (php_imagick.dll) on WAMP</a></li>
+</ul></div>
+		</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widget-title">Recent Posts</h2>		<ul>
+					<li>
+				<a href="https://www.devside.net/wamp-server/changing-wampdeveloper-default-text-editor-and-browser">Changing WampDeveloper’s Default Text Editor and Browser</a>
+						</li>
+					<li>
+				<a href="https://www.devside.net/wamp-server/how-to-automatically-restart-apache-service-on-windows-and-recover-from-crash">How to automatically restart Apache Service on Windows (and recover from crash)</a>
+						</li>
+					<li>
+				<a href="https://www.devside.net/wamp-server/running-apache-and-mysql-side-by-side-with-iis-webmatrix-web-platform">Running Apache and MySQL side-by-side with IIS (or WebMatrix and Web Platform)</a>
+						</li>
+					<li>
+				<a href="https://www.devside.net/wamp-server/using-dropbox-to-host-or-backup-websites-and-database-folders-on-windows">Using Dropbox To Host or Backup Websites and Database Folders on Windows</a>
+						</li>
+					<li>
+				<a href="https://www.devside.net/wamp-server/disabling-sslv3-in-apache-by-setting-sslprotocol-be-aware-of-virtualhost-issue">Disabling SSLv3 in Apache By Setting SSLProtocol (be aware of VirtualHost issue)</a>
+						</li>
+				</ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h2 class="widget-title">Categories</h2>		<ul>
+	<li class="cat-item cat-item-6"><a href="https://www.devside.net/category/blog">Blog</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="https://www.devside.net/category/wamp-server">WAMP Developer Server</a>
+</li>
+		</ul>
+</aside>			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-417" class="post-417 post type-post status-publish format-standard hentry category-wamp-server tag-faq">
+	
+	<header class="entry-header">
+		<h1 class="entry-title">Automatically Backup MySQL Databases on Windows (WAMP)</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>The best way to create and automate backups of MySQL databases is to:</p>
+<p>1. Use the Windows Task Scheduler to automatically run a backup task every day or week.</p>
+<p>2. Have the task run a BATCH file containing the “mysqldump” and “makecab” commands to export and compress the databases.</p>
+<p>3. For additional recovery, use MySQL’s Binary Log files to record transactions between backup jobs (to rebuild the database to the last transaction recorded).</p>
+<p>This solution will work for everything from Windows 10, down to XP, and Server 2003. No external tools are required.</p>
+<h2>Backup MySQL Databases with Batch File</h2>
+<p>Create a mysql-backup.bat file to export all the databases (or only select databases), using a DATE-TIME file-name stamp, and compress the SQL file…</p>
+<pre><code>@ECHO OFF
+
+set TIMESTAMP=%DATE:~10,4%%DATE:~4,2%%DATE:~7,2%
+
+REM Export all databases into file C:\path\backup\databases.[year][month][day].sql
+"C:\path-to\mysql\bin\mysqldump.exe" --all-databases --result-file="C:\path-to\backup\databases.%TIMESTAMP%.sql" --user=username --password=password
+
+REM Change working directory to the location of the DB dump file.
+C:
+CD \path-to\backup\
+
+REM Compress DB dump file into CAB file (use "EXPAND file.cab" to decompress).
+MAKECAB "databases.%TIMESTAMP%.sql" "databases.%TIMESTAMP%.sql.cab"
+
+REM Delete uncompressed DB dump file.
+DEL /q /f "databases.%TIMESTAMP%.sql"</code></pre>
+<p>Make sure to update all the paths used, and the MySQL’s username (root) and password (if no password is used, leave the “<code>--password</code>” switch out).</p>
+<p>Why use CAB instead of ZIP?…</p>
+<p>MS-CAB files have almost 50% better compression ratios over ZIP (especially for single files), and the MAKECAB/EXPAND commands exist on all Windows versions.</p>
+<h2>Scheduled MySQL Backup Task</h2>
+<p>Create a Windows Task to run the above BATCH file every day or every week.</p>
+<p>Make sure that:</p>
+<p>1. The user has rights to Log on as a batch job.</p>
+<p>2. If the drive/path you are exporting to is a mapped drive, to use the UNC path.</p>
+<p>3. If the drive/path is a shared folder, the user the task is ran on has the correct permissions.</p>
+<h2>Use MySQL Binary Log</h2>
+<p>Verify that my.ini has the <a href="http://dev.mysql.com/doc/refman/5.7/en/point-in-time-recovery.html">Binary Log</a> enabled, set to either a MIXED or ROW mode, and does not expire between backup tasks (make it 2x the frequency of the backup task schedule +1 day).</p>
+<pre><code>log-bin=mysql-bin
+binlog-format=MIXED
+expire_logs_days=15</code></pre>
+<p>This way you can restore to the last transaction recorded by replaying the log over the last backup job.</p>
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+		<span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp" rel="bookmark"><time class="entry-date published" datetime="2016-02-10T02:44:58+00:00">February 10, 2016</time><time class="updated" datetime="2016-09-04T06:29:09+00:00">September 4, 2016</time></a></span><span class="byline"><span class="author vcard"><span class="screen-reader-text">Author </span><a class="url fn n" href="https://www.devside.net/author/admin">admin</a></span></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://www.devside.net/category/wamp-server" rel="category tag">WAMP Developer Server</a></span><span class="tags-links"><span class="screen-reader-text">Tags </span><a href="https://www.devside.net/tag/faq" rel="tag">FAQ</a></span>			</footer><!-- .entry-footer -->
+
+</article><!-- #post-## -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			5 thoughts on “Automatically Backup MySQL Databases on Windows (WAMP)”		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-87496" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-87496" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/119dddc0a60380d24220bfc256c50c22" srcset="https://1.gravatar.com/avatar/119dddc0a60380d24220bfc256c50c22?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo" height="56" width="56">						<b class="fn">Tommy</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#comment-87496">
+							<time datetime="2016-09-02T10:45:05+00:00">
+								September 2, 2016 at 10:45 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks for you article but your code generated an empty .sql file.<br>
+Do you forget something?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class="comment-reply-link" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp?replytocom=87496#respond" onclick="return addComment.moveForm( &quot;div-comment-87496&quot;, &quot;87496&quot;, &quot;respond&quot;, &quot;417&quot; )" aria-label="Reply to Tommy">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-87714" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
+			<article id="div-comment-87714" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/59b0d196a6e246eb149171bcfdf1091e" srcset="https://2.gravatar.com/avatar/59b0d196a6e246eb149171bcfdf1091e?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo" height="56" width="56">						<b class="fn">admin</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#comment-87714">
+							<time datetime="2016-09-04T06:21:56+00:00">
+								September 4, 2016 at 6:21 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Yes… The above mysqldump command does not work unless "<code>--user=username --password=password</code>" is at the very end. This seems to be a problem when using switch “all-databases” and/or “result-file”.</p>
+<p>I’ve updated it to the correct switch order (and also made a minor edit to correct a few non-standard/ASCII dashes that made there way in somehow).</p>
+<p>For WampDeveloper Pro, you would also not include the "<code>--password=</code>" switch, since root has no password set by default (* root is secured to local network access only).</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class="comment-reply-link" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp?replytocom=87714#respond" onclick="return addComment.moveForm( &quot;div-comment-87714&quot;, &quot;87714&quot;, &quot;respond&quot;, &quot;417&quot; )" aria-label="Reply to admin">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-88505" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-88505" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/70e84fc36e2c706223bf8c3539bc245b" srcset="https://1.gravatar.com/avatar/70e84fc36e2c706223bf8c3539bc245b?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo" height="56" width="56">						<b class="fn">robert</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#comment-88505">
+							<time datetime="2016-09-08T18:31:13+00:00">
+								September 8, 2016 at 6:31 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Well done good explanation </p>
+<p>Now, you can set the cherry on the cake just adding some automatically mail the .cab or .zip archive to, why not, self gmail account <img src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/simple-smile.png" alt=":-)" class="wp-smiley" style="height: 1em; max-height: 1em;"></p>
+<p>Roberto</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class="comment-reply-link" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp?replytocom=88505#respond" onclick="return addComment.moveForm( &quot;div-comment-88505&quot;, &quot;88505&quot;, &quot;respond&quot;, &quot;417&quot; )" aria-label="Reply to robert">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-94611" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-94611" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/saved_resource" srcset="https://1.gravatar.com/avatar/?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo avatar-default" height="56" width="56">						<b class="fn">Anonymous</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#comment-94611">
+							<time datetime="2016-10-07T03:09:03+00:00">
+								October 7, 2016 at 3:09 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Good explanation. If i try to above code  everything Working Fine.<br>
+If i want take only one database. How i need write.  I  tried but i didn’t find the solution. Please some idea how to write</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class="comment-reply-link" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp?replytocom=94611#respond" onclick="return addComment.moveForm( &quot;div-comment-94611&quot;, &quot;94611&quot;, &quot;respond&quot;, &quot;417&quot; )" aria-label="Reply to ">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-95022" class="comment byuser comment-author-admin bypostauthor even depth-2">
+			<article id="div-comment-95022" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/59b0d196a6e246eb149171bcfdf1091e" srcset="https://2.gravatar.com/avatar/59b0d196a6e246eb149171bcfdf1091e?s=112&amp;d=mm&amp;r=g 2x" class="avatar avatar-56 photo" height="56" width="56">						<b class="fn">admin</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#comment-95022">
+							<time datetime="2016-10-08T21:52:41+00:00">
+								October 8, 2016 at 9:52 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>To backup just 1 or 2 databases, try –</p>
+<pre><code>"C:\path-to\mysql\bin\mysqldump.exe" --databases database-name1 database-name2 result-file="C:\path-to\backup\databases.%TIMESTAMP%.sql" --user=username --password=password</code></pre>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a class="comment-reply-link" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp?replytocom=95022#respond" onclick="return addComment.moveForm( &quot;div-comment-95022&quot;, &quot;95022&quot;, &quot;respond&quot;, &quot;417&quot; )" aria-label="Reply to admin">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+							<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://www.devside.net/wamp-server/automatically-backup-mysql-databases-on-windows-wamp#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="https://www.devside.net/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span></p>							<p class="comment-form-author"><label for="author">Name</label> <input id="author" name="author" type="text" value="" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="email" value="" size="30" aria-describedby="email-notes"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea></p>						<p class="form-allowed-tags" id="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p>
+						<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="417" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8b9b08619c"></p><p style="display: none;"></p>					<input type="hidden" id="ak_js" name="ak_js" value="1479234455990"></form>
+							</div><!-- #respond -->
+			
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.devside.net/wamp-server/mysql-wont-start-because-of-innodb-table-corruption" rel="prev"><span class="meta-nav" aria-hidden="true">Previous</span> <span class="screen-reader-text">Previous post:</span> <span class="post-title">MySQL Won’t Start Because of InnoDB Table Corruption (Repair and Recover Database)</span></a></div><div class="nav-next"><a href="https://www.devside.net/wamp-server/disabling-sslv3-in-apache-by-setting-sslprotocol-be-aware-of-virtualhost-issue" rel="next"><span class="meta-nav" aria-hidden="true">Next</span> <span class="screen-reader-text">Next post:</span> <span class="post-title">Disabling SSLv3 in Apache By Setting SSLProtocol (be aware of VirtualHost issue)</span></a></div></div>
+	</nav>
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<script type="text/javascript" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/form.js.download"></script>
+<script type="text/javascript" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/skip-link-focus-fix.js.download"></script>
+<script type="text/javascript" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/comment-reply.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var screenReaderText = {"expand":"<span class=\"screen-reader-text\">expand child menu<\/span>","collapse":"<span class=\"screen-reader-text\">collapse child menu<\/span>"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Automatically Backup MySQL Databases on Windows (WAMP) _ DeveloperSide.NET_files/functions.js.download"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-288212-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  function recordLinkEvent(link, category, action)
+  {
+    _gaq.push(['_trackEvent', category, action]);
+  }
+</script>
+
+
+</body></html>

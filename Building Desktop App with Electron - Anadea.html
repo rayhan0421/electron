@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://anadea.info/blog/building-desktop-app-with-electron -->
+<html lang="en"><link rel="stylesheet" href="./Building Desktop App with Electron - Anadea_files/blog_posts-05f8b20519676fd0b82381ca74bf84e7069caafcb568668855ecb7f93618135c.css"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Building Desktop App with Electron - Anadea</title>
+
+<meta content="@AnadeaInc" property="twitter:site">
+<meta content="@AnadeaInc" property="twitter:creator">
+<meta content="summary_large_image" property="twitter:card">
+<meta content="article" property="og:type">
+<meta content="https://anadea.info/uploads/image_attachment/image/911/Chapter_1._Preview_of_instalation.png" property="og:image">
+<meta content="https://anadea.info/uploads/image_attachment/image/911/Chapter_1._Preview_of_instalation.png" property="twitter:image">
+<meta content="https://anadea.info/blog/building-desktop-app-with-electron" property="og:url">
+<meta content="Building Desktop App with Electron" property="og:title">
+<meta content="In this tutorial, we will show you how to create a simple desktop application using the combined power of Electron, HTML, JS and CSS." property="og:description">
+<meta content="Building Desktop App with Electron" property="twitter:title">
+<meta content="In this tutorial, we will show you how to create a simple desktop application using the combined power of Electron, HTML, JS and CSS." property="twitter:description">
+<meta content="In this tutorial, we will show you how to create a simple desktop application using the combined power of Electron, HTML, JS and CSS." name="description">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+
+<meta content="en" http-equiv="Content-Language">
+<meta content="no" http-equiv="imagetoolbar">
+<meta content="progid:DXImageTransform.Microsoft.Fade(Duration=0.2)" http-equiv="Page-Exit">
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="pZ2rid40hDAimUtshoMZfyjt6NV9LHSIqXW0V5n8w17SkpQQBq37vo3G2R3DyIHRE1H+T58PXCHj+aaAAaj/OQ==">
+
+
+<link rel="stylesheet" media="all" href="./Building Desktop App with Electron - Anadea_files/A.public-a308069b5afa2a843958e80a54dcbda08c2b79354ba82210ea7a8b38252f9b4e.css.pagespeed.cf.C7sA2HLnpq.css">
+
+<link href="data:image/webp;base64,UklGRpwAAABXRUJQVlA4TI8AAAAvD8ADEPdgkG2kqtz7Mz3LnQVBtk0h5i/4QxBk25Rl90e6i4I2ktTgMTyDi9fwmQXf4b4LBiJRBwGC8SHgQjCKDgEPDwgCQ4AFw0iSTe23bW3+YT5/JRDR//Ru8TAdRQpHNlFNOYxipjUXkAudCwRvIKj3pj2oISi3OoSIupMSgmsVwIj7ixClD0cy4N77HQA=" rel="icon" type="image/x-icon">
+<link href="https://anadea.info/blog/feed.rss" rel="alternate" title="Anadea Blog" type="application/rss+xml">
+<link href="https://anadea.info/blog/building-desktop-app-with-electron" hreflang="en" rel="alternate">
+
+</head>
+<body class=" blog building-desktop-app-with-electron">
+<header class="site-header active">
+<div class="inner" style="height: 60px; margin-top: 0px;">
+<div class="logo"><a alt="Anadea" href="https://anadea.info/"><script type="text/javascript" async="" src="./Building Desktop App with Electron - Anadea_files/watch.js.download"></script><script type="text/javascript" async="" src="./Building Desktop App with Electron - Anadea_files/ga.js.download"></script><script data-pagespeed-no-defer="">(function(){var g=this;function h(b,d){var a=b.split("."),c=g;a[0]in c||!c.execScript||c.execScript("var "+a[0]);for(var e;a.length&&(e=a.shift());)a.length||void 0===d?c[e]?c=c[e]:c=c[e]={}:c[e]=d};function l(b){var d=b.length;if(0<d){for(var a=Array(d),c=0;c<d;c++)a[c]=b[c];return a}return[]};function m(b){var d=window;if(d.addEventListener)d.addEventListener("load",b,!1);else if(d.attachEvent)d.attachEvent("onload",b);else{var a=d.onload;d.onload=function(){b.call(this);a&&a.call(this)}}};var n;function p(b,d,a,c,e){this.h=b;this.j=d;this.l=a;this.f=e;this.g={height:window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight,width:window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth};this.i=c;this.b={};this.a=[];this.c={}}function q(b,d){var a,c,e=d.getAttribute("data-pagespeed-url-hash");if(a=e&&!(e in b.c))if(0>=d.offsetWidth&&0>=d.offsetHeight)a=!1;else{c=d.getBoundingClientRect();var f=document.body;a=c.top+("pageYOffset"in window?window.pageYOffset:(document.documentElement||f.parentNode||f).scrollTop);c=c.left+("pageXOffset"in window?window.pageXOffset:(document.documentElement||f.parentNode||f).scrollLeft);f=a.toString()+","+c;b.b.hasOwnProperty(f)?a=!1:(b.b[f]=!0,a=a<=b.g.height&&c<=b.g.width)}a&&(b.a.push(e),b.c[e]=!0)}p.prototype.checkImageForCriticality=function(b){b.getBoundingClientRect&&q(this,b)};h("pagespeed.CriticalImages.checkImageForCriticality",function(b){n.checkImageForCriticality(b)});h("pagespeed.CriticalImages.checkCriticalImages",function(){r(n)});function r(b){b.b={};for(var d=["IMG","INPUT"],a=[],c=0;c<d.length;++c)a=a.concat(l(document.getElementsByTagName(d[c])));if(0!=a.length&&a[0].getBoundingClientRect){for(c=0;d=a[c];++c)q(b,d);a="oh="+b.l;b.f&&(a+="&n="+b.f);if(d=0!=b.a.length)for(a+="&ci="+encodeURIComponent(b.a[0]),c=1;c<b.a.length;++c){var e=","+encodeURIComponent(b.a[c]);131072>=a.length+e.length&&(a+=e)}b.i&&(e="&rd="+encodeURIComponent(JSON.stringify(t())),131072>=a.length+e.length&&(a+=e),d=!0);u=a;if(d){c=b.h;b=b.j;var f;if(window.XMLHttpRequest)f=new XMLHttpRequest;else if(window.ActiveXObject)try{f=new ActiveXObject("Msxml2.XMLHTTP")}catch(k){try{f=new ActiveXObject("Microsoft.XMLHTTP")}catch(v){}}f&&(f.open("POST",c+(-1==c.indexOf("?")?"?":"&")+"url="+encodeURIComponent(b)),f.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),f.send(a))}}}function t(){var b={},d=document.getElementsByTagName("IMG");if(0==d.length)return{};var a=d[0];if(!("naturalWidth"in a&&"naturalHeight"in a))return{};for(var c=0;a=d[c];++c){var e=a.getAttribute("data-pagespeed-url-hash");e&&(!(e in b)&&0<a.width&&0<a.height&&0<a.naturalWidth&&0<a.naturalHeight||e in b&&a.width>=b[e].o&&a.height>=b[e].m)&&(b[e]={rw:a.width,rh:a.height,ow:a.naturalWidth,oh:a.naturalHeight})}return b}var u="";h("pagespeed.CriticalImages.getBeaconData",function(){return u});h("pagespeed.CriticalImages.Run",function(b,d,a,c,e,f){var k=new p(b,d,a,e,f);n=k;c&&m(function(){window.setTimeout(function(){r(k)},0)})});})();pagespeed.CriticalImages.Run('/ngx_pagespeed_beacon','https://anadea.info/blog/building-desktop-app-with-electron','H3wh8IwGMK',true,false,'lPIuxRycQiI');</script><img src="./Building Desktop App with Electron - Anadea_files/logo-w-c77fbef7ad3eb116668fce03af61d99bfe5877454e5929e8934be556a34ffc8c.svg" alt="Logo w c77fbef7ad3eb116668fce03af61d99bfe5877454e5929e8934be556a34ffc8c" data-pagespeed-url-hash="3498826651" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+</div>
+<nav class="header-nav" style="max-width: 750px">
+  <ul>
+    <li>
+      <a href="https://anadea.info/company">About</a>
+    </li>
+    <li>
+      <a href="https://anadea.info/services">Services</a>
+    </li>
+    <li>
+      <a href="https://anadea.info/projects">Projects</a>
+    </li>
+    <li>
+      <a href="https://anadea.info/team">Team</a>
+    </li>
+    <li>
+      <a href="https://anadea.info/blog">Blog</a>
+    </li>
+    <li>
+      <a href="https://anadea.info/contacts">Contact Us</a>
+    </li>
+    <li>
+      <a class="header-button" href="https://anadea.info/free-project-estimate">Get a free quote</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="user-menu" data-reloadable-component="user-menu"></div>
+<a class="sandwich nav-jump-link" data-nav-link="true" href="https://anadea.info/blog/building-desktop-app-with-electron#"></a>
+</div>
+</header>
+
+<div class="bredcrumbs-section">
+<div class="inner"><div class="breadcrumbs" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList"><span itemscope="itemscope" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="https://anadea.info/"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></span> &gt; <span itemscope="itemscope" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="https://anadea.info/blog"><span itemprop="name">Blog</span></a><meta itemprop="position" content="2"></span> &gt; <span itemscope="itemscope" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name" class="current">Building Desktop App with Electron</span><meta itemprop="position" content="3"></span></div></div>
+</div>
+
+<div class="main" id="main">
+<section class="blog-article">
+<div class="inner">
+<article>
+<h1>Building Desktop App with Electron</h1>
+<div class="article-info">
+<div class="article-info--column">
+<img class="article-info--avatar" src="data:image/webp;base64,UklGRsgGAABXRUJQVlA4ILwGAAAQIACdASpqAGoAPm0skkWkIqGYKuYoQAbEsYBnNisJYOYldgNwdNuvzzOnMyp/T/5rQ77S9r2enLl0+U8j38nzahKwmvA+/5uz3mi3bLwhz8LD0E5wTYKIJpjHHbwo+Jut0ICPlBCQOo+9xYCaCBxcuJD0q6m9Kf3YplqoCblSiZ5YdggooSLc6Pm4ZDrZiUXfA6saO/ZIsPCvIXD3Da/qcKUHB4h2R8ij3D2LMnClFO1WGeUYq53UwvoAvbHSbc6yDG+d6yD5z2ZLbe2urBVYbfvoQnqT0R8naR6qTI5ijgpjLCn53Sd252X0cnH/q3uoc8ZZQeoSoqaQxcTOaEPhHBQuFhZ2ayQAAP7yCt4U32vISwDZCWAGuO/eBs9AmpaMIE6zn+WUd8C4Pk9Ygxpfv7L6WH5RHW4Sq28a7V49EEj1QzrtS6eNLfPMqphrIahHQyx6LM/Ab6hJRrwu8txbgxlMGwjCAwTrynK4ylo4Mx7lo53HMSVY/Io2vB0Gu5xsMn13XIByjPHzPlF+rUfYIAUN3cLUF5fKIBoPxtD1ZyZPh8TEvhWi6JVA81f1q+4bJMKKjGgkdlHC1oevmJ9/OtdtNHHSrD4pue0ro9CBad9jtxqST0TOwyMobvi4LfcAm/OpIrBG4ojsrhaCzxynju0Hy17geK+Ks8vMA7jF7vWhTAa2+A3+WH2Eo6sNPq79VlmAb57E20gNV9sei7s8frc0Aqywut7fj6xF6i519bYKtTdOA0zU1UgZtAMlE2PEAvFHwsrEbfXlTR1lHZGB5VniZcIdYSukSye7AxXhFjzDvkKkoyvZOLwXMRrJEVkk4GwtXxGt7kyyPktDLrLR2McSiYi8F+/i4zQpx3bgi6/ef3GEAaaZPTYRPGRO695S32APRITAX0V/6YRlb9eqxByMsErxyyfWF3lVev37W0T59BIA8DleVwSc7FWZSBrzfkZi0KaULDT4D5qQb2ePGRLWeiSid1bbjfq2P9/qSoQipzxdhKZ+aJhSmHu2dcAB6TECS3gOYaNJ6xoO1oWPaxV2+WkGiJ5y9Re08dzm8aG91OeQHKgFO8G9t/lJ5g7PAAF0W7DO/Stn+mrk5amq7ejZ7mHkktp38J3PvBJIkHzXKdzlnkxFwVkKiejVo1WarbH7u37j7TzKiGq3u5QqjT1jM6ybYIMCbbQ+v7mGr5T3OomxJk9cE4YDCHlv5bk8ak3kzkD2OhVnbiU88voZ/GjCUuBvr4vvcP7xOfS03GdMjN5MG0v+P+XbAeiz6T5eB15nxYjViShjLo5eLICirSjke4JPJiehvyijDITG5lohXGpyY4jDJzBiGLiaheUL0KhjYY5plUtxqgawjyeEOCCohqJv1V524D9TzG8QhLm0Ib8IbutfhFURgMCufRry2EFpDyragizkCdCPb75qmcRVm6gB9hsvkSiXSFlj7N2/3ifM7gyO4IZQTKTDxsExau9tOdqZAxvvcSCHrVHW93vZUGK+76VCWVntL7JGgW7lfOh7jyFGQq6dMgodcSk3So6dTF4AfeqZoc2eG/esNqmLPhzDJEchzpg7HCByfFqgeg91U3JmRMwU5hqI2d7eBvcaCwpM3j27VHw2toh3YNqkZQFvw8HtxX2jNMTEbSWWV5me99nKMC7sfHb3CPW7vc3l1Ubgc/XKAEG/URYy8dt7Hm1sCkQYclSI74TQtDwf+B+iI2PyqSpE5RIz+XmrDYmkxTiJXcArR/cM0NlZ4hA58qA7OGY1KXV2ymL/ASKeKl6o3cw8CFPDCUfkF3pBWqlh9Ly/ctN7G3uXN3Z3H3OKpYd73d3dFVhSBRGnCBQL/Pn9MNTXl+n5Bb9aZiVHcXPTHsLHn7ROC5UeaxYBrvNRnWHa9MWoeamJwzJ0x3Kw8fUTV/D9tL49HfKqleVf+On0zwsscyrw8pH/v2Ev9vzJ+m5krHJowoSgghvzP2bvOtRp8XBEux/O2lbjxEPAibIjN+Wgrrk4sK78TPil2h+I0o2BeEgcmImmw/iqBuVH/Yz+ZcntdG3FdsL6FTgAdXYyoTC/ztz+HO5y0KC9xhGO+Wvyub3CH+SMXZh98GCMZ0EH0q5MK0AFPWIRdjlqYVLBmZ6VtyA7sPcddpnlrg3tpWhIV0PZ586yGJUTyFCx2j41jqlsYbZZ5+X9wr3vBIj1d4R/PGdyA7d1Av3KKKTQYBoRPOpIORz7YDyltPeQwi++rU8eSX7NjYjQZ9tuU0fynyhfib3J9IBd38ajUK2DwyNkC8S/kEU/KOoC2KwaiDlqR47PWqAAAA==" alt="Dmitriy vasin" data-pagespeed-url-hash="1446935614" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+</div>
+<div class="article-info--column">
+<a class="article-info--author" href="https://anadea.info/blog/author/dmitriy-vasin">Dmitriy Vasin</a><span></span>
+
+<div class="article-info--date">October  5, 2016</div>
+
+</div>
+</div>
+
+<h3>Electron: if you can build a website, you can build a desktop app</h3>
+<p>Currently, in the Web we can do almost everything using HTML/CSS/JS. There is a lot of libraries, frameworks, debug tools, test frameworks, articles and training resources. Also, do not forget about StackOverflow, where you can find the answers to questions almost instantly and some of them with real examples. Even for browser, there are many extensions that follow, measure, debug, show us each part of the site - you can see everything that happens to your app. All these things help us to create web applications almost instantly.</p>
+<p>However, what about building desktop apps? I can remember only a couple of libraries aimed at solving the problems with the GUI: <em>vxWidgets</em>, <em>QT</em> and <em>Gtk</em>. They are quite sufficient but what if you need a pixel perfect or responsive design? And what about the redesign? Such problems are not so easy to solve.</p>
+<p>Thanks to Electron, we can create native desktop application using all power of HTML, JS and CSS.</p>
+<blockquote>
+<p>Electron is a relatively new library, developed by GitHub for Atom.io, that enables developers to leverage the power of web technologies and use them to develop desktop applications. How does it work? Well, Electron basically exposes a webkit environment through Chromium, the browser engine behind Google Chrome, and lets you write code to render your application.</p>
+</blockquote>
+<p>NOTE! The purpose of this article is not to introduce Electron. I will show how to create a simple application using Electron.</p>
+<p>In this article I will explain:</p>
+<ol>
+<li>How to implement a desktop application that contains a single HTML page.</li>
+<li>Then, we will build an application that consists of three different windows (Main Window, About Window and Tray Window).</li>
+<li>Next, I'll show you how to pack application into a <code>.DMG</code> archive. After unpacking this archive the app will work as a native app from the App Store.</li>
+</ol>
+<p>For the final version of the project, I used the following technologies: <em>Electron</em>, <em>Electron Builder</em>, <em>React</em>, <em>Redux</em>, <em>Redux DevTools</em>, <em>Webpack</em>, <em>Rails-API</em>, and desktop features (<em>Notification</em> and <em>Update Tray</em>).</p>
+<p>Our electron app tutorial is organized into sections and provides videos of what was done.</p>
+<h2>Chapter 1: Structure of the app</h2>
+<p>Here is a brief outline of how our application should look like:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/prp2oVdH6bw.html" frameborder="0" allowfullscreen=""></iframe>
+<p>Let's begin! First of all, make sure that you have already installed <em>NodeJs</em> and <em>NPM</em>. In this example we will not use boilerplates for our app. Important notice: we will develop this electron desktop app only for Mac (setting up the app for <em>Linux</em> and <em>Windows</em> doesn't differ much but there are some tricky points).</p>
+<h3>Structure of the project:</h3>
+<p><code>electron-builder</code>, an npm package for building ready for distribution and "auto update" Electron apps, imposes some restrictions on the structure of the project:</p>
+<p><img src="./Building Desktop App with Electron - Anadea_files/xChapter_1._Structure_of_the_project.png.pagespeed.ic.oQnUo1kI1w.webp" alt="Structure of the project" data-pagespeed-url-hash="4020790742" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<ol>
+<li>
+<code>app</code> directory - only this directory is distributed with the real application. This directory also contains a separate <code>package.json</code> file. We will use this file to specify dependencies required for the app's operation. Besides, libraries from this file will be added to production version of the app (DMG file).</li>
+<li>
+<code>build</code> directory - we will put <code>icon.icns</code> and <code>background.png</code> into this folder. These images will be used to customize the installation process for Mac platform.</li>
+</ol>
+<p><img src="./Building Desktop App with Electron - Anadea_files/xChapter_1._Preview_of_instalation.png.pagespeed.ic.ynhu6Lvo1U.webp" alt="Preview of installation" data-pagespeed-url-hash="2777309323" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<ol start="3">
+<li>
+<code>electron-app</code> directory - a directory for our electron app (electron setup files, HTML files with react-root element).</li>
+<li>
+<code>browser-app</code> directory - a directory with our pure React app. We will divide this folder into two sub-folders: <code>dist</code> and <code>src</code>. Since we use <code>webpack</code>, we will apply <code>hot-reload</code>, <code>jsx</code>, etc., i.e. we will treat it like a common browser-based React application.</li>
+</ol>
+<p>To begin, we need to update our <code>package.json</code> file:</p>
+<div class="highlight"><pre><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+<div class="highlight"><pre><span class="nb">{</span>
+  "name": "TimeTracker",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "App is based on Electron, React, Redux + Rails as a back end.",
+  "author": "Dmytro Vasin &lt;dmytro.vasin@gmail.com&gt;",
+  "scripts": <span class="nb">{</span>
+    "electron": "electron ./electron-app/js/index.js",
+  <span class="nb">}</span>,
+  "dependencies": <span class="nb">{</span>
+    "electron-positioner": "<span class="nb">^</span>3.0.0",
+  <span class="nb">}</span>,
+  "devDependencies": <span class="nb">{</span>
+    "electron": "<span class="nb">^</span>1.3.4",
+  <span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+<p>And install two additional packages:</p>
+<div class="highlight"><pre>npm install electron --save-dev
+npm install electron-positioner --save-dev // Helps positioning your app windows.
+</pre></div>
+<p>Now we should run the next command to start our app:</p>
+<div class="highlight"><pre><span class="n">npm</span> <span class="n">run</span> <span class="n">electron</span>
+</pre></div>
+<h2>Chapter 2: First desktop window</h2>
+<p>TODO:</p>
+<ol>
+<li>Create the first window.</li>
+<li>Add it to Tray.</li>
+<li>Add a tray-like behavior to this window - we should hide it on blur, do not include it into Apps (Alt+Tab should not display it), do not display it in Dock.</li>
+<li>Add an ability to close the app from this window.</li>
+</ol>
+<p><img src="./Building Desktop App with Electron - Anadea_files/xChapter_2._Dock_without_app_icon.png.pagespeed.ic._oytcJJoZh.webp" alt="Dock without app icon" data-pagespeed-url-hash="1169612454" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<p><img src="./Building Desktop App with Electron - Anadea_files/xChapter_2._Close_button_from_tray_window.png.pagespeed.ic.1Fod8Oh6O_.webp" alt="Close button from Tray Window" data-pagespeed-url-hash="3815755357" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<p>Let's create file: <code>index.js</code> (entry point to our application).</p>
+<div class="highlight"><pre>electron-app/js/index.js
+</pre></div>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">electron</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span><span class="nx">app</span><span class="p">,</span> <span class="nx">ipcMain</span><span class="p">}</span> <span class="o">=</span> <span class="nx">electron</span><span class="p">;</span>
+
+<span class="c1">// These are two custom classes that we created only for our comfort.</span>
+<span class="kr">const</span> <span class="nx">TrayWindow</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../windows/TrayWindow'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">TrayIcon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./TrayIcon'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">tray</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">trayIcon</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="c1">// We hide dock, because we do not want to show our app as common app. We want to display our app as a Tray-like app (like Dropbox, Skitch or ets).</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">dock</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+
+<span class="c1">// This event will be emitted when Electron has finished initialization.</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">tray</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TrayWindow</span><span class="p">();</span>
+  <span class="nx">trayIcon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TrayIcon</span><span class="p">(</span><span class="nx">tray</span><span class="p">.</span><span class="nb">window</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="c1">// Custom event created to close the app from Tray Window.</span>
+<span class="c1">// The ipcMain module is used to handle events from a renderer process (web page).</span>
+
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'quit-app'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">tray</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span> <span class="c1">// Standart Event of the BrowserWindow object.</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span> <span class="c1">// Standart event of the app - that will close our app.</span>
+<span class="p">});</span>
+</pre></div>
+<div class="highlight"><pre>electron-app/windows/TrayWindow.js
+</pre></div>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">BrowserWindow</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">);</span>
+
+<span class="kr">class</span> <span class="nx">TrayWindow</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Link to the HTML file that will render app window.</span>
+    <span class="kd">let</span> <span class="nx">htmlPath</span> <span class="o">=</span> <span class="s1">'file://'</span> <span class="o">+</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'/pages/tray_page.html'</span>
+
+    <span class="c1">// Creation of the new window.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
+      <span class="nx">show</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// Initially, we should hide it, in such way we will remove blink-effect. </span>
+      <span class="nx">height</span><span class="o">:</span> <span class="mi">210</span><span class="p">,</span>
+      <span class="nx">width</span><span class="o">:</span> <span class="mi">225</span><span class="p">,</span>
+      <span class="nx">frame</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>  <span class="c1">// This option will remove frame buttons. By default window has standart chrome header buttons (close, hide, minimize). We should change this option because we want to display our window like Tray Window not like common chrome-like window.</span>
+      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'#E4ECEF'</span><span class="p">,</span>
+      <span class="nx">resizable</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">});</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadURL</span><span class="p">(</span><span class="nx">htmlPath</span><span class="p">);</span>
+
+    <span class="c1">// Object BrowserWindow has a lot of standart events/</span>
+    <span class="c1">// We will hide Tray Window on blur. To emulate standart behavior of the tray-like apps.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'blur'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">TrayWindow</span><span class="p">;</span>
+</pre></div>
+<p>HTML file that we use to render TrayWindow:</p>
+<div class="highlight"><pre>electron-app/pages/tray_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="c1">// In such way we connect ipcRenderer to our page.</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">ipcRenderer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">).</span><span class="nx">ipcRenderer</span><span class="p">;</span>
+      <span class="c1">// The ipcRenderer module provides a few methods so you can send events from the render process (web page) to the main process.</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="c">&lt;!-- no-drag option makes our new window non-draggable --&gt;</span>
+  <span class="nt">&lt;body</span> <span class="na">style=</span><span class="s">'-webkit-app-region: no-drag'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'my-button'</span><span class="nt">&gt;</span>X<span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="c1">// On click we should send event to close window.</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"my-button"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'quit-app'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>Add an icon of the app into <code>icons</code> folder. This icon will appear in the Tray.</p>
+<div class="highlight"><pre>electron<span class="o">-</span>app<span class="o">/</span>icons<span class="o">/</span>icon<span class="m">-22.</span>png
+</pre></div>
+<div class="highlight"><pre>electron-app/js/TrayIcon.js
+</pre></div>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">BrowserWindow</span><span class="p">,</span> <span class="nx">Tray</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">);</span>
+<span class="c1">// Electron-positioner - npm package for positioning of the Tray Window. Our Tray Window should appear under the Tray icon.</span>
+
+<span class="kr">const</span> <span class="nx">Positioner</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron-positioner'</span><span class="p">);</span>
+
+<span class="kr">class</span> <span class="nx">TrayIcon</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">trayWindow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Path to the app icon that will be displayed in the Tray (icon size: 22px)</span>
+    <span class="kd">let</span> <span class="nx">iconPath</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'../icons/icon-22.png'</span><span class="p">)</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">trayIcon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tray</span><span class="p">(</span><span class="nx">iconPath</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trayIcon</span><span class="p">.</span><span class="nx">setToolTip</span><span class="p">(</span><span class="s1">'Time Tracker'</span><span class="p">);</span> <span class="c1">// This tooltip will show up, when user hovers over our tray-icon.</span>
+
+    <span class="c1">// By clicking on the icon we have to show TrayWindow and position it in the middle under the tray icon (initialy this window is hidden).</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">trayIcon</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">bounds</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="nx">trayWindow</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">trayWindow</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">positioner</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Positioner</span><span class="p">(</span><span class="nx">trayWindow</span><span class="p">);</span>
+        <span class="nx">positioner</span><span class="p">.</span><span class="nx">move</span><span class="p">(</span><span class="s1">'trayCenter'</span><span class="p">,</span> <span class="nx">bounds</span><span class="p">)</span>
+
+        <span class="nx">trayWindow</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">TrayIcon</span><span class="p">;</span>
+</pre></div>
+<p>Now we can launch our app:</p>
+<div class="highlight"><pre><span class="n">npm</span> <span class="n">run</span> <span class="n">electron</span>
+</pre></div>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/Gjcx40WLh3w.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 3: Dynamic tray</h2>
+<p>TODO:</p>
+<ol>
+<li>Add dynamic changes to tray bar of the screen.</li>
+</ol>
+<p>Let's add random words into the tray bar on button click.</p>
+<p>We should add one more listener to HTML file:</p>
+<div class="highlight"><pre>electron-app/pages/tray_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+  ...
+  <span class="nt">&lt;body</span> <span class="na">style=</span><span class="s">'-webkit-app-region: no-drag'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'my-button'</span><span class="nt">&gt;</span>X<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'my-second-button'</span><span class="nt">&gt;</span>Set rundom!<span class="nt">&lt;/button&gt;</span>
+
+      <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"my-button"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'quit-app'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="kd">var</span> <span class="nx">textArray</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'First'</span><span class="p">,</span> <span class="s1">'Second'</span><span class="p">,</span> <span class="s1">'Third'</span><span class="p">];</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'my-second-button'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">textArray</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">randomString</span> <span class="o">=</span> <span class="nx">textArray</span><span class="p">[</span><span class="nx">randomIndex</span><span class="p">];</span>
+        <span class="c1">// On click we send event to Main Process (Index.js file) with a random string.</span>
+        <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'update-title-tray-window-event'</span><span class="p">,</span> <span class="nx">randomString</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>Add additional Event:</p>
+<div class="highlight"><pre>electron-app/js/index.js
+</pre></div>
+<div class="highlight"><pre><span class="x">ipcMain.on('update-title-tray-window-event', function(event, title) {</span>
+<span class="x">  trayIcon.updateTitle(title);</span>
+<span class="x">});</span>
+</pre></div>
+<p>Now we should add <code>updateTitle</code> function that will update our tray bar:</p>
+<div class="highlight"><pre>electron-app/js/TrayIcon.js
+</pre></div>
+<div class="highlight"><pre><span class="k">class</span> <span class="n">TrayIcon</span> <span class="p">{</span>
+  <span class="n">constructor</span><span class="p">(</span><span class="n">trayWindow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">},</span>
+
+  <span class="n">updateTitle</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">this</span><span class="p">.</span><span class="n">trayIcon</span><span class="p">.</span><span class="n">setTitle</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">TrayIcon</span><span class="p">;</span>
+</pre></div>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/dkKFtIH4QG0.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 4: Mac notification</h2>
+<p>TODO:</p>
+<ol>
+<li>Add <code>Windows Notification</code> caused by the app.</li>
+<li>Add an ability to click on this notification.</li>
+<li>When you click on this icon, it opens Tray Window.</li>
+</ol>
+<p><img src="./Building Desktop App with Electron - Anadea_files/xChapter_4._Notification.png.pagespeed.ic.EgmxNTppco.webp" alt="Notification" data-pagespeed-url-hash="1113382033" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></p>
+<blockquote>
+<p>NOTE: In the development mode, icons of the app (that you can see in Dock panel) and icons of notifications (that you can see in Mac Notifications panel) will be set and displayed as Electron icons. But when you create/prebuild the app as production ready app or DMG file, all icons will change - our app will take icons from <code>/build/icon</code> folder.</p>
+</blockquote>
+<p>Let's add one more button:</p>
+<div class="highlight"><pre>electron-app/pages/tray_page.html
+</pre></div>
+<div class="highlight"><pre><span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'notify'</span><span class="nt">&gt;</span>Notify!<span class="nt">&lt;/button&gt;</span>
+</pre></div>
+<p>And JS for it:</p>
+<div class="highlight"><pre>electron-app/pages/tray_page.html
+</pre></div>
+<div class="highlight"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"notify"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Electron conveniently allows developers to send notifications with the HTML5 Notification API, using the currently running operating system’s native notification APIs to display it.</span>
+
+  <span class="kd">let</span> <span class="nx">notif</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Notification</span><span class="p">(</span> <span class="s1">'My First Notification'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="s1">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, maxime explicabo dolores tenetur'</span>
+  <span class="p">})</span>
+
+  <span class="c1">// Also, we should add event handler for it. So, when user clicks on the notification our About window will show up.</span>
+  <span class="nx">notif</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'show-about-window-event'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p>Add Event handler to the Main Process:</p>
+<div class="highlight"><pre>electron-app/js/index.js
+</pre></div>
+<div class="highlight"><pre><span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'show-about-window-event'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">tray</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+<p>As a result, we will get the next behavior:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/9sKA0k3zAT0.html" frameborder="0" allowfullscreen=""></iframe>
+<p>As we can see in the video - app has icon of the Electron. But after we create the real app the correct icon will be loaded as needed.</p>
+<h2>Chapter 5: Second window (page)</h2>
+<p>TODO:</p>
+<ol>
+<li>Create About Page.</li>
+<li>Open another separate window (About Page) from the Tray Window.</li>
+</ol>
+<p>To create a new page, we need to add the same initialization as we have for About Window to the Main Process (<code>index.js</code>).</p>
+<div class="highlight"><pre>electron-app/js/index.js
+</pre></div>
+<div class="highlight"><pre><span class="p">...</span>
+<span class="kr">const</span> <span class="nx">AboutWindow</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../windows/AboutWindow'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">TrayWindow</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../windows/TrayWindow'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">TrayIcon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./TrayIcon'</span><span class="p">);</span>
+
+<span class="p">...</span>
+<span class="kd">let</span> <span class="nx">tray</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">trayIcon</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">about</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">tray</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TrayWindow</span><span class="p">();</span>
+  <span class="nx">about</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AboutWindow</span><span class="p">();</span>
+
+  <span class="nx">trayIcon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TrayIcon</span><span class="p">(</span><span class="nx">tray</span><span class="p">.</span><span class="nb">window</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'quit-app'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">about</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">})</span>
+
+<span class="p">...</span>
+<span class="c1">// Also, we should add new Event that will open a new window.</span>
+<span class="nx">ipcMain</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'show-about-window-event'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">about</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+<p>Let's create BrowserWindow. Initialization is the same as we already did for the Tray Window except a few small details:</p>
+<div class="highlight"><pre>electron-app/windows/AboutWindow.js
+</pre></div>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">BrowserWindow</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">);</span>
+<span class="c1">// We will use the next module for apropriate positioning. We should display About page in the center of the screen.</span>
+<span class="kr">const</span> <span class="nx">Positioner</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron-positioner'</span><span class="p">);</span>
+
+<span class="kr">class</span> <span class="nx">AboutWindow</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">let</span> <span class="nx">htmlPath</span> <span class="o">=</span> <span class="s1">'file://'</span> <span class="o">+</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'/pages/about_page.html'</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
+      <span class="nx">show</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">width</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+      <span class="nx">height</span><span class="o">:</span> <span class="mi">336</span><span class="p">,</span>
+      <span class="nx">frame</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'#E4ECEF'</span><span class="p">,</span>
+      <span class="c1">// resizable: false</span>
+    <span class="p">})</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadURL</span><span class="p">(</span><span class="nx">htmlPath</span><span class="p">);</span>
+
+    <span class="c1">// About Window will disappear in blur.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'blur'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// On show - we should display About Window in the center of the screen.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'show'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">positioner</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Positioner</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">);</span>
+      <span class="nx">positioner</span><span class="p">.</span><span class="nx">move</span><span class="p">(</span><span class="s1">'center'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">AboutWindow</span><span class="p">;</span>
+</pre></div>
+<p>Let's create HTML page for the About page:</p>
+<div class="highlight"><pre>electron-app/pages/about_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>ABOUT PAGE<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>It remains to add a button for opening About Window to the Tray Window:</p>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+  ...
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body</span> <span class="na">style=</span><span class="s">'-webkit-app-region: no-drag'</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'about'</span><span class="nt">&gt;</span>Open About<span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+    <span class="p">...</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"about"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'show-about-window-event'</span><span class="p">);</span>
+    <span class="p">});</span>
+
+  <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>Let's launch: <code>npm run electron</code>.</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/g92PdBEgwkk.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 6: External link</h2>
+<p>TODO:</p>
+<ol>
+<li>Open <code>External Link</code> from the About Window.</li>
+</ol>
+<p>Let's add an ability to open external link in a default browser. All we need to do is to add one module:</p>
+<div class="highlight"><pre><span class="nb">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">)</span><span class="o">.</span><span class="n">shell</span>
+</pre></div>
+<p>Also we should add a click handler. So, when user clicks on the link we take <code>href</code> of this element (in this particular case - <code>&lt;a&gt;</code> tag) and launch <code>shell.openExternal</code>.</p>
+<div class="highlight"><pre>electron-app/pages/about_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">shell</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">).</span><span class="nx">shell</span><span class="p">;</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>ABOUT PAGE<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">'open-external'</span> <span class="na">href=</span><span class="s">"https://github.com/DmytroVasin/"</span><span class="nt">&gt;</span>Open<span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"open-external"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">remoteLink</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'href'</span><span class="p">);</span>
+        <span class="nx">shell</span><span class="p">.</span><span class="nx">openExternal</span><span class="p">(</span> <span class="nx">remoteLink</span> <span class="p">);</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>That's all! We can launch <code>npm run electron</code> and check the result.</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/fQVQvp_3H9Q.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 7: Custom windows action buttons</h2>
+<p>TODO:</p>
+<ol>
+<li>Add an ability to close/hide/minimize/maximize our windows (pages).</li>
+</ol>
+<p>Of course, you can simply use the standard buttons (behaviour) by adding the following line of code:</p>
+<div class="highlight"><pre>electron-app/windows/AboutWindow.js
+</pre></div>
+<div class="highlight"><pre><span class="p">...</span>
+<span class="n">this</span><span class="p">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BrowserWindow</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="nl">frame</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+<span class="p">...</span>
+</pre></div>
+<p>As a result, we will receive the next outcome:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/0eQPDLPDa7k.html" frameborder="0" allowfullscreen=""></iframe>
+<p>However, this functionality does not suit us because it has a few drawbacks:</p>
+<ol>
+<li>These keys are not very easy to customize.</li>
+<li>We can't change design of these buttons.</li>
+<li>We can't add an additional button or field (for example, a search field to the header).</li>
+<li>The behavior of these keys is strictly declared. By clicking on the close button, we'll get <code>destroy</code> of the window (which is unacceptable in our case because, for more rapid opening, we will simply hide pages/windows).</li>
+</ol>
+<p>Let's remove this line of code <code>frame: true</code> and do a custom implementation of these buttons:</p>
+<p>We should add three new buttons and add three new events to them. Besides, let's add a <code>draggable</code> zone to emulate a default header.</p>
+<div class="highlight"><pre>electron-app/pages/about_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">shell</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">).</span><span class="nx">shell</span><span class="p">;</span>
+      <span class="c1">// Add remote module - because we will use main process modules from the renderer process.</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">remote</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">).</span><span class="nx">remote</span><span class="p">;</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  // Make this page fully undraggable.
+  <span class="nt">&lt;body</span> <span class="na">style=</span><span class="s">'-webkit-app-region: no-drag'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+      <span class="nf">#header</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">Make</span> <span class="n">only</span> <span class="n">header</span> <span class="n">is</span> <span class="n">draggable</span>
+        <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">select</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+        <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">region</span><span class="o">:</span> <span class="n">drag</span><span class="p">;</span>
+
+        <span class="k">background-color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'header'</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'close'</span><span class="nt">&gt;</span>X<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'hide'</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'maximize'</span><span class="nt">&gt;</span><span class="err">&lt;</span>&gt;<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    ...
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="p">...</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"close"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// We are trying to emulate native behavior, so we should hide the window (we should hide it in doc-bar too).</span>
+        <span class="nx">remote</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">dock</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+        <span class="c1">// getCurrentWindow - Returns the BrowserWindow object to which this web page belongs.</span>
+        <span class="nx">remote</span><span class="p">.</span><span class="nx">getCurrentWindow</span><span class="p">().</span><span class="nx">hide</span><span class="p">();</span>
+      <span class="p">});</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"hide"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Emulate minimize to tray effect.</span>
+        <span class="nx">remote</span><span class="p">.</span><span class="nx">getCurrentWindow</span><span class="p">().</span><span class="nx">minimize</span><span class="p">();</span>
+      <span class="p">});</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"maximize"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Emulate maximize-minimize effect</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">remote</span><span class="p">.</span><span class="nx">getCurrentWindow</span><span class="p">().</span><span class="nx">isMaximized</span><span class="p">())</span> <span class="p">{</span>
+          <span class="nx">remote</span><span class="p">.</span><span class="nx">getCurrentWindow</span><span class="p">().</span><span class="nx">unmaximize</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">remote</span><span class="p">.</span><span class="nx">getCurrentWindow</span><span class="p">().</span><span class="nx">maximize</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>We will get the next result:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/a3cuj9R5bW4.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 8: Navigation/Menu bar</h2>
+<p>TODO:</p>
+<ol>
+<li>Create Menu bar.</li>
+</ol>
+<p>As you may have noticed, when you open the About Window our Menu does not appear.</p>
+<p>Let's create the Menu and add the following options: Copy, Paste, Open link (Github) and Open page About.</p>
+<p>We will create our Menu only for the specific page (Main Page). We do not want to show Menu bar when the user opens Tray Window.</p>
+<p>Let's create Main page (in the same way as About/Tray page):</p>
+<div class="highlight"><pre>electron-app/js/index.js
+</pre></div>
+<div class="highlight"><pre>  <span class="p">...</span>
+  <span class="k">const</span> <span class="n">MainWindow</span>  <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="err">'</span><span class="p">..</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">MainWindow</span><span class="err">'</span><span class="p">);</span>
+  <span class="k">const</span> <span class="n">menuTemplate</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="err">'</span><span class="p">.</span><span class="o">/</span><span class="n">menuTemplate</span><span class="err">'</span><span class="p">);</span>
+  <span class="p">...</span>
+  <span class="c1">// Extract Menu module from electron</span>
+  <span class="k">const</span> <span class="p">{</span><span class="n">app</span><span class="p">,</span> <span class="n">ipcMain</span><span class="p">,</span> <span class="n">Menu</span><span class="p">}</span> <span class="o">=</span> <span class="n">electron</span><span class="p">;</span>
+  <span class="p">...</span>
+  <span class="n">let</span> <span class="n">main</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+  <span class="p">...</span>
+  <span class="n">app</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="err">'</span><span class="n">ready</span><span class="err">'</span><span class="p">,</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">main</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MainWindow</span><span class="p">();</span>
+    <span class="c1">// We will create menu based on template</span>
+    <span class="c1">// menuTemplate - is just a function that returns array (that is just extracted into separate file)</span>
+    <span class="n">Menu</span><span class="p">.</span><span class="n">setApplicationMenu</span><span class="p">(</span> <span class="n">Menu</span><span class="p">.</span><span class="n">buildFromTemplate</span><span class="p">(</span> <span class="n">menuTemplate</span><span class="p">()</span> <span class="p">));</span>
+    <span class="p">...</span>
+  <span class="p">})</span>
+
+  <span class="n">ipcMain</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="err">'</span><span class="n">quit</span><span class="o">-</span><span class="n">app</span><span class="err">'</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">main</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+  <span class="p">})</span>
+
+  <span class="c1">// Let's add event that will open our main page (from Tray Window).</span>
+  <span class="n">ipcMain</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="err">'</span><span class="n">show</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">window</span><span class="o">-</span><span class="n">event</span><span class="err">'</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">main</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">dock</span><span class="p">.</span><span class="n">show</span><span class="p">();</span> <span class="c1">// Do not forget to show dock - because only with dock menu will appear.</span>
+  <span class="p">});</span>
+</pre></div>
+<div class="highlight"><pre>electron-app/js/menuTemplate.js
+</pre></div>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">electron</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="p">{</span><span class="nx">app</span><span class="p">,</span> <span class="nx">shell</span><span class="p">,</span> <span class="nx">ipcMain</span><span class="p">}</span> <span class="o">=</span> <span class="nx">electron</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">menuTemplate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">label</span><span class="o">:</span> <span class="s1">'Application'</span><span class="p">,</span>
+      <span class="nx">submenu</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">label</span><span class="o">:</span> <span class="s1">'Quit'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'Command+Q'</span><span class="p">,</span>
+          <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">app</span><span class="p">.</span><span class="nx">quit</span><span class="p">()</span>  <span class="c1">// This is a standart function to quit app.</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">label</span><span class="o">:</span> <span class="s1">'View'</span><span class="p">,</span>
+      <span class="nx">submenu</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">label</span><span class="o">:</span> <span class="s1">'About App'</span><span class="p">,</span>
+          <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">ipcMain</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'show-about-window-event'</span><span class="p">)</span> <span class="c1">// In such way we can trigger function in the main process.</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nx">label</span><span class="o">:</span> <span class="s1">'Reload'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+R'</span><span class="p">,</span>
+          <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">focusedWindow</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">focusedWindow</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span> <span class="c1">// reload the page</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">label</span><span class="o">:</span> <span class="s1">'Edit'</span><span class="p">,</span>
+      <span class="nx">submenu</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Undo'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+Z'</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">'undo:'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Redo'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'Shift+CmdOrCtrl+Z'</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">'redo:'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'separator'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Cut'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+X'</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">'cut:'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Copy'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+C'</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">'copy:'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Paste'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+V'</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">'paste:'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Select All'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+A'</span><span class="p">,</span> <span class="nx">selector</span><span class="o">:</span> <span class="s1">'selectAll:'</span> <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">label</span><span class="o">:</span> <span class="s1">'Help'</span><span class="p">,</span>
+      <span class="nx">submenu</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">label</span><span class="o">:</span> <span class="s1">'View Licence'</span><span class="p">,</span>
+          <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">shell</span><span class="p">.</span><span class="nx">openExternal</span><span class="p">(</span><span class="s1">'https://github.com/DmytroVasin/TimeTracker/blob/master/LICENSE'</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'separator'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s1">'Version 1.0.0-alpha.6'</span><span class="p">,</span> <span class="nx">enabled</span><span class="o">:</span> <span class="s1">'FALSE'</span> <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">menuTemplate</span>
+</pre></div>
+<p>Let's add buttons for showing our Main page to the Tray Window:</p>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+  ...
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    ...
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">'main'</span><span class="nt">&gt;</span>Open Main<span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="p">...</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"main"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ipcRenderer</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'show-main-window-event'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>MainWindow doesn't contain anything new:</p>
+<div class="highlight"><pre>electron-app/windows/MainWindow.js
+</pre></div>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">BrowserWindow</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">);</span>
+
+<span class="kr">class</span> <span class="nx">MainWindow</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">htmlPath</span> <span class="o">=</span> <span class="s1">'file://'</span> <span class="o">+</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'/pages/main_page.html'</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
+      <span class="nx">show</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">width</span><span class="o">:</span> <span class="mi">400</span><span class="p">,</span>
+      <span class="nx">height</span><span class="o">:</span> <span class="mi">400</span><span class="p">,</span>
+      <span class="nx">frame</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">minWidth</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+      <span class="nx">minHeight</span><span class="o">:</span> <span class="mi">600</span><span class="p">,</span>
+      <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'#E4ECEF'</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadURL</span><span class="p">(</span><span class="nx">htmlPath</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">MainWindow</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre>electron-app/pages/main_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    MAIN APP PAGE
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<p>Let's run <code>npm run electron</code> and we will see the next result:</p>
+<blockquote>
+<p>Do not worry about icon (inside the dock bar) and name of the app (inside Menu). When we build our app as a packaged version they will be changed.</p>
+</blockquote>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/11LOamQooR4.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 9: Debug</h2>
+<p>TODO:</p>
+<ol>
+<li>Add Devtools</li>
+<li>RactDevtools</li>
+<li>ReduxDevtools</li>
+</ol>
+<p>At this point, we have pages that contain <code>HTML/JS/CSS</code>. Now, we will connect <code>Chrome Debug tools</code>.</p>
+<p>First of all, I will show you how to open <code>Devtools</code> on any page.</p>
+<p>Let's add a key-binding to our app to open devtools (F12). We will put this key-binding into our Menu. Do not worry, Menu will work even if you hide it (or hide dock).</p>
+<div class="highlight"><pre>electron-app/js/menuTemplate.js
+</pre></div>
+<div class="highlight"><pre>  <span class="p">...</span>
+  <span class="p">{</span>
+    <span class="nx">label</span><span class="o">:</span> <span class="s1">'View'</span><span class="p">,</span>
+    <span class="nx">submenu</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">label</span><span class="o">:</span> <span class="s1">'About App'</span><span class="p">,</span>
+        <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">ipcMain</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'show-about-window-event'</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nx">label</span><span class="o">:</span> <span class="s1">'Toggle Developer Tools'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'F12'</span><span class="p">,</span>
+        <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">focusedWindow</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">focusedWindow</span><span class="p">.</span><span class="nx">webContents</span><span class="p">.</span><span class="nx">toggleDevTools</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nx">label</span><span class="o">:</span> <span class="s1">'Reload'</span><span class="p">,</span> <span class="nx">accelerator</span><span class="o">:</span> <span class="s1">'CmdOrCtrl+R'</span><span class="p">,</span>
+        <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">focusedWindow</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">focusedWindow</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+</pre></div>
+<p>Now, when <code>F12</code> key is pressed Chrome devtools will show up on any active window.</p>
+<p>However, what should we do when we want to use <code>React</code> or <code>Redux</code>? How can we add <code>RactDevtools</code>/<code>ReduxDevtools</code>? To use additional extensions, we should install:</p>
+<p><code>npm install electron-devtools-installer --save-dev</code> (my current version is '2.0.1')</p>
+<p>This npm package will help us.</p>
+<div class="highlight"><pre><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+<div class="highlight"><pre><span class="nb">{</span>
+  "devDependencies": <span class="nb">{</span>
+     "electron-devtools-installer": "<span class="nb">^</span>2.0.1",
+  <span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+<p>Then, we should update MainProcess file:</p>
+<blockquote>
+<p>"isDev" - was set in <code>pacakage.json</code>: <code>'electron': 'NODE_ENV=development electron ./electron-app/js/index.js'</code></p>
+</blockquote>
+<div class="highlight"><pre>electron-app/js/index.js
+</pre></div>
+<div class="highlight"><pre><span class="k">const</span> <span class="n">isDev</span> <span class="o">=</span> <span class="p">(</span><span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">NODE_ENV</span> <span class="o">===</span> <span class="err">'</span><span class="n">development</span><span class="err">'</span><span class="p">);</span>
+
+<span class="n">let</span> <span class="n">installExtension</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">isDev</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="n">installExtension</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="err">'</span><span class="n">electron</span><span class="o">-</span><span class="n">devtools</span><span class="o">-</span><span class="n">installer</span><span class="err">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+<span class="n">app</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="err">'</span><span class="n">ready</span><span class="err">'</span><span class="p">,</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// If Now is dev env - let's call install extentions function:</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">isDev</span> <span class="p">)</span> <span class="n">installExtentions</span><span class="p">();</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+<span class="p">...</span>
+
+<span class="c1">// This is some kind of tricky way to install it, but this is caused by npm pacakage as this pacakage uses ES6 which we do not use for electron.</span>
+
+<span class="k">const</span> <span class="n">installExtentions</span> <span class="o">=</span> <span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// If you use some unusual devtools ext. You should specify its ID here.</span>
+  <span class="n">installExtension</span><span class="p">[</span><span class="err">'</span><span class="k">default</span><span class="err">'</span><span class="p">](</span> <span class="n">installExtension</span><span class="p">[</span><span class="err">'</span><span class="n">REDUX_DEVTOOLS</span><span class="err">'</span><span class="p">]</span> <span class="p">)</span>
+  <span class="n">installExtension</span><span class="p">[</span><span class="err">'</span><span class="k">default</span><span class="err">'</span><span class="p">](</span> <span class="n">installExtension</span><span class="p">[</span><span class="err">'</span><span class="n">REACT_DEVELOPER_TOOLS</span><span class="err">'</span><span class="p">]</span> <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+<p>Also, do not forget to specify <code>resizable: true</code> option.</p>
+<p>Let's launch: <code>npm run electron</code>:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/Tq45ALDcv9U.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 10: Package. Creation of DMG.</h2>
+<p>TODO:</p>
+<ol>
+<li>Create <code>DMG</code> package.</li>
+</ol>
+<p>Now we have to turn our code (files) into a <code>DMG</code> package so that everyone could download our app.</p>
+<div class="highlight"><pre><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+<div class="highlight"><pre><span class="nb">{</span>
+  "name": "TimeTracker",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "App is based on Electron, React, Redux + Rails as a back end.",
+  "author": "Dmytro Vasin &lt;dmytro.vasin@gmail.com&gt;",
+  "repository": <span class="nb">{</span>
+    "type": "git",
+    "url": "https://github.com/DmytroVasin/TimeTracker.git"
+  <span class="nb">}</span>,
+  "scripts": <span class="nb">{</span>
+    "electron": "NODE<span class="nb">_</span>ENV=development electron ./electron-app/js/index.js",
+    "postinstall": "install-app-deps",
+    "publish:electron": "cp -R electron-app/ app/electron-app/",
+    "publish:osx": "build --x64",
+    "publish:dist": "npm run publish:electron <span class="nb">&amp;&amp;</span> npm run publish:osx"
+  <span class="nb">}</span>,
+  "dependencies": <span class="nb">{</span>
+    "electron-positioner": "<span class="nb">^</span>3.0.0",
+    "webpack-node-externals": "<span class="nb">^</span>1.4.3"
+  <span class="nb">}</span>,
+  "devDependencies": <span class="nb">{</span>
+    "electron": "<span class="nb">^</span>1.3.6",
+    "electron-builder": "<span class="nb">^</span>6.7.6",
+    "electron-devtools-installer": "<span class="nb">^</span>2.0.1",
+    "webpack": "<span class="nb">^</span>1.13.1"
+  <span class="nb">}</span>,
+  "build": <span class="nb">{</span>
+    "asar": false,
+    "appId": "hr.creaticon.eatodo",
+    "category": "public.app-category.productivity",
+    "dmg": <span class="nb">{</span>
+      "title": "Time Tracker Installation",
+      "contents": [
+        <span class="nb">{</span>
+          "x": 410,
+          "y": 125,
+          "type": "link",
+          "path": "/Applications"
+        <span class="nb">}</span>,
+        <span class="nb">{</span>
+          "x": 130,
+          "y": 125,
+          "type": "file"
+        <span class="nb">}</span>
+      ]
+    <span class="nb">}</span>
+  <span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+<p>Let's go over several lines of code from this file:</p>
+<ol>
+<li>
+<code>install-app-deps</code> - this line allows us to use several <code>pacakage.json</code> files.</li>
+<li>
+<code>publish:electron</code> - this command simply copies files from root directory to <code>app/</code> (app directory should only contain files that should be in <code>dmg</code> package).</li>
+<li>
+<code>publish:osx</code> - by this command we specify which platform/architecture our compiled app should be generated for.</li>
+<li>
+<code>build</code> - this is a standard block of specification for <code>electron-packager</code> (to be more accurate this is a specification for <code>npm appdmg</code> package).</li>
+<li>
+<code>asar</code> - this option is used to specify if we should pack (compress) our files.</li>
+</ol>
+<p>Let's specify libs which are necessary for our app:</p>
+<div class="highlight"><pre><span class="n">app</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+<div class="highlight"><pre><span class="nb">{</span>
+  "name": "TimeTracker",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "App is based on Electron, React, Redux + Rails as a back end.",
+  "author": "Dmytro Vasin &lt;dmytro.vasin@gmail.com&gt;",
+  "main": "electron-app/js/index.js",
+  "dependencies": <span class="nb">{</span>
+    "electron-positioner": "<span class="nb">^</span>3.0.0",
+  <span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+<p>Here is the most interesting line of code from this file:</p>
+<ol>
+<li>
+<code>'main': 'electron-app/js/index.js'</code> - this line is entry point of our app.</li>
+<li>
+<code>npm install</code> - launching this command will produce two folders <code>node_modules</code> in <code>root/</code> and <code>app/</code> directories.</li>
+<li>Into <code>build/</code> directory, you should put two icons <code>icon.icns</code> and <code>background.png</code> for Mac. These files will be used by <code>electron-packager</code> to create custom <code>dmg</code> package:</li>
+</ol>
+<div class="highlight"><pre><span class="n">background</span><span class="p">.</span><span class="n">png</span> <span class="p">(</span> <span class="mi">512</span><span class="o">/</span><span class="mi">320</span> <span class="p">)</span>
+<span class="n">icon</span><span class="p">.</span><span class="n">icns</span> <span class="p">(</span> <span class="mi">256</span><span class="o">/</span><span class="mi">256</span> <span class="p">)</span>
+</pre></div>
+<p>Run the next command: <code>npm run publish:dist</code>.</p>
+<p>After executing it, <code>/dist</code> directory will appear in our root folder. In this directory you will find <code>.dmg</code> file for installing the app (there you will also find our totally working app).</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/3j1tglx1n5w.html" frameborder="0" allowfullscreen=""></iframe>
+<p>As we have specified <code>asar: false</code> we can see all our source files inside the app:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/RbzScZoYdVQ.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 11: Add React/Redux</h2>
+<p>TODO:</p>
+<ol>
+<li>Wrap our app into React/Redux/Webpack/webpack-dev-server.</li>
+</ol>
+<p>I will explain only basic (tricky) moments. I will not show you all react page because it will take too much time.</p>
+<p>Key points:</p>
+<ol>
+<li>All pages (Main, About, Tray) were wrapped up into <code>React</code>. About and Tray pages are very simple but I have already set up webpack and do not want to use pure JS on one page (about_page.html) and JSX on another (main_app_page.html).</li>
+<li>Currently, to start development, you should launch two commands instead of one:
+<code>npm run electron</code> - to launch electron app; <code>npm run browser</code> - to launch webpack in live-reloading mode.</li>
+<li>For <code>electron-app</code>, I didn't use webpack because setting and launching webpack takes a lot of time and requires many lines of code.</li>
+<li>Applying live-reloading for React/Redux led to the following: HTML files look a bit more complicated but now they contain only react-root element with compiled.js (live-reloading) file.</li>
+<li>Also, Header component was reused on two different pages- Main page and About page.</li>
+</ol>
+<h3>Window action buttons</h3>
+<p>Here are the updated commands to launch and build:</p>
+<div class="highlight"><pre><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+<div class="highlight"><pre>  <span class="c">...</span>
+  "<span class="n">scripts</span>"<span class="p">:</span> <span class="p">{</span>
+    "<span class="n">clean</span>"<span class="p">:</span> "<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">app</span><span class="o">/</span><span class="n">electron</span><span class="o">-</span><span class="n">app</span><span class="o">/</span> <span class="o">&amp;&amp;</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">app</span><span class="o">/</span><span class="n">browser</span><span class="o">-</span><span class="n">app</span><span class="o">/</span> <span class="o">&amp;&amp;</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">dist</span><span class="o">/</span>"<span class="p">,</span>
+    "<span class="n">browser</span>"<span class="p">:</span> "<span class="n">NODE_ENV</span><span class="p">=</span><span class="n">development</span> <span class="n">webpack</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="n">config</span> <span class="n">webpack</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">js</span> <span class="o">--</span><span class="n">hot</span> <span class="o">--</span><span class="n">inline</span>"<span class="p">,</span>
+    "<span class="n">electron</span>"<span class="p">:</span> "<span class="n">NODE_ENV</span><span class="p">=</span><span class="n">development</span> <span class="n">electron</span> <span class="o">./</span><span class="n">electron</span><span class="o">-</span><span class="n">app</span><span class="o">/</span><span class="n">js</span><span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">js</span>"<span class="p">,</span>
+    "<span class="n">postinstall</span>"<span class="p">:</span> "<span class="n">install</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">deps</span>"<span class="p">,</span>
+    "<span class="n">publish</span><span class="p">:</span><span class="n">browser</span>"<span class="p">:</span> "<span class="n">webpack</span> <span class="o">--</span><span class="n">config</span> <span class="n">webpack</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">pro</span><span class="p">.</span><span class="n">js</span>"<span class="p">,</span>
+    "<span class="n">publish</span><span class="p">:</span><span class="n">electron</span>"<span class="p">:</span> "<span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">electron</span><span class="o">-</span><span class="n">app</span><span class="o">/</span> <span class="n">app</span><span class="o">/</span><span class="n">electron</span><span class="o">-</span><span class="n">app</span><span class="o">/</span>"<span class="p">,</span>
+    "<span class="n">publish</span><span class="p">:</span><span class="n">osx</span>"<span class="p">:</span> "<span class="n">build</span> <span class="o">--</span><span class="n">x64</span>"<span class="p">,</span>
+    "<span class="n">publish</span><span class="p">:</span><span class="n">dist</span>"<span class="p">:</span> "<span class="n">npm</span> <span class="n">run</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">npm</span> <span class="n">run</span> <span class="n">publish</span><span class="p">:</span><span class="n">browser</span> <span class="o">&amp;&amp;</span> <span class="n">npm</span> <span class="n">run</span> <span class="n">publish</span><span class="p">:</span><span class="n">electron</span> <span class="o">&amp;&amp;</span> <span class="n">npm</span> <span class="n">run</span> <span class="n">publish</span><span class="p">:</span><span class="n">osx</span>"
+  <span class="p">},</span>
+  <span class="c">...</span>
+</pre></div>
+<div class="highlight"><pre>electron-app/pages/about_page.html
+</pre></div>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span><span class="nt">&gt;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">remote</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">).</span><span class="nx">remote</span><span class="p">;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">shell</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">).</span><span class="nx">shell</span><span class="p">;</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'react-root'</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="kd">var</span> <span class="nx">bundlePath</span> <span class="o">=</span> <span class="s1">'../../browser-app/dist/js/about.js'</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">'development'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bundlePath</span> <span class="o">=</span> <span class="s1">'http://localhost:8080/browser-app/dist/js/about.js'</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kd">var</span> <span class="nx">js_script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+      <span class="nx">js_script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">bundlePath</span><span class="p">;</span>
+      <span class="nx">js_script</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">js_script</span><span class="p">);</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+<h2>Chapter 12: Final video of the app</h2>
+<p>TODO:</p>
+<ol>
+<li>Final cut.</li>
+</ol>
+<p>Here is the final version of our app:</p>
+<iframe width="560" height="315" src="./Building Desktop App with Electron - Anadea_files/yzYKyij_VfA.html" frameborder="0" allowfullscreen=""></iframe>
+<h2>Chapter 13: Links</h2>
+<p>Github links:</p>
+<blockquote>
+<p>Branch without React: <code>live-coding</code></p>
+</blockquote>
+<ol>
+<li><a href="https://github.com/DmytroVasin/TimeTracker">https://github.com/DmytroVasin/TimeTracker</a></li>
+<li>
+<a href="https://github.com/DmytroVasin/TimeTrakerAPI">https://github.com/DmytroVasin/TimeTrakerAPI</a> ( Rails API that was used in final app )</li>
+</ol>
+
+<div class="tags"><a href="https://anadea.info/blog/category/software-for-business">Software for business</a></div>
+</article>
+</div>
+</section>
+<section class="blog-posts latest-events">
+<div class="inner">
+<header>
+<strong>Other posts</strong>
+</header>
+<div class="blog-posts-element">
+  <div class="page" id="page_376">
+    <a class="img-link" href="https://anadea.info/blog/apple-iphone-7-a-game-changer-for-mobile-app-developers-or-just-new-smartphone"><img src="./Building Desktop App with Electron - Anadea_files/xpreview_Apple_iPhone_gamechanger.jpg.pagespeed.ic.QjTwrxuit6.webp" alt="Preview apple iphone gamechanger" data-pagespeed-url-hash="1589665438" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+    <strong class="post-title"><a href="https://anadea.info/blog/apple-iphone-7-a-game-changer-for-mobile-app-developers-or-just-new-smartphone">Apple iPhone 7: a Game Changer for Mobile App Developers or Just New Smartphone?</a></strong>
+    <div class="date">November 14, 2016</div>
+  </div>
+  <div class="page" id="page_367">
+    <a class="img-link" href="https://anadea.info/blog/how-to-put-your-app-in-the-app-store-or-google-play"><img src="./Building Desktop App with Electron - Anadea_files/xpreview_submitting-app-to-app-store.jpg.pagespeed.ic.LgOiNYinKo.webp" alt="Preview submitting app to app store" data-pagespeed-url-hash="2715568818" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+    <strong class="post-title"><a href="https://anadea.info/blog/how-to-put-your-app-in-the-app-store-or-google-play">What You Need to Know to Put Your App in the App Store or Google Play?</a></strong>
+    <div class="date">October 31, 2016</div>
+  </div>
+  <div class="page" id="page_369">
+    <a class="img-link" href="https://anadea.info/blog/dnepr-it-duel-2016-photo-gallery"><img src="./Building Desktop App with Electron - Anadea_files/xpreview_mod_IMG_7660.JPG.pagespeed.ic.8eB5Pk2bN6.webp" alt="Preview mod img 7660" data-pagespeed-url-hash="807574647" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+    <strong class="post-title"><a href="https://anadea.info/blog/dnepr-it-duel-2016-photo-gallery">Dnepr IT Duel 2016: "The War of the Bots" - Photo Gallery</a></strong>
+    <div class="date">October 21, 2016</div>
+  </div>
+  <div class="page" id="page_371">
+    <a class="img-link" href="https://anadea.info/blog/minsk-it-duel-2016-photo-gallery"><img src="./Building Desktop App with Electron - Anadea_files/xpreview_photo_1.jpg.pagespeed.ic.kWdWssRcMH.webp" alt="Preview photo 1" data-pagespeed-url-hash="161126232" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+    <strong class="post-title"><a href="https://anadea.info/blog/minsk-it-duel-2016-photo-gallery">Minsk IT Duel 2016: "The War of the Bots" - Photo Gallery</a></strong>
+    <div class="date">October 21, 2016</div>
+  </div>
+</div>
+
+</div>
+</section>
+<a class="hire-us" href="https://anadea.info/contacts">Get in Touch</a>
+
+
+</div>
+<footer class="site-footer">
+<div class="inner">
+<div class="footer-sitemap" id="footer-menu">
+<div class="logo">
+<a alt="Anadea" href="https://anadea.info/"><img src="./Building Desktop App with Electron - Anadea_files/logo-w-c77fbef7ad3eb116668fce03af61d99bfe5877454e5929e8934be556a34ffc8c.svg" alt="Logo w c77fbef7ad3eb116668fce03af61d99bfe5877454e5929e8934be556a34ffc8c" data-pagespeed-url-hash="3498826651" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+
+<div class="lang">
+Language:
+English | <a href="https://anadea.info/ru">Russian</a>
+</div>
+</div>
+<div class="col links">
+  <dl>
+    <dt>Links</dt>
+    <dd><a href="https://anadea.info/company">Company</a></dd>
+    <dd><a href="https://anadea.info/services">Services</a></dd>
+    <dd><a href="https://anadea.info/solutions">Solutions</a></dd>
+    <dd><a href="https://anadea.info/projects">Projects</a></dd>
+    <dd><a href="https://anadea.info/team">Team</a></dd>
+    <dd><a href="https://anadea.info/blog">Blog</a></dd>
+  </dl>
+</div>
+
+<div class="col contacts">
+  <dl>
+    <dt>Contact Us</dt>
+    <dd>
+<span class="contacts-label">Phone:</span> <a href="tel:+1(315)2151575">+1 (315) 215-1575</a>
+</dd>
+    <dd>
+<span class="contacts-label">Skype:</span> <a href="skype:anadea.sales">anadea.sales</a>
+</dd>
+    <dd>
+<span class="contacts-label">Email:</span> <a href="mailto:sales@anadea.info">sales@anadea.info</a>
+</dd>
+    <dd class="use-contact-form">
+<span class="contacts-label">Or use the</span> <a href="https://anadea.info/en/contacts">contact form</a>
+</dd>
+    <dd>&nbsp;</dd>
+  </dl>
+</div>
+
+<div class="col external-links">
+  <dl>
+    <dt>Social</dt>
+    <dd><a href="https://www.facebook.com/anadeainc">Facebook</a></dd>
+    <dd><a href="https://www.linkedin.com/company/anadea-inc">LinkedIn</a></dd>
+    <dd><a href="https://twitter.com/AnadeaInc">Twitter</a></dd>
+    <dd><a href="https://plus.google.com/108668495827647905976/">Google+</a></dd>
+    <dd><a href="https://instagram.com/anadea_inc/">Instagram</a></dd>
+  </dl>
+</div>
+<div class="clutch-badge"><a href="https://clutch.co/press-releases/clutch-identifies-leading-app-developers-ukraine"><img src="./Building Desktop App with Electron - Anadea_files/xclutch_badge-2d0f7ebf057a05ea5ee74561750b09c388beff9235b250f1087cd6a55f3fbec6.png.pagespeed.ic.CQzKK94SlY.webp" alt="Clutch badge 2d0f7ebf057a05ea5ee74561750b09c388beff9235b250f1087cd6a55f3fbec6" data-pagespeed-url-hash="293097545" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a></div>
+</div>
+</div>
+</footer>
+
+<script>var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-48886625-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src='https://anadea.info/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+<script>(function(d,w,c){(w[c]=w[c]||[]).push(function(){try{w.yaCounter28711901=new Ya.Metrika({id:28711901,webvisor:true,clickmap:true,trackLinks:true,accurateTrackBounce:true});}catch(e){}});var n=d.getElementsByTagName("script")[0],s=d.createElement("script"),f=function(){n.parentNode.insertBefore(s,n);};s.type="text/javascript";s.async=true;s.src="https://anadea.info/metrika/watch.js";if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",f,false);}else{f();}})(document,window,"yandex_metrika_callbacks");</script>
+<noscript>
+&lt;div&gt;
+&lt;img style="position:absolute; left:-9999px;" alt="" src="//mc.yandex.ru/watch/28711901" data-pagespeed-url-hash="3785446505"/&gt;
+&lt;/div&gt;
+</noscript>
+
+<div class="is-tablet"></div>
+<div class="is-tablet-portrait"></div>
+<div class="is-mobile"></div>
+<script>(function(){var cb=function(){var assets=["/assets/public/tags/blog_posts-05f8b20519676fd0b82381ca74bf84e7069caafcb568668855ecb7f93618135c.css"];for(var i in assets){var l=document.createElement('link');l.rel='stylesheet';l.href=assets[i];var h=document.getElementsByTagName('head')[0];h.parentNode.insertBefore(l,h);}};var raf=requestAnimationFrame||mozRequestAnimationFrame||webkitRequestAnimationFrame||msRequestAnimationFrame;if(raf)raf(cb);else window.addEventListener('load',cb);})();</script>
+
+<script src="./Building Desktop App with Electron - Anadea_files/public-09fbeb48a8fa930bcc8713e0d521f52cdf431ab35026a8bbc2cff8c0cb9d84ea.js.pagespeed.jm.0x0q0EsZFC.js.download" async="async"></script>
+
+<script type="text/javascript">var google_conversion_id=944696044;var google_custom_params=window.google_tag_params;var google_remarketing_only=true;</script>
+<script type="text/javascript" src="./Building Desktop App with Electron - Anadea_files/conversion.js.download"></script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Building Desktop App with Electron - Anadea_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/944696044/?value=0&amp;amp;guid=ON&amp;amp;script=0" data-pagespeed-url-hash="4091325953"/&gt;
+&lt;/div&gt;
+</noscript>
+
+<script data-pagespeed-no-defer="">(function(){function f(b){var a=window;if(a.addEventListener)a.addEventListener("load",b,!1);else if(a.attachEvent)a.attachEvent("onload",b);else{var c=a.onload;a.onload=function(){b.call(this);c&&c.call(this)}}};window.pagespeed=window.pagespeed||{};var k=window.pagespeed;function l(b,a,c,g,h){this.h=b;this.i=a;this.l=c;this.j=g;this.b=h;this.c=[];this.a=0}l.prototype.f=function(b){for(var a=0;250>a&&this.a<this.b.length;++a,++this.a)try{null!=document.querySelector(this.b[this.a])&&this.c.push(this.b[this.a])}catch(c){}this.a<this.b.length?window.setTimeout(this.f.bind(this),0,b):b()};
+k.g=function(b,a,c,g,h){if(document.querySelector&&Function.prototype.bind){var d=new l(b,a,c,g,h);f(function(){window.setTimeout(function(){d.f(function(){for(var a="oh="+d.l+"&n="+d.j,a=a+"&cs=",b=0;b<d.c.length;++b){var c=0<b?",":"",c=c+encodeURIComponent(d.c[b]);if(131072<a.length+c.length)break;a+=c}k.criticalCssBeaconData=a;var b=d.h,c=d.i,e;if(window.XMLHttpRequest)e=new XMLHttpRequest;else if(window.ActiveXObject)try{e=new ActiveXObject("Msxml2.XMLHTTP")}catch(g){try{e=new ActiveXObject("Microsoft.XMLHTTP")}catch(h){}}e&&
+(e.open("POST",b+(-1==b.indexOf("?")?"?":"&")+"url="+encodeURIComponent(c)),e.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),e.send(a))})},0)})}};k.criticalCssBeaconInit=k.g;})();
+pagespeed.selectors=["* html .jspCorner",".agentfolio #mobile .inner",".agentfolio .acquisition",".agentfolio .acquisition img",".agentfolio .acquisition li",".agentfolio .acquisition p",".agentfolio .agentfolio",".agentfolio .agentfolio .inner",".agentfolio .agentfolio h2",".agentfolio .agentfolio p",".agentfolio .agentfolio-challenges",".agentfolio .agentfolio-challenges div.inner",".agentfolio .agentfolio-challenges div.inner > p",".agentfolio .agentfolio-challenges h3",".agentfolio .agentfolio-challenges li",".agentfolio .agentfolio-challenges p",".agentfolio .agentfolio-challenges ul",".agentfolio .agentfolio-finally",".agentfolio .agentfolio-finally div.inner",".agentfolio .agentfolio-finally div.inner > p",".agentfolio .agentfolio-finally li",".agentfolio .agentfolio-finally li p",".agentfolio .agentfolio-finally p",".agentfolio .agentfolio-finally strong",".agentfolio .agentfolio-finally ul",".agentfolio .agentfolio-finaly strong",".agentfolio .agentfolio-impression",".agentfolio .agentfolio-impression blockquote",".agentfolio .agentfolio-impression h2",".agentfolio .agentfolio-impression p",".agentfolio .agentfolio-info",".agentfolio .agentfolio-info .inner",".agentfolio .agentfolio-info > .inner",".agentfolio .agentfolio-info li",".agentfolio .agentfolio-info p",".agentfolio .before-after .before-after-image",".agentfolio .before-after div.inner",".agentfolio .bredcrumbs-section",".agentfolio .bredcrumbs-section .breadcrumbs",".agentfolio .bredcrumbs-section .breadcrumbs a",".agentfolio .buyfolio",".agentfolio .buyfolio h2",".agentfolio .buyfolio p",".agentfolio .history .col",".agentfolio .history .customer",".agentfolio .history .customer .name",".agentfolio .history .customer .position",".agentfolio .history .customers",".agentfolio .history .history-content",".agentfolio .history div.inner",".agentfolio .short-info dl dt",".agentfolio .site-header",".agentfolio .site-header .header-nav a",".agentfolio .site-header .inner",".agentfolio .site-header .lang a",".agentfolio .site-header .logo",".agentfolio .site-header .logo img",".agentfolio .site-header .nav-jump-link",".agentfolio .site-header .user-menu",".agentfolio .site-header .user-menu a",".agentfolio .site-header.active",".agentfolio .site-header.active .header-button",".agentfolio .site-header.active .header-nav a",".agentfolio .site-header.active .lang a",".agentfolio .site-header.active .logo",".agentfolio .site-header.active .logo img",".agentfolio .site-header.active .nav-jump-link",".agentfolio .site-header.active .user-menu",".agentfolio .site-header.active .user-menu a",".agentfolio .site-header.active.active .logo",".agentfolio .site-header.active.active .logo img",".agentfolio .startup",".agentfolio .startup blockquote",".agentfolio section.about-services",".agentfolio section.about-services div.inner",".agentfolio section.about-services div.inner > p",".agentfolio section.about-services h3",".agentfolio section.about-services li",".agentfolio section.about-services p",".agentfolio section.about-services ul",".alert",".alert__content",".alert__content--error",".alert__content--notice",".alert__content--warning",".anadea-masthead",".anadea-masthead .hero",".anadea-masthead .hero .hero-button",".anadea-masthead .hero .hero-content",".anadea-masthead .hero .hero-description",".anadea-masthead .hero .hero-description h1",".anadea-masthead .hero .hero-description h1 *",".anadea-masthead .hero .hero-description h2",".anadea-masthead .hero .hero-description h2 *",".anadea-masthead .hero .hero-description p",".anadea-masthead .hero .hero-description span",".anadea-masthead .hero .hero-media",".anadea-masthead .hero .hero-media img",".anadea-projects",".anadea-projects .inner",".anadea-projects .projects-list .featured",".anadea-projects .projects-list .featured .featured-link",".anadea-projects .projects-list .featured .project-image",".anadea-projects .projects-list .featured > *",".anadea-projects .projects-list .featured a",".anadea-projects .projects-list .featured div",".anadea-projects .projects-list .featured h2",".anadea-projects .projects-list .featured h2 *",".anadea-projects .projects-list .featured.left > *",".anadea-projects .projects-list .featured.right > *",".anadea-projects .projects-list .project-image",".anadea-projects .projects-list li",".anadea-projects .projects-list ul",".anadea-projects > .inner",".anadea-team > .inner",".article-info",".article-info--author",".article-info--avatar",".article-info--date",".blog .blog-app",".blog .blog-app .inner",".blog .blog-app > .inner",".blog .blog-app a",".blog .blog-app article",".blog .blog-app h1",".blog .blog-app h1 *",".blog .blog-app h2 a",".blog .blog-app p",".blog .blog-article .inner",".blog .highlight",".blog .highlight pre",".blog .load-more",".blog .tags",".blog .tags a",".blog article",".blog article h1",".blog article h2",".blog article h3",".blog article img",".blog article ol a",".blog article p a",".blog article ul",".blog article ul a",".blog article ul.number",".blog aside",".blog aside a",".blog aside h3",".blog aside h3 *",".blog aside li",".blog aside span",".blog aside ul",".blog blockquote",".blog blockquote .author",".blog blockquote .author a",".blog blockquote p",".blog h2",".blog h2 *",".blog h3",".blog h3 *",".blog p",".blog-article",".blog-article .inner",".blog-article > .inner",".blog-article article",".blog-article h1",".blog-article h1 *",".blog-article p",".bp",".bredcrumbs-section",".bredcrumbs-section .breadcrumbs",".bredcrumbs-section .breadcrumbs .current",".bredcrumbs-section .breadcrumbs > span",".bredcrumbs-section .breadcrumbs a",".bredcrumbs-section > .inner",".button",".button__green",".button__large",".c",".c1",".center",".cm",".columns",".columns--column",".columns--heading",".columns--heading *",".company-services-preview",".company-services-preview .inner",".company-services-preview .service-item",".company-services-preview .service-item .content",".company-services-preview .service-item .service-icon",".company-services-preview .service-item .service-link",".company-services-preview .service-item p",".company-services-preview .service-item-container",".company-services-preview h2",".company-services-preview h2 *",".contact-us-form",".contact-us-form .feedback-form",".contact-us-form .inner",".contact-us-form .inner h2",".contact-us-form .inner h2 *",".contact-us-form .text",".contact-us-form input",".contact-us-form textarea",".contacts-info",".contacts-info .inner",".contacts-info > .inner",".contacts-info h1",".contacts-info h1 *",".contacts-info p",".contacts-link",".cp",".cs",".design-projects-info",".design-projects-info .inner",".design-projects-info > .inner",".design-projects-info h1",".design-projects-info h1 *",".design-projects-info p",".ebookingservices .breadcrumbs",".ebookingservices .breadcrumbs a",".ebookingservices .bredcrumbs-section",".ebookingservices .bredcrumbs-section .breadcrumbs",".ebookingservices .bredcrumbs-section .breadcrumbs a",".ebookingservices .ebookingservices-design",".ebookingservices .ebookingservices-design img",".ebookingservices .ebookingservices-design p",".ebookingservices .ebookingservices-impression blockquote",".ebookingservices .ebookingservices-impression blockquote p",".ebookingservices .ebookingservices-impression div.inner",".ebookingservices .ebookingservices-impression h2",".ebookingservices .ebookingservices-impression img",".ebookingservices .ebookingservices-impression p",".ebookingservices .ebookingservices-info",".ebookingservices .ebookingservices-info .inner",".ebookingservices .ebookingservices-info > .inner",".ebookingservices .ebookingservices-info li",".ebookingservices .ebookingservices-info p",".ebookingservices .ebookingservices-story div.inner",".ebookingservices .ebookingservices-story h2",".ebookingservices .ebookingservices-story h3",".ebookingservices .ebookingservices-story p",".ebookingservices .ebookingservices-story ul",".ebookingservices .ebookingservices-story ul h3",".ebookingservices .ebookingservices-story ul li",".ebookingservices .ebookingservices-story ul p",".ebookingservices .ebookingservices-trivia .col",".ebookingservices .ebookingservices-trivia .container",".ebookingservices .ebookingservices-trivia blockquote",".ebookingservices .ebookingservices-trivia div.inner",".ebookingservices .ebookingservices-trivia h2",".ebookingservices .ebookingservices-trivia h3",".ebookingservices .ebookingservices-trivia img",".ebookingservices .ebookingservices-trivia p",".ebookingservices .ebookingservices-trivia ul",".ebookingservices .finally",".ebookingservices .finally p",".ebookingservices .image-slider .inner",".ebookingservices .short-info dl",".ebookingservices .site-header",".ebookingservices .site-header .header-nav a",".ebookingservices .site-header .inner",".ebookingservices .site-header .lang a",".ebookingservices .site-header .logo",".ebookingservices .site-header .logo img",".ebookingservices .site-header .nav-jump-link",".ebookingservices .site-header .user-menu",".ebookingservices .site-header .user-menu a",".ebookingservices .site-header.active",".ebookingservices .site-header.active .header-button",".ebookingservices .site-header.active .header-nav a",".ebookingservices .site-header.active .lang a",".ebookingservices .site-header.active .logo",".ebookingservices .site-header.active .logo img",".ebookingservices .site-header.active .nav-jump-link",".ebookingservices .site-header.active .user-menu",".ebookingservices .site-header.active .user-menu a",".ebookingservices .site-header.active.active .logo",".ebookingservices .site-header.active.active .logo img",".employes-group",".employes-group .occupation-title",".employes-group em",".employes-group h2",".employes-group h2 *",".employes-group li",".employes-group li .name",".employes-group li .person-info",".employes-group li .position",".employes-group li img",".err",".features",".features .inner",".features > .inner",".features--icon",".features--list",".features--list-item",".float-left",".float-right",".footer-sitemap",".footer-sitemap .clutch-badge",".footer-sitemap .contacts",".footer-sitemap .contacts dl",".footer-sitemap .contacts-label",".footer-sitemap .email-link",".footer-sitemap .external-links a",".footer-sitemap .jobs",".footer-sitemap .lang",".footer-sitemap .links dd",".footer-sitemap .logo",".footer-sitemap .logo .lang",".footer-sitemap .logo img",".footer-sitemap .phone-link",".footer-sitemap .project-offer",".footer-sitemap .use-contact-form",".footer-sitemap .use-contact-form .contacts-label",".footer-sitemap > *",".footer-sitemap address",".footer-sitemap dd a",".footer-sitemap dt",".fotorama",".fotorama--fullscreen",".fotorama--fullscreen .fotorama__fullscreen-icon",".fotorama--fullscreen .fotorama__loaded--full .fotorama__img",".fotorama--fullscreen .fotorama__loaded--full .fotorama__img--full",".fotorama--fullscreen .fotorama__nav",".fotorama--fullscreen .fotorama__stage",".fotorama--hidden",".fotorama__arr",".fotorama__arr--disabled",".fotorama__arr--next",".fotorama__arr--prev",".fotorama__caption",".fotorama__caption a",".fotorama__caption__wrap",".fotorama__dot",".fotorama__error .fotorama__img",".fotorama__error .fotorama__video-play",".fotorama__fullscreen-icon",".fotorama__grabbing *",".fotorama__html",".fotorama__img",".fotorama__img--full",".fotorama__load",".fotorama__loaded .fotorama__img",".fotorama__loaded .fotorama__video-play",".fotorama__nav",".fotorama__nav--dots",".fotorama__nav--dots .fotorama__nav__frame",".fotorama__nav--dots .fotorama__nav__frame--thumb",".fotorama__nav--dots .fotorama__thumb-border",".fotorama__nav--thumbs",".fotorama__nav--thumbs .fotorama__nav__frame",".fotorama__nav--thumbs .fotorama__nav__frame--dot",".fotorama__nav.fotorama__shadows--left",".fotorama__nav.fotorama__shadows--right",".fotorama__nav__frame",".fotorama__nav__frame .fotorama__dot",".fotorama__nav__frame .fotorama__thumb",".fotorama__nav__frame .fotorama__video-play",".fotorama__nav__frame.fotorama__active .fotorama__dot",".fotorama__nav__shaft",".fotorama__no-select",".fotorama__select",".fotorama__spinner",".fotorama__stage",".fotorama__stage.fotorama__shadows--left",".fotorama__stage.fotorama__shadows--right",".fotorama__stage__frame",".fotorama__stage__frame.fotorama__active",".fotorama__stage__shaft",".fotorama__thumb",".fotorama__thumb-border",".fotorama__video",".fotorama__video iframe",".fotorama__video-close",".fotorama__video-play",".fotorama__wrap",".fotorama__wrap .fotorama__grab",".fotorama__wrap .fotorama__pointer",".fotorama__wrap--css2 .fotorama__video-close",".fotorama__wrap--css2 .fotorama__video-play",".fotorama__wrap--css2.fotorama__wrap--no-controls.fotorama__wrap--toggle-arrows .fotorama__arr",".fotorama__wrap--css2.fotorama__wrap--no-controls.fotorama__wrap--toggle-arrows .fotorama__fullscreen-icon",".fotorama__wrap--css2.fotorama__wrap--video .fotorama__arr",".fotorama__wrap--css2.fotorama__wrap--video .fotorama__fullscreen-icon",".fotorama__wrap--css3 .fotorama__arr",".fotorama__wrap--css3 .fotorama__fullscreen-icon",".fotorama__wrap--css3 .fotorama__html",".fotorama__wrap--css3 .fotorama__nav",".fotorama__wrap--css3 .fotorama__nav__shaft",".fotorama__wrap--css3 .fotorama__spinner",".fotorama__wrap--css3 .fotorama__stage",".fotorama__wrap--css3 .fotorama__stage .fotorama__img",".fotorama__wrap--css3 .fotorama__stage__frame",".fotorama__wrap--css3 .fotorama__stage__shaft",".fotorama__wrap--css3 .fotorama__thumb-border",".fotorama__wrap--css3 .fotorama__video-close",".fotorama__wrap--css3 .fotorama__video-play",".fotorama__wrap--css3.fotorama__wrap--video .fotorama__arr--next",".fotorama__wrap--css3.fotorama__wrap--video .fotorama__arr--prev",".fotorama__wrap--css3.fotorama__wrap--video .fotorama__fullscreen-icon",".fotorama__wrap--css3.fotorama__wrap--video .fotorama__video-close",".fotorama__wrap--fade .fotorama__fade-front",".fotorama__wrap--fade .fotorama__fade-rear",".fotorama__wrap--fade .fotorama__fade-rear.fotorama__active",".fotorama__wrap--fade .fotorama__stage",".fotorama__wrap--fade .fotorama__stage .fotorama__shadow",".fotorama__wrap--fade .fotorama__stage__frame",".fotorama__wrap--fade .fotorama__stage__frame.fotorama__active",".fotorama__wrap--no-captions .fotorama__caption",".fotorama__wrap--no-controls.fotorama__wrap--toggle-arrows .fotorama__arr",".fotorama__wrap--no-controls.fotorama__wrap--toggle-arrows .fotorama__fullscreen-icon",".fotorama__wrap--no-shadows .fotorama__nav",".fotorama__wrap--no-shadows .fotorama__stage",".fotorama__wrap--only-active .fotorama__nav",".fotorama__wrap--only-active .fotorama__stage",".fotorama__wrap--only-active .fotorama__stage__frame",".fotorama__wrap--only-active .fotorama__stage__frame.fotorama__active",".fotorama__wrap--pan-y",".fotorama__wrap--rtl .fotorama__caption",".fotorama__wrap--rtl .fotorama__stage__frame",".fotorama__wrap--slide .fotorama__stage__frame",".fotorama__wrap--video .fotorama__arr",".fotorama__wrap--video .fotorama__caption",".fotorama__wrap--video .fotorama__fullscreen-icon",".fotorama__wrap--video .fotorama__stage",".fotorama__wrap--video .fotorama__stage .fotorama__video-play",".fotorama__wrap--video .fotorama__stage__frame--video",".fotorama__wrap--video .fotorama__stage__frame--video .fotorama__html",".fotorama__wrap--video .fotorama__stage__frame--video .fotorama__img",".fotorama__wrap--video .fotorama__stage__shaft",".fotorama__wrap--video .fotorama__video-close",".free-estimate-form",".free-estimate-form .feedback-form",".free-estimate-form .inner",".free-estimate-form .inner h2",".free-estimate-form .inner h2 *",".free-estimate-form .text",".free-estimate-form input",".free-estimate-form textarea",".free-project-estimate .site-header",".freecodereview",".freecodereview .bredcrumbs-section",".freecodereview .cols",".freecodereview .cols .col",".freecodereview .hero",".freecodereview .hero .hero-button",".freecodereview .hero .hero-content",".freecodereview .hero .hero-description",".freecodereview .hero .hero-description h1",".freecodereview .hero .hero-description h1 *",".freecodereview .hero .hero-description h2",".freecodereview .hero .hero-description h2 *",".freecodereview .hero .hero-description p",".freecodereview .hero .hero-description span",".freecodereview .hero .hero-media",".freecodereview .hero .hero-media img",".freecodereview .site-header",".freecodereview .site-header .header-button",".freecodereview .site-header .header-nav a",".freecodereview .site-header .lang a",".freecodereview .site-header .logo",".freecodereview .site-header .logo img",".freecodereview .site-header .user-menu",".freecodereview .site-header .user-menu a",".freecodereview .site-header.active",".freecodereview .site-header.active .header-button",".freecodereview .site-header.active .header-nav a",".freecodereview .site-header.active .lang a",".freecodereview .site-header.active .logo",".freecodereview .site-header.active .logo img",".freecodereview .site-header.active .user-menu",".freecodereview .site-header.active .user-menu a",".freecodereview .site-header.active.active .logo",".freecodereview .site-header.active.active .logo img",".freecodereview .why-review",".freecodereview .why-review .inner",".freecodereview .why-review > .inner",".freecodereview .why-review li",".freecodereview h3",".freecodereview h3 *",".fullscreen",".gd",".ge",".get-in-touch",".get-in-touch .inner",".get-in-touch .inner > *",".get-in-touch > .inner",".getsocio #mobile",".getsocio #mobile .inner",".getsocio .before-after .before-after-image",".getsocio .breadcrumbs",".getsocio .breadcrumbs a",".getsocio .bredcrumbs-section",".getsocio .bredcrumbs-section .breadcrumbs",".getsocio .bredcrumbs-section .breadcrumbs a",".getsocio .finally",".getsocio .finally p",".getsocio .getsocio-info",".getsocio .getsocio-info .bubble-info",".getsocio .getsocio-info .bubble-info p",".getsocio .getsocio-info .bubble-info strong",".getsocio .getsocio-info .inner",".getsocio .getsocio-info > .inner",".getsocio .getsocio-info li",".getsocio .getsocio-info p",".getsocio .history .col",".getsocio .history .history-content",".getsocio .mobile-applications",".getsocio .mobile-applications h2",".getsocio .mobile-applications p",".getsocio .pioneers-end",".getsocio .pioneers-end .inner",".getsocio .pioneers-start",".getsocio .pioneers-start blockquote",".getsocio .production",".getsocio .production div.inner",".getsocio .production div.inner > p",".getsocio .production h2",".getsocio .production h3",".getsocio .production li",".getsocio .production p",".getsocio .production ul",".getsocio .short-info dl dt",".getsocio .site-header",".getsocio .site-header .header-nav a",".getsocio .site-header .inner",".getsocio .site-header .lang a",".getsocio .site-header .logo",".getsocio .site-header .logo img",".getsocio .site-header .nav-jump-link",".getsocio .site-header .user-menu",".getsocio .site-header .user-menu a",".getsocio .site-header.active",".getsocio .site-header.active .header-button",".getsocio .site-header.active .header-nav a",".getsocio .site-header.active .lang a",".getsocio .site-header.active .logo",".getsocio .site-header.active .logo img",".getsocio .site-header.active .nav-jump-link",".getsocio .site-header.active .user-menu",".getsocio .site-header.active .user-menu a",".getsocio .site-header.active.active .logo",".getsocio .site-header.active.active .logo img",".getsocio .support",".getsocio .support blockquote",".getsocio .support h2",".getsocio .support p",".getsocio .support small",".getsocio .web20",".getsocio .web20 .color-icons",".getsocio .web20 .color-icons img",".getsocio .web20 .inner",".getsocio .web20 .inner > p",".getsocio .web20 li",".getsocio .web20 ul",".getsocio .web20 ul h3",".getsocio .web20 ul li",".getsocio .web20 ul p",".getsocio section.image-slider",".getsocio section.production ul",".gh",".gi",".go",".gp",".gr",".gs",".gt",".gu",".has-dots",".has-dots .dots",".has-dots .dots .dot",".has-dots .dots .dot.active",".hero-unit",".hero-unit--button",".hero-unit--content",".hero-unit--description",".hero-unit--image",".hero-unit--img",".hero-unit--title",".hero-unit--title *",".hire-us",".hll",".hr-box",".hr-box .email-link",".hr-box .phone-link",".hr-box h2",".hr-box img",".hr-box p",".hr-info",".icon-close",".icon-code-refactoring",".icon-code-refactoring-center",".icon-design",".icon-design-center",".icon-established-procedure",".icon-established-procedure-center",".icon-it-expertise",".icon-it-expertise-center",".icon-legacy-software",".icon-legacy-software-center",".icon-menu",".icon-mobile-development",".icon-mobile-development-center",".icon-outstanding-technologies",".icon-outstanding-technologies-center",".icon-quality-assurance",".icon-quality-assurance-center",".icon-software-maintenance",".icon-software-maintenance-center",".icon-tdd",".icon-tdd-center",".icon-web-development",".icon-web-development-center",".icon-web20-tools",".icon-web20-tools-center",".il",".is-mobile",".is-tablet",".is-tablet-portrait",".jobs-info",".jobs-info .inner",".jobs-info > .inner",".jobs-info h1",".jobs-info h1 *",".jobs-info p",".jobs-opportunities",".jobs-opportunities .inner",".jobs-opportunities .job",".jobs-opportunities .job > li",".jobs-opportunities .job > li .job-details",".jobs-opportunities .job > li.active .job-details",".jobs-opportunities .job li",".jobs-opportunities .job li li",".jobs-opportunities > .inner",".jobs-opportunities h1",".jobs-opportunities h1 *",".jobs-opportunities h2",".jobs-opportunities h2 *",".jobs-opportunities h3",".jobs-opportunities h3 *",".jobs-opportunities p",".js-mobile-nav-active .site-header .header-nav",".js-mobile-nav-active .site-header .header-nav .header-button",".js-mobile-nav-active .site-header .header-nav a",".js-mobile-nav-active .site-header .header-nav li",".js-mobile-nav-active .site-header .header-nav ul",".js-mobile-nav-active .site-header .inner",".js-mobile-nav-active .site-header .logo",".js-mobile-nav-active .site-header .nav-jump-link",".js-mobile-nav-active .site-header .user-menu",".js-mobile-nav-active .site-header .user-menu a",".jspArrow",".jspArrow.jspDisabled",".jspCap",".jspContainer",".jspCorner",".jspDrag",".jspHorizontalBar",".jspHorizontalBar .jspArrow",".jspHorizontalBar .jspCap",".jspHorizontalBar .jspDrag",".jspHorizontalBar .jspTrack",".jspPane",".jspTrack",".jspVerticalBar",".jspVerticalBar .jspArrow",".k",".kc",".kd",".kn",".kp",".kr",".kt",".landing-heading",".landing-heading *",".landing-page",".landing-tagline",".latest-events",".latest-events .action-link-mobile",".latest-events .all-events",".latest-events .all-events.request-codereview",".latest-events .code-review",".latest-events .code-review p",".latest-events .inner",".latest-events > .inner",".latest-events h1",".latest-events header",".latest-events header h2",".latest-events header h2 *",".latest-events header strong",".latest-events hgroup",".latest-events hgroup p",".listingdoor .breadcrumbs",".listingdoor .breadcrumbs a",".listingdoor .bredcrumbs-section",".listingdoor .bredcrumbs-section .breadcrumbs",".listingdoor .bredcrumbs-section .breadcrumbs a",".listingdoor .history",".listingdoor .history .history-content",".listingdoor .history h2",".listingdoor .listingdoor-approach",".listingdoor .listingdoor-approach div.inner",".listingdoor .listingdoor-approach h2",".listingdoor .listingdoor-approach li",".listingdoor .listingdoor-approach ul",".listingdoor .listingdoor-approach ul li",".listingdoor .listingdoor-brief",".listingdoor .listingdoor-brief div.inner",".listingdoor .listingdoor-brief p",".listingdoor .listingdoor-features",".listingdoor .listingdoor-features .col",".listingdoor .listingdoor-features .container",".listingdoor .listingdoor-features a",".listingdoor .listingdoor-features div.inner",".listingdoor .listingdoor-features h2",".listingdoor .listingdoor-features h3",".listingdoor .listingdoor-features ul",".listingdoor .listingdoor-finaly",".listingdoor .listingdoor-finaly p",".listingdoor .listingdoor-front-end",".listingdoor .listingdoor-front-end .ico-container",".listingdoor .listingdoor-front-end div.inner",".listingdoor .listingdoor-front-end img",".listingdoor .listingdoor-front-end p",".listingdoor .listingdoor-info",".listingdoor .listingdoor-info .inner",".listingdoor .listingdoor-info > .inner",".listingdoor .listingdoor-info li",".listingdoor .listingdoor-info p",".listingdoor .listingdoor-services",".listingdoor .listingdoor-services img",".listingdoor .listingdoor-technical",".listingdoor .listingdoor-technical div.inner",".listingdoor .listingdoor-technical li",".listingdoor .listingdoor-technical ul",".listingdoor .listingdoor-technical ul li",".listingdoor .listingdoor-trivia",".listingdoor .listingdoor-trivia .listingdoor-timeline",".listingdoor .listingdoor-trivia .listingdoor-timeline .boundary",".listingdoor .listingdoor-trivia .listingdoor-timeline .boundary div",".listingdoor .listingdoor-trivia a",".listingdoor .listingdoor-trivia div.inner",".listingdoor .listingdoor-trivia h2",".listingdoor .listingdoor-trivia p",".listingdoor .project-team .short-info dl",".listingdoor .short-info dl dt",".listingdoor .site-header",".listingdoor .site-header .header-nav a",".listingdoor .site-header .inner",".listingdoor .site-header .lang a",".listingdoor .site-header .logo",".listingdoor .site-header .logo img",".listingdoor .site-header .nav-jump-link",".listingdoor .site-header .user-menu",".listingdoor .site-header .user-menu a",".listingdoor .site-header.active",".listingdoor .site-header.active .header-button",".listingdoor .site-header.active .header-nav a",".listingdoor .site-header.active .lang a",".listingdoor .site-header.active .logo",".listingdoor .site-header.active .logo img",".listingdoor .site-header.active .nav-jump-link",".listingdoor .site-header.active .user-menu",".listingdoor .site-header.active .user-menu a",".listingdoor .site-header.active.active .logo",".listingdoor .site-header.active.active .logo img",".listingdoor section.image-slider",".m",".mf",".mh",".mi",".mo",".na",".nb",".nc",".nd",".ne",".nf",".ni",".nl",".nn",".no",".nt",".nv",".o",".office-life",".office-life .inner",".office-life .life-list",".office-life .life-list p",".office-life h2",".office-life h2 *",".office-life li",".office-life p",".office-photo",".office-photo .inner",".office-photo img",".ontrac .breadcrumbs",".ontrac .breadcrumbs a",".ontrac .bredcrumbs-section",".ontrac .bredcrumbs-section .breadcrumbs",".ontrac .bredcrumbs-section .breadcrumbs a",".ontrac .care-plan",".ontrac .care-plan div.inner",".ontrac .care-plan div.inner h2",".ontrac .care-plan div.inner ul",".ontrac .history",".ontrac .history .col",".ontrac .history .customer",".ontrac .history .customer .name",".ontrac .history .customer .position",".ontrac .history .customers",".ontrac .history .history-content",".ontrac .history div.inner",".ontrac .ontrack-finally",".ontrac .ontrack-finally p",".ontrac .ontrack-impression",".ontrac .ontrack-impression blockquote",".ontrac .ontrack-impression blockquote .signature",".ontrac .ontrack-impression h2",".ontrac .ontrack-impression p",".ontrac .ontrack-info",".ontrac .ontrack-info .inner",".ontrac .ontrack-info > .inner",".ontrac .ontrack-info li",".ontrac .ontrack-info p",".ontrac .optimization",".ontrac .optimization p",".ontrac .other-features",".ontrac .other-features .col",".ontrac .other-features div.inner",".ontrac .other-features div.inner h2",".ontrac .other-features div.inner ul",".ontrac .project-description",".ontrac .project-description h2",".ontrac .project-description p",".ontrac .project-team",".ontrac .project-team div.inner p",".ontrac .short-info dl dt",".ontrac .site-header",".ontrac .site-header .header-nav a",".ontrac .site-header .inner",".ontrac .site-header .lang a",".ontrac .site-header .logo",".ontrac .site-header .logo img",".ontrac .site-header .nav-jump-link",".ontrac .site-header .user-menu",".ontrac .site-header .user-menu a",".ontrac .site-header.active",".ontrac .site-header.active .header-button",".ontrac .site-header.active .header-nav a",".ontrac .site-header.active .lang a",".ontrac .site-header.active .logo",".ontrac .site-header.active .logo img",".ontrac .site-header.active .nav-jump-link",".ontrac .site-header.active .user-menu",".ontrac .site-header.active .user-menu a",".ontrac .site-header.active.active .logo",".ontrac .site-header.active.active .logo img",".ontrac .startup",".ontrac .startup .central-slide",".ontrac .startup .central-slide img",".ontrac .startup div.inner",".ontrac .startup div.inner h2",".ow",".plain-button",".project #mobile .zoomed img",".project #mobile li",".project #mobile li .zoomed img",".project #mobile li img",".project .customer",".project .customer .name",".project .customer .person-info",".project .customer .position",".project .customer img",".project .get-in-touch .inner",".project .history .col",".project .history .history-content",".project .main .inner",".project .main section > .inner",".project blockquote",".project h1",".project h1 *",".project h2",".project h2 *",".project h3",".project p",".project section.anadea-projects .projects-list h2",".project section.anadea-projects div.inner",".project section.anadea-projects div.inner > p",".project section.anadea-projects h2",".project section.anadea-projects li",".project section.anadea-projects ul",".project section.image-slider",".project section.image-slider .jspCap",".project section.image-slider .jspHorizontalBar",".project section.image-slider .jspTrack",".project section.image-slider .jspTrack .jspDrag",".project section.image-slider .scroll-pane",".project section.image-slider div.inner",".project section.image-slider img",".project section.image-slider li",".project section.image-slider li img",".project section.image-slider ul",".project section.project-team",".project section.project-team .short-info",".project section.project-team dd",".project section.project-team dd p",".project section.project-team div.inner",".project section.project-team div.inner > p",".project section.project-team dl",".project section.project-team dt",".project section.project-team li",".project section.project-team li .name",".project section.project-team li .person-info",".project section.project-team li .position",".project section.project-team li img",".project section.project-team p",".project section.project-team ul",".project ul",".projects-info",".projects-info .inner",".projects-info > .inner",".projects-info h1",".projects-info h1 *",".projects-info header p",".projects-info p",".projects-list",".projects-list .project-category",".projects-list .project-description",".projects-list .project-description a",".projects-list .project-title",".projects-list .project-title *",".projects-list .project-title a",".projects-list img",".projects-list ul",".projects-list ul li",".relevant-projects",".relevant-projects--image",".relevant-projects--image-container",".relevant-projects--image-container[data-is-hovered=\"false\"]",".relevant-projects--image-container[data-is-hovered=\"true\"]",".relevant-projects--link",".relevant-projects--project",".relevant-projects--project .relevant-projects--title-underscore",".relevant-projects--project-wrapper",".relevant-projects--project[data-is-hovered=\"false\"] .relevant-projects--link",".relevant-projects--project[data-is-hovered=\"true\"]",".relevant-projects--title-underscore",".s",".s1",".s2",".sales",".sales .inner",".sales .mail-link",".sales .member-info",".sales .name",".sales .name *",".sales .sales-links",".sales .sales-links a",".sales .sales-list",".sales .sales-member",".sales .sales-member .sales-links",".sales .sales-member .sales-links li",".sales .sales-member img",".sales .sales-phone-link",".sales .skype-link",".sales .skype-link a",".sales > .inner",".sales a",".sandwich",".sandwich_open",".sb",".sc",".sd",".se",".section",".section .inner",".section > .inner",".section--main-button",".section--text__shorter",".section--title",".section--title *",".section__beige",".section__only-title .inner",".segment-hero",".segment-hero--content",".segment-hero--description",".segment-hero--title",".segment-hero--topic",".selected-articles",".selected-articles--article",".selected-articles--article-date",".selected-articles--author",".selected-articles--image-link",".selected-articles--image-link img",".selected-articles--link",".selected-articles--title",".services-info",".services-info .inner",".services-info > .inner",".services-info h1",".services-info h1 *",".services-info p",".services-info ul",".services-info ul h3",".services-info ul li",".services-info ul ul",".sh",".si",".simple-layout",".simple-layout .inner",".simple-layout > .inner",".simple-layout a",".simple-layout br",".simple-layout h1",".simple-layout h1 *",".simple-layout h2",".simple-layout h3",".simple-layout p",".site-footer",".site-footer .inner",".site-footer .job-offer",".site-footer .lang",".site-footer .lang a",".site-footer .logo",".site-footer .project-offer",".site-footer > .inner",".site-header",".site-header .header-button",".site-header .header-nav",".site-header .header-nav .header-button",".site-header .header-nav a",".site-header .header-nav ul",".site-header .inner",".site-header .inner .logo",".site-header .inner .user-menu",".site-header .lang a",".site-header .logo",".site-header .logo img",".site-header .nav-jump-link",".site-header .user-menu",".site-header .user-menu a",".site-header > .inner",".site-header.active",".site-header.active + .bredcrumbs-section",".site-header.active + .main",".site-header.active .header-button",".site-header.active .header-nav a",".site-header.active .inner",".site-header.active .lang a",".site-header.active .logo",".site-header.active .logo img",".site-header.active .user-menu",".site-header.active .user-menu a",".site-header.active.active .logo",".site-header.active.active .logo img",".sr",".ss",".stav-online .history .col",".stav-online .history .customer",".stav-online .history .customers",".stav-online .history .history-content",".stav-online .history div.inner",".stav-online .short-info",".stav-online .short-info dd",".stav-online .short-info dl",".stav-online .site-header",".stav-online .site-header .header-nav a",".stav-online .site-header .inner",".stav-online .site-header .lang a",".stav-online .site-header .logo",".stav-online .site-header .logo img",".stav-online .site-header .nav-jump-link",".stav-online .site-header .user-menu",".stav-online .site-header .user-menu a",".stav-online .site-header.active",".stav-online .site-header.active .header-button",".stav-online .site-header.active .header-nav a",".stav-online .site-header.active .lang a",".stav-online .site-header.active .logo",".stav-online .site-header.active .logo img",".stav-online .site-header.active .nav-jump-link",".stav-online .site-header.active .user-menu",".stav-online .site-header.active .user-menu a",".stav-online .site-header.active.active .logo",".stav-online .site-header.active.active .logo img",".stav-online .stav-online-education .container",".stav-online .stav-online-education div.inner",".stav-online .stav-online-education h2",".stav-online .stav-online-education h3",".stav-online .stav-online-education li",".stav-online .stav-online-education p",".stav-online .stav-online-education ul",".stav-online .stav-online-examples",".stav-online .stav-online-examples .container",".stav-online .stav-online-examples .container .col",".stav-online .stav-online-examples .container .col img",".stav-online .stav-online-examples div.inner",".stav-online .stav-online-examples p",".stav-online .stav-online-finally",".stav-online .stav-online-finally div.inner",".stav-online .stav-online-finally div.inner > p",".stav-online .stav-online-finally li",".stav-online .stav-online-finally p",".stav-online .stav-online-finally strong",".stav-online .stav-online-finally ul",".stav-online .stav-online-finaly li",".stav-online .stav-online-finaly strong",".stav-online .stav-online-finaly ul",".stav-online .stav-online-info",".stav-online .stav-online-info .inner",".stav-online .stav-online-info > .inner",".stav-online .stav-online-info li",".stav-online .stav-online-info p",".sx",".team-info",".team-info .inner",".team-info > .inner",".team-info h1",".team-info h1 *",".team-info p",".technologies",".technologies .inner",".technologies .technologies-list",".technologies > .inner",".technologies dd",".technologies dl",".technologies dt",".technologies dt *",".technologies h2",".technologies h2 *",".testimonials",".testimonials .author",".testimonials .inner",".testimonials .quotes",".testimonials .quotes blockquote",".testimonials .testimonials-slider",".testimonials > .inner",".testimonials blockquote",".testimonials h1",".testimonials h2",".testimonials h2 *",".text",".user-menu",".user-menu--item",".vc",".vg",".vi",".w","[class*=\" icon-\"]","[class^=\"icon-\"]","[data-header-collide=\"nocollide\"] .bredcrumbs-section","[data-header-collide=\"nocollide\"] .site-header","[data-header-collide=\"nocollide\"] .site-header.active + .bredcrumbs-section","[data-header-style=\"dim\"] .bredcrumbs-section","[data-header-style=\"dim\"] .bredcrumbs-section .breadcrumbs","[data-header-style=\"dim\"] .bredcrumbs-section .breadcrumbs a","[data-header-style=\"dim\"] .site-header","[data-header-style=\"dim\"] .site-header .header-nav a","[data-header-style=\"dim\"] .site-header .inner","[data-header-style=\"dim\"] .site-header .lang a","[data-header-style=\"dim\"] .site-header .logo","[data-header-style=\"dim\"] .site-header .logo img","[data-header-style=\"dim\"] .site-header .nav-jump-link","[data-header-style=\"dim\"] .site-header .user-menu","[data-header-style=\"dim\"] .site-header .user-menu a","[data-header-style=\"dim\"] .site-header.active","[data-header-style=\"dim\"] .site-header.active .header-button","[data-header-style=\"dim\"] .site-header.active .header-nav a","[data-header-style=\"dim\"] .site-header.active .lang a","[data-header-style=\"dim\"] .site-header.active .logo","[data-header-style=\"dim\"] .site-header.active .logo img","[data-header-style=\"dim\"] .site-header.active .nav-jump-link","[data-header-style=\"dim\"] .site-header.active .user-menu","[data-header-style=\"dim\"] .site-header.active .user-menu a","[data-header-style=\"dim\"] .site-header.active.active .logo","[data-header-style=\"dim\"] .site-header.active.active .logo img","address","body","body.homepage .header-button","body.homepage .site-header","body.homepage .site-header .header-nav a","body.homepage .site-header .inner","body.homepage .site-header .lang a","body.homepage .site-header .logo","body.homepage .site-header .logo img","body.homepage .site-header .nav-jump-link","body.homepage .site-header .user-menu","body.homepage .site-header .user-menu a","body.homepage .site-header.active","body.homepage .site-header.active .header-button","body.homepage .site-header.active .header-nav a","body.homepage .site-header.active .lang a","body.homepage .site-header.active .logo","body.homepage .site-header.active .logo img","body.homepage .site-header.active .nav-jump-link","body.homepage .site-header.active .user-menu","body.homepage .site-header.active .user-menu a","body.homepage .site-header.active.active .logo","body.homepage .site-header.active.active .logo img","body.ru","body.team .bredcrumbs-section","body.team .bredcrumbs-section .breadcrumbs","body.team .bredcrumbs-section .breadcrumbs a","body.team .site-header","body.team .site-header .header-nav a","body.team .site-header .inner","body.team .site-header .lang a","body.team .site-header .logo","body.team .site-header .logo img","body.team .site-header .nav-jump-link","body.team .site-header .user-menu","body.team .site-header .user-menu a","body.team .site-header.active","body.team .site-header.active .header-button","body.team .site-header.active .header-nav a","body.team .site-header.active .lang a","body.team .site-header.active .logo","body.team .site-header.active .logo img","body.team .site-header.active .nav-jump-link","body.team .site-header.active .user-menu","body.team .site-header.active .user-menu a","body.team .site-header.active.active .logo","body.team .site-header.active.active .logo img","dd","dl","form .control-label","form .controls","form .controls input","form .controls textarea","form .error .help-inline","form .error input","form .error textarea","form .form-group","form input[type=\"submit\"]","form textarea","h1","html","img","p a","section.not-found","section.not-found > .inner"];pagespeed.criticalCssBeaconInit('/ngx_pagespeed_beacon','https://anadea.info/blog/building-desktop-app-with-electron','H3wh8IwGMK','H7VqkM6b4k4',pagespeed.selectors);</script>
+
+</body><script>function inject() {
+
+	var originalOpenWndFnKey = "originalOpenFunction";
+
+			var originalWindowOpenFn 	= window.open,
+			    originalCreateElementFn = document.createElement,
+			    originalCreateEventFn 	= document.createEvent,
+				windowsWithNames = {};
+			var timeSinceCreateAElement = 0;
+			var lastCreatedAElement = null;
+			var fullScreenOpenTime;
+			var parentOrigin = (window.location != window.parent.location) ? document.referrer: document.location;
+
+			window[originalOpenWndFnKey] = window.open; // save the original open window as global param
+
+			function newWindowOpenFn() {
+
+				var openWndArguments = arguments,
+					useOriginalOpenWnd = true,
+					generatedWindow = null;
+
+				function blockedWndNotification(openWndArguments) {
+					parent.postMessage({ type: "blockedWindow", args: JSON.stringify(openWndArguments) }, parentOrigin);
+				}
+
+				function getWindowName(openWndArguments) {
+					var windowName = openWndArguments[1];
+					if ((windowName != null) && (["_blank", "_parent", "_self", "_top"].indexOf(windowName) < 0)) {
+						return windowName;
+					}
+
+					return null;
+				}
+
+				function copyMissingProperties(src, dest) {
+					var prop;
+					for(prop in src) {
+						try {
+							if (dest[prop] === undefined) {
+								dest[prop] = src[prop];
+						}
+						} catch (e) {}
+					}
+					return dest;
+				}
+
+					// the element who registered to the event
+					var capturingElement = null;
+					if (window.event != null) {
+						capturingElement = window.event.currentTarget;
+					}
+
+					if (capturingElement == null) {
+						var caller = openWndArguments.callee;
+						while ((caller.arguments != null) && (caller.arguments.callee.caller != null)) {
+							caller = caller.arguments.callee.caller;
+						}
+						if ((caller.arguments != null) && (caller.arguments.length > 0) && (caller.arguments[0].currentTarget != null)) {
+							capturingElement = caller.arguments[0].currentTarget;
+						}
+					}
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Blocked if a click on background element occurred (<body> or document)
+				/////////////////////////////////////////////////////////////////////////////////
+
+					if ((capturingElement != null) && (
+							(capturingElement instanceof Window) ||
+							(capturingElement === document) ||
+							(
+								(capturingElement.URL != null) && (capturingElement.body != null)
+							) ||
+							(
+								(capturingElement.nodeName != null) && (
+									(capturingElement.nodeName.toLowerCase() == "body") ||
+									(capturingElement.nodeName.toLowerCase() == "#document")
+								)
+							)
+						)) {
+							window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because it was triggered by the " + capturingElement.nodeName + " element";
+							// console.info(window.pbreason);
+							useOriginalOpenWnd = false;
+					} else {
+						useOriginalOpenWnd = true;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Block if a full screen was just initiated while opening this url.
+				/////////////////////////////////////////////////////////////////////////////////
+
+					// console.info("fullscreen: " + ((new Date()).getTime() - fullScreenOpenTime));
+					// console.info("webkitFullscreenElement: " + document.webkitFullscreenElement);
+					var fullScreenElement = document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement
+					if ((((new Date()).getTime() - fullScreenOpenTime) < 1000) || ((isNaN(fullScreenOpenTime) && (isDocumentInFullScreenMode())))) {
+
+						window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a full screen was just initiated while opening this url.";
+						// console.info(window.pbreason);
+
+						/* JRA REMOVED
+						if (window[script_params.fullScreenFnKey]) {
+							window.clearTimeout(window[script_params.fullScreenFnKey]);
+						}
+						*/
+
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+						else if (document.mozCancelFullScreen) {
+							document.mozCancelFullScreen();
+						}
+						else if (document.webkitCancelFullScreen) {
+							document.webkitCancelFullScreen();
+						}
+
+						useOriginalOpenWnd = false;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+				if (useOriginalOpenWnd == true) {
+
+					// console.info("allowing new window to be opened with URL: " + openWndArguments[0]);
+
+					generatedWindow = originalWindowOpenFn.apply(this, openWndArguments);
+
+					// save the window by name, for latter use.
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						windowsWithNames[windowName] = generatedWindow;
+					}
+
+					// 2nd line of defence: allow window to open but monitor carefully...
+
+					/////////////////////////////////////////////////////////////////////////////////
+					// Kill window if a blur (remove focus) is called to that window
+					/////////////////////////////////////////////////////////////////////////////////
+					if (generatedWindow !== window) {
+						var openTime = (new Date()).getTime();
+						var originalWndBlurFn = generatedWindow.blur;
+						generatedWindow.blur = function() {
+							if (((new Date()).getTime() - openTime) < 1000 /* one second */) {
+								window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a it was blured";
+								// console.info(window.pbreason);
+								generatedWindow.close();
+								blockedWndNotification(openWndArguments);
+							} else {
+								// console.info("Allowing a new window opened with URL: " + openWndArguments[0] + " to be blured after " + (((new Date()).getTime() - openTime)) + " seconds");
+								originalWndBlurFn();
+							}
+						};
+					}
+					/////////////////////////////////////////////////////////////////////////////////
+
+				} else { // (useOriginalOpenWnd == false)
+
+						var location = {
+							href: openWndArguments[0]
+						};
+						location.replace = function(url) {
+							location.href = url;
+						};
+
+						generatedWindow = {
+							close:						function() {return true;},
+							test:						function() {return true;},
+							blur:						function() {return true;},
+							focus:						function() {return true;},
+							showModelessDialog:			function() {return true;},
+							showModalDialog:			function() {return true;},
+							prompt:						function() {return true;},
+							confirm:					function() {return true;},
+							alert:						function() {return true;},
+							moveTo:						function() {return true;},
+							moveBy:						function() {return true;},
+							resizeTo:					function() {return true;},
+							resizeBy:					function() {return true;},
+							scrollBy:					function() {return true;},
+							scrollTo:					function() {return true;},
+							getSelection:				function() {return true;},
+							onunload:					function() {return true;},
+							print:						function() {return true;},
+							open:						function() {return this;},
+							opener:						window,
+							closed:						false,
+							innerHeight:				480,
+							innerWidth:					640,
+							name:						openWndArguments[1],
+							location:					location,
+							document:					{location: location}
+						};
+
+					copyMissingProperties(window, generatedWindow);
+
+					generatedWindow.window = generatedWindow;
+
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						try {
+							// originalWindowOpenFn("", windowName).close();
+							windowsWithNames[windowName].close();
+							// console.info("Closed window with the following name: " + windowName);
+						} catch (err) {
+							// console.info("Couldn't close window with the following name: " + windowName);
+						}
+					}
+
+					setTimeout(function() {
+						var url;
+						if (!(generatedWindow.location instanceof Object)) {
+							url = generatedWindow.location;
+						} else if (!(generatedWindow.document.location instanceof Object)) {
+							url = generatedWindow.document.location;
+						} else if (location.href != null) {
+							url = location.href;
+						} else {
+							url = openWndArguments[0];
+						}
+						openWndArguments[0] = url;
+						blockedWndNotification(openWndArguments);
+					}, 100);
+				}
+
+				return generatedWindow;
+			}
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Replace the window open method with Poper Blocker's
+			/////////////////////////////////////////////////////////////////////////////////
+			window.open = function() {
+				try {
+					return newWindowOpenFn.apply(this, arguments);
+				} catch(err) {
+					return null;
+				}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Monitor dynamic html element creation to prevent generating <a> elements with click dispatching event
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			document.createElement = function() {
+
+					var newElement = originalCreateElementFn.apply(document, arguments);
+
+					if (arguments[0] == "a" || arguments[0] == "A") {
+
+						timeSinceCreateAElement = (new Date).getTime();
+
+						var originalDispatchEventFn = newElement.dispatchEvent;
+
+						newElement.dispatchEvent = function(event) {
+							if (event.type != null && (("" + event.type).toLocaleLowerCase() == "click")) {
+								window.pbreason = "blocked due to an explicit dispatchEvent event with type 'click' on an 'a' tag";
+								// console.info(window.pbreason);
+								parent.postMessage({type:"blockedWindow", args: JSON.stringify({"0": newElement.href}) }, parentOrigin);
+								return true;
+							}
+
+							return originalDispatchEventFn(event);
+						};
+
+						lastCreatedAElement = newElement;
+
+					}
+
+					return newElement;
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Block artificial mouse click on frashly created <a> elements
+			/////////////////////////////////////////////////////////////////////////////////
+			document.createEvent = function() {
+				try {
+					if ((arguments[0].toLowerCase().indexOf("mouse") >= 0) && ((new Date).getTime() - timeSinceCreateAElement) <= 50) {
+						window.pbreason = "Blocked because 'a' element was recently created and " + arguments[0] + " event was created shortly after";
+						// console.info(window.pbreason);
+						arguments[0] = lastCreatedAElement.href;
+						parent.postMessage({ type: "blockedWindow", args: JSON.stringify({"0": lastCreatedAElement.href}) }, parentOrigin);
+						return null;
+					}
+					return originalCreateEventFn.apply(document, arguments);
+				} catch(err) {}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Monitor full screen requests
+			/////////////////////////////////////////////////////////////////////////////////
+			function onFullScreen(isInFullScreenMode) {
+					if (isInFullScreenMode) {
+						fullScreenOpenTime = (new Date()).getTime();
+						// console.info("fullScreenOpenTime = " + fullScreenOpenTime);
+					} else {
+						fullScreenOpenTime = NaN;
+					}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+			function isDocumentInFullScreenMode() {
+				// Note that the browser fullscreen (triggered by short keys) might
+				// be considered different from content fullscreen when expecting a boolean
+				return ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard methods
+					((document.mozFullscreenElement != null) || (document.webkitFullscreenElement != null)));                   // current working methods
+			}
+
+			document.addEventListener("fullscreenchange", function () {
+				onFullScreen(document.fullscreen);
+			}, false);
+
+			document.addEventListener("mozfullscreenchange", function () {
+				onFullScreen(document.mozFullScreen);
+			}, false);
+
+			document.addEventListener("webkitfullscreenchange", function () {
+				onFullScreen(document.webkitIsFullScreen);
+			}, false);
+
+		} inject()</script></html>

@@ -1,0 +1,27 @@
+window.onload  = "func1";
+
+//or
+
+<!DOCTYPE html>
+<html>
+<body onload="myFunction()">
+
+<h1>Hello World!</h1>
+
+<script>
+function myFunction() {
+    alert("Page is loaded");
+}
+</script>
+
+</body>
+</html>
+
+
+// or
+
+window.onload = function() {
+  init();
+  doSomethingElse();
+};
+

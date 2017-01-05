@@ -1,0 +1,19 @@
+auto run .inf file only work for cd-rom and usb device
+
+it is windows configuration
+
+example:  Autorun.inf
+
+   [autorun] 
+open=Filename.exe 
+icon=Filename.exe
+
+ACTION=Start my application
+LABEL=My Drive
+
+UseAutoPlay=1
+
+This Autorun.inf sample runs different startup applications depending on the type of computer.
+
+search in google: 
+     How to Implement AutoRun Startup Applications

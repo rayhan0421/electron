@@ -1,0 +1,4 @@
+function myAwesomeFunc(){
+    // some awesome functionality when window loads
+}
+window.onload = myAwesomeFunc;

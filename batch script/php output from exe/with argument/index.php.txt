@@ -1,0 +1,5 @@
+
+<?php
+$answer= system('tt.exe 2015asd',$f);
+
+?>

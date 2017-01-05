@@ -1,0 +1,15 @@
+
+<?php
+$answer = shell_exec("abc.exe");
+echo $answer."</br>"; 
+
+?>
+
+
+# system retun two output
+<?php 
+
+$d= system('t.exe', $answer);
+// $answer is a return value 
+echo $answer."</br>".$d;
+?>

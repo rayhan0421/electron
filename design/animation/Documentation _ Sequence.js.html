@@ -1,0 +1,610 @@
+<!DOCTYPE html><html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js"><head><link rel="stylesheet" type="text/css" href="http://www.sequencejs.com/wp-content/cache/minify/000000/158d0/default.include.0aa515.css" media="all" /><script type="text/javascript" src="http://www.sequencejs.com/wp-content/cache/minify/000000/158d0/default.include.02fc3a.js"></script><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="profile" href="http://gmpg.org/xfn/11"><link rel="pingback" href="http://www.sequencejs.com/xmlrpc.php"><link rel="shortcut icon" href="http://www.sequencejs.com/wp-content/themes/sequence/favicon.ico" /><link rel="apple-touch-icon" href="http://www.sequencejs.com/wp-content/themes/sequence/touch-icon.png" /><title>Documentation | Sequence.js</title><link rel="canonical" href="http://www.sequencejs.com/documentation/" /><meta property="og:locale" content="en_US" /><meta property="og:type" content="article" /><meta property="og:title" content="Documentation | Sequence.js" /><meta property="og:description" content="Introduction Sequence.js is a JavaScript library that provides a responsive CSS framework for creating unique sliders, presentations, banners, and other step-based applications. This documentation can be treated as both a tutorial and reference. If this is your first time using Sequence.js, to get a good understanding of how it works, we recommend you read down &hellip;" /><meta property="og:url" content="http://www.sequencejs.com/documentation/" /><meta property="og:site_name" content="Sequence.js" /><meta property="og:image" content="http://www.sequencejs.com/images/documentation/tutorial-canvas-animation.gif" /><meta property="og:image" content="http://www.sequencejs.com/images/documentation/basic-theme-styled.gif" /><meta property="og:image" content="http://www.sequencejs.com/images/documentation/basic-theme-animated.gif" /><meta property="og:image" content="http://www.sequencejs.com/images/documentation/side-by-side.png" /><meta property="og:image" content="http://www.sequencejs.com/images/documentation/top-to-bottom.png" /><meta property="og:image" content="http://www.sequencejs.com/images/documentation/no-layout.png" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:description" content="Introduction Sequence.js is a JavaScript library that provides a responsive CSS framework for creating unique sliders, presentations, banners, and other step-based applications. This documentation can be treated as both a tutorial and reference. If this is your first time using Sequence.js, to get a good understanding of how it works, we recommend you read down [&hellip;]" /><meta name="twitter:title" content="Documentation | Sequence.js" /><meta name="twitter:site" content="@IanLunn" /><meta name="twitter:image" content="http://www.sequencejs.com/images/documentation/tutorial-canvas-animation.gif" /><meta name="twitter:creator" content="@IanLunn" /> <script type='text/javascript' src='http://www.sequencejs.com/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script><link rel='https://api.w.org/' href='http://www.sequencejs.com/wp-json/' /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.sequencejs.com/xmlrpc.php?rsd" /><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.sequencejs.com/wp-includes/wlwmanifest.xml" /><meta name="generator" content="WordPress 4.4.2" /><meta name="generator" content="WooCommerce 2.3.13" /><link rel='shortlink' href='http://www.sequencejs.com/?p=707' /><link rel="alternate" type="application/json+oembed" href="http://www.sequencejs.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.sequencejs.com%2Fdocumentation%2F" /><link rel="alternate" type="text/xml+oembed" href="http://www.sequencejs.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.sequencejs.com%2Fdocumentation%2F&#038;format=xml" /><link href='//fonts.googleapis.com/css?family=Ubuntu:500,400,300,700|Montserrat:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><!--[if lt IE 9]><script type="text/javascript" src="http://www.sequencejs.com/wp-content/themes/sequence/scripts/legacy/selectivizr-min.js"></script><script src="http://www.sequencejs.com/wp-content/themes/sequence/scripts/legacy/respond.min.js"></script><![endif]--><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-11991680-3');ga('send','pageview');</script></head><body lang="en" class="page page-id-707 page-template-default"> <!--[if lt IE 10]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Sequence.js Themes will use the <a href="http://www.sequencejs.com/documentation/#browser-support-and-fallback-mode" title="Browser Support and Fallback Mode">Fallback Theme</a>. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]--><header id="menu" class="header" role="banner"><div class="container valign"><div> <object class="logo header__logo" type="image/svg+xml" data="http://www.sequencejs.com/wp-content/themes/sequence/images/logo__sequence.svg" width="180" height="35"> <a href="/"> <img src="http://www.sequencejs.com/wp-content/themes/sequence/images/logo__sequence.png" alt="Sequence.js" /> </a> </object><a href="#menu" class="menu-button" id="menu-button" role="button"> <span class="menu-button__lines"></span> </a></div><nav class="nav nav--inline"><div class="nav__menu"><div class="cart-tab"> <a href="http://www.sequencejs.com/cart/" title="View your cart"><i class="fa fa-shopping-cart"></i>My Cart</a> <a class="cart-tab__checkout" href="http://www.sequencejs.com/checkout/" title="Purchase your items">Checkout →</a></div><div class="nav__links valign"><ul><li ><a href="http://www.sequencejs.com/themes/" title="Ready-made Sequence.js themes">Themes</a></li><li class="current"><a href="http://www.sequencejs.com/documentation/" title="How to use Sequence.js">Documentation</a></li><li ><a href="http://www.sequencejs.com/licenses/" title="Sequence.js Terms of Use">Licenses</a></li><li ><a href="http://www.sequencejs.com/download/" title="Download Sequence.js">Download <i class="fa fa-arrow-circle-down"></i></a></li></ul></div></div> </nav></div> </header><main role="main"><div class="container"><div class="three-up group"><div class="sidebar column four"><div class="ad carbon-ad"><p class="carbon-ad-label">Advertisement:</p><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=sequencejscom" id="_carbonads_js"></script></div><aside id="table-of-contents" class="drawer drawer--boxed"> <a href="#table-of-contents" class="drawer__toggle" role="button"> <i class="fa fa-chevron-down"></i> </a><h2 class="drawer__title">Table of Contents</h2><div class="drawer__content"><div class="menu-documentation-toc-container"><ul id="menu-documentation-toc" class="menu"><li id="menu-item-1807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1807"><a href="#introduction">Introduction</a></li><li id="menu-item-1932" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1932"><a href="#download-sequence">Download Sequence</a><ul class="sub-menu"><li id="menu-item-1933" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1933"><a href="#package-contents">Package Contents</a></li></ul></li><li id="menu-item-1934" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1934"><a href="#setting-up-a-theme">Setting Up a Theme</a><ul class="sub-menu"><li id="menu-item-1935" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1935"><a href="#add-sequence">Add Sequence</a></li><li id="menu-item-1936" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1936"><a href="#add-html-structure">Add HTML (Structure)</a></li><li id="menu-item-1937" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1937"><a href="#add-content">Add Content</a></li><li id="menu-item-1938" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1938"><a href="#add-styles">Add Styles</a></li></ul></li><li id="menu-item-1939" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1939"><a href="#animation">Animation</a><ul class="sub-menu"><li id="menu-item-1940" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1940"><a href="#animating-content">Animating Content</a></li><li id="menu-item-1941" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1941"><a href="#animating-the-canvas">Animating the Canvas</a></li></ul></li><li id="menu-item-1942" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1942"><a href="#browser-support-and-fallback-mode">Browser Support and Fallback Mode</a></li><li id="menu-item-1943" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1943"><a href="#options">Options</a><ul class="sub-menu"><li id="menu-item-1944" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1944"><a href="#general">General</a></li><li id="menu-item-1945" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1945"><a href="#canvas-animation">Canvas Animation</a></li><li id="menu-item-1946" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1946"><a href="#autoplay">Autoplay</a></li><li id="menu-item-1947" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1947"><a href="#navigation-skipping">Navigation Skipping</a></li><li id="menu-item-1948" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1948"><a href="#user-interface">User Interface</a></li><li id="menu-item-1949" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1949"><a href="#styling-states">Styling States</a></li><li id="menu-item-1950" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1950"><a href="#keyboard">Keyboard</a></li><li id="menu-item-1951" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1951"><a href="#touch-swipe">Touch Swipe</a></li><li id="menu-item-1952" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1952"><a href="#hash-tags">Hash Tags</a></li><li id="menu-item-1953" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1953"><a href="#fallback-mode">Fallback Mode</a></li></ul></li><li id="menu-item-1954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1954"><a href="#api">API</a><ul class="sub-menu"><li id="menu-item-1955" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1955"><a href="#callbacks">Callbacks</a></li><li id="menu-item-1956" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1956"><a href="#methods">Methods</a></li><li id="menu-item-1957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1957"><a href="#properties">Properties</a></li></ul></li><li id="menu-item-1996" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1996"><a href="http://www.sequencejs.com/developers/browser-support/">Browser Support</a></li><li id="menu-item-1997" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1997"><a href="http://www.sequencejs.com/developers/third-party-library-support/">Third Party Library Support</a></li><li id="menu-item-1999" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1999"><a href="http://www.sequencejs.com/developers/using-require/">Loading Sequence.js via Require.js</a></li><li id="menu-item-2000" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2000"><a href="http://www.sequencejs.com/developers/yeoman-theme-generator/">Generating Themes with Yeoman</a></li></ul></div></div> </aside></div><div class="column one column--blank layout7"></div><section class="column ten"> <article id="post-707" class="post-707 page type-page status-publish hentry"><header class="header-set"><h1 class="entry-title">Documentation</h1><p>Learn how to use Sequence.js and create your own theme</p> </header><div class="entry-content"><h2><a name="introduction"></a>Introduction</h2><p>Sequence.js is a JavaScript library that provides a responsive CSS framework for creating unique sliders, presentations, banners, and other step-based applications.</p><p>This documentation can be treated as both a tutorial and reference. If this is your first time using Sequence.js, to get a good understanding of how it works, we recommend you read down to <a href="#options">Options</a> and copy the provided code examples into your own files. As you make your way through the documentation, you will build up a simple version of the Sequence.js <a href="http://demo.sequencejs.com/basic/">Basic Theme</a> to best demonstrate Sequence.js&#8217; use.</p><p>If you&#8217;d rather just choose a theme that you can easily customize and add your own content to, visit the Sequence.js <a href="http://sequencejs.com/">Theme Store</a> for pre-built <a href="http://www.sequencejs.com/themes/category/free/">free</a> and <a href="http://www.sequencejs.com/themes/category/premium/">premium themes</a>. Should you wish to modify the animations of a theme, head to <a href="#animation">Animation</a>.</p><p>Let&#8217;s get started.</p><h2><a name="download-sequence"></a>Download Sequence.js</h2><ul><li><a href="/download/">Download Sequence.js</a></li></ul><p>Sequence.js can also be installed using the <a href="http://bower.io/">Bower</a> command:</p><pre><code>bower install sequencejs
+</code></pre><p>or <a href="https://www.npmjs.org/">NPM</a>:</p><pre><code>npm install sequencejs
+</code></pre><h3><a name="package-contents"></a>Package Contents</h3><p>Some directories and files in the package that you may want to familiarize yourself with:</p><ul><li><code>index.html</code>: Demonstrates Sequence.js&#8217; Basic Theme</li><li>scripts:<ul><li><code>sequence.js</code>: Production ready, unminified version of Sequence.js</li><li><code>sequence.min.js</code>: Production ready, minified version of Sequence.js</li></ul></li><li>src:<ul><li><code>sequence.js</code>: Development version of Sequence.js</li></ul></li><li><code>Gruntfile.js</code>: Provides a production environment. See <a href="/using-grunt/">Using Grunt</a>.</li></ul><h2><a name="setting-up-a-theme"></a>Setting Up a Theme</h2><p>Setting up a theme consists of:</p><ol><li><a href="#add-sequence">adding Sequence.js&#8217; JavaScript</a> and <a href="#add-html-structure">HTML structure</a> to the page</li><li><a href="#add-content">adding your content</a> and <a href="#add-styles">styling it</a></li><li><a href="#animation">animating</a> the canvas and/or content, and <a href="#watch-elements">telling Sequence.js which elements to watch</a></li></ol><h3><a name="add-sequence"></a>Add Sequence.js</h3><p>To add the Sequence.js library, place a link to Sequence.js, its third-party files, and the theme options file just before the &#8220; element in your HTML page:</p><pre><code class="html">&lt;script src="scripts/imagesloaded.pkgd.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/hammer.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/sequence.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/sequence-theme.basic.js"&gt;&lt;/script&gt;
+</code></pre><p><strong>Note #1</strong>: <code>imagesloaded.pkgd.min.js</code> and <code>hammer.min.js</code> provide functionality for Sequence.js&#8217; <a href="#preloader">preloader</a> and <a href="#touch-swipe">touch</a> features. These files are optional and can be omitted should you choose not to use these features. You may like to disable these features via <a href="#options">Sequence.js&#8217; options</a> but the absence of third-party files will disable them automatically.</p><p><strong>Note #2</strong>: Where appropriate, you can instead place these scripts in the <code>&lt;head&gt;&lt;/head&gt;</code> of your page within a <code>window.onload</code> function or jQuery&#8217;s <code>$(document).ready()</code>.</p><p><strong>RequireJS Support</strong>: Sequence.js supports AMD and as such, it and its dependencies can be loaded via <a href="http://requirejs.org/">requireJS</a>. <a href="http://sequencejs.com/developers/using-require/">See an example here</a>.</p><p>Code specific to official Sequence.js themes will be placed in an <em>options</em> file with the naming convention <code>sequence-theme.&lt;theme -name&gt;.js</code>. Code inside an <em>options</em> file initiates Sequence.js, changes its default settings, and customizes Sequence.js where necessary via its <a href="#api">API</a>.</p><p>Initiate Sequence.js like so (in <code>scripts/sequence-theme.basic.js</code> for example):</p><pre><code class="javascript">  // Get the Sequence element
+  var sequenceElement = document.getElementById("sequence");
+
+  var options = {
+    // Place your Sequence options here to override defaults
+    // See: http://sequencejs.com/documentation/#options
+    keyNavigation: true,
+    fadeStepWhenSkipped: false
+  }
+
+  // Launch Sequence on the element, and with the options we specified above
+  var mySequence = sequence(sequenceElement, options);
+</code></pre><p>With this code, the HTML element that Sequence.js will be attached to <code>&lt;div id="sequence"&gt;&lt;/div&gt;</code> has been saved (<a href="#add-html-structure">HTML</a> will be added in a moment), and Sequence.js has been initiated.</p><p>The instance of Sequence.js has been saved into a variable (<code>var</code>) called <code>mySequence</code>. The variable name is entirely of your choosing and, if necessary, will allow you to interact with Sequence.js via custom JavaScript which is explained in <a href="#api">API</a>.</p><p>The Sequence.js function <code>sequence()</code>, accepts an HTML element and options as its arguments. The HTML element is required, but if you don&#8217;t want to change Sequence.js&#8217; default options, you can ignore the <code>options</code> argument altogether, like this <code>var mySequence = sequence(sequenceElement)</code>.</p><p>The above code example turns on the <a href="#keynavigation">keyNavigation</a> feature to enable users to control navigation between steps via the keyboard&#8217;s left and right arrow keys. This is useful during development of a Sequence.js theme as you can quickly navigate between steps. More on customizing Sequence.js&#8217; functionality using <a href="#options">Options</a> later.</p><p>It is possible to place multiple instances of Sequence.js on the same page, like so:</p><pre><code class="javascript">  var sequenceElement1 = document.getElementById("sequence1");
+  var sequenceElement2 = document.getElementById("sequence2");
+
+  var mySequence1 = sequence(sequenceElement1);
+  var mySequence2 = sequence(sequenceElement2);
+</code></pre><p>Here the page will have two instances of Sequence.js, one attached to <code>&lt;div id="sequence1"&gt;&lt;/div&gt;</code>, the other <code>&lt;div id="sequence2"&gt;&lt;/div&gt;</code>.</p><h3><a name="add-html-structure"></a>Add HTML (Structure)</h3><p>Wherever you&#8217;d like Sequence.js to appear on a page, add Sequence.js’ HTML structure like so:</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+    &lt;li&gt;
+      Step 1 Content
+    &lt;/li&gt;
+    &lt;li&gt;
+      Step 2 Content
+    &lt;/li&gt;
+    &lt;li&gt;
+      Step 3 Content
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>Sequence.js&#8217; HTML structure consists of:</p><ul><li>A container (any element with an unique ID of your choosing)</li><li>A canvas (any element with the class of <code>seq-canvas</code>)</li><li>Steps, which hold your content (think of these as slides &#8212; we just like the name <em>steps</em> better because they do a whole lot more than just slide!). You can have as many steps as you wish.</li></ul><h4><a name="container-element"></a>Container Element</h4><p>The container is useful for the following:</p><ul><li>Applying a width and height</li><li>Centering the Sequence.js element on the page</li><li>Applying <code>overflow: hidden;</code> so no content appears outside of the container&#8217;s boundaries</li><li>Adding additional Sequence.js elements such as navigation and pagination</li></ul><h4><a name="canvas-element"></a>Canvas Element</h4><p>The canvas holds the steps.</p><p>By default, the <a href="#animatecanvas"><code>animateCanvas</code></a> option is enabled. This will make Sequence.js determine the offset positions of each step and move the canvas when a step is navigated to. More on this in <a href="#animating-the-canvas">Animating the Canvas</a>.</p><p>With Sequence.js initiated and the HTML structure in place, when viewed in a browser Sequence.js will look like the following. Try pressing your browser&#8217;s left/right arrow keys to navigate between steps and see how Sequence.js automatically animates the canvas to always show the active step.</p><p><img src="http://www.sequencejs.com/images/documentation/tutorial-canvas-animation.gif" alt="Basic canvas animation" /></p><h4><a name="step-elements"></a>Step Elements</h4><p>The steps hold your content. When a step is navigated to, it is given the class <code>seq-in</code>, allowing you to animate a step&#8217;s content to its &#8220;in&#8221; position. Then, when a step is navigated away from, the step is given a <code>seq-out</code> class so you can move any of its elements to an &#8220;out&#8221; position, as you see fit. More on this in <a href="#animating-content">Animating Content</a>.</p><p>When a step becomes active (one that is being viewed), it is given a higher <code>z-index</code> property than the others, so that the active step is positioned on top. This functionality can be changed via the <code>moveActiveStepToTop</code> option.</p><h4><a name="choosing-elements-for-the-canvas-and-steps"></a>Choosing Elements for the Canvas and Steps</h4><p>In the last code example, an unordered list <code>&lt;ul&gt;</code> is used for the canvas and <code>&lt;li&gt;</code> for the steps, but Sequence.js will allow you to use other elements too. For example, assuming you want to use <code>&lt;section&gt;</code> and <code>&lt;article&gt;</code>:</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;section class="seq-canvas"&gt;
+    &lt;article&gt;
+      Step 1 Content
+    &lt;/article&gt;
+    &lt;article&gt;
+      Step 2 Content
+    &lt;/article&gt;
+    &lt;article&gt;
+      Step 3 Content
+    &lt;/article&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+</code></pre><p>Sequence.js knows the canvas is whichever element you give the <code>seq-canvas</code> class and the steps are the canvas&#8217; immediate descendants (children), in this case, the <code>&lt;/article&gt;&lt;article&gt;</code> elements.</p><h4><a name="add-a-no-javascript-fallback"></a>Add a No-JavaScript Fallback</h4><p>In a small percentage of browsers, JavaScript may be disabled which is the technology Sequence.js is built upon. In this case, to prevent an empty container from showing, nominate a step to be displayed by giving it a class of <code>seq-in</code>:</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+    &lt;li class="seq-in"&gt;
+      Step 1 Content
+    &lt;/li&gt;
+    &lt;li&gt;
+      Step 2 Content
+    &lt;/li&gt;
+    &lt;li&gt;
+      Step 3 Content
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>Here the first step is nominated to be displayed if JavaScript is disabled.</p><p>The <code>seq-in</code> and <code>seq-out</code> classes will be explained in <a href="#animating-content">Animating Content</a>.</p><h3><a name="add-content"></a>Add Content</h3><p>To add content to a step, place HTML within each step element:</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+
+    &lt;li class="step1"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;Powered by Sequence.js&lt;/h2&gt;
+        &lt;h3 data-seq&gt;The open-source CSS animation framework.&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class="step2"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;Create Unique Animated Themes&lt;/h2&gt;
+        &lt;h3 data-seq&gt;For responsive sliders, presentations, &lt;br /&gt;banners, and other step-based applications.&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class="step3"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;No Restrictions, Endless Possibilities&lt;/h2&gt;
+        &lt;h3 data-seq&gt;Use the HTML and CSS syntax you're used to. &lt;br /&gt;No JavaScript knowledge required.&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>Beyond the initial structure of <em>containing element > canvas > steps</em>, there are no limitations to what elements you can use in your Sequence.js content. Add as many elements as you like, a <code>&lt;video&gt;</code> element, a <code>.gif</code>, a plain old <code>&lt;div&gt;</code>, an <code>&lt;iframe&gt;</code>&#8230;it is entirely up to you.</p><p>Pay careful attention to the <code>data-seq</code> attributes added to some of the HTML elements. This is known as Sequence.js&#8217; <em>watch</em> attribute. It tells Sequence.js this element will transition and Sequence.js should <em>watch</em> the element to determine when the step has finished animating. More on this later in <a href="#watch-elements">Watch Elements</a>.</p><h3><a name="add-styles"></a>Add Styles</h3><p>As with the JavaScript <em>options</em> file, official Sequence.js themes use the naming convention <code>sequence-theme.&lt;theme -name&gt;.css</code> for its stylesheets.</p><p>Stylesheets should be added to the same page the Sequence.js HTML has been added to by placing a reference in between the <code>&lt;head&gt;&lt;/head&gt;</code> element of the page:</p><pre><code class="html">&lt;link href="css/sequence-theme.basic.css" rel="stylesheet" media="all"&gt;
+</code></pre><p>The following CSS rules add a layout and cosmetic styles to the example Sequence.js theme:</p><pre><code class="css">/* Style the Sequence container */
+#sequence {
+  position: relative;
+  width: 100%;
+  height: 585px;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Reset */
+#sequence .seq-canvas,
+#sequence .seq-canvas &gt; * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Make the canvas the same dimensions as the container and prevent lines from
+   wrapping so each step can sit side-by-side */
+#sequence .seq-canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+/* Make the steps the same size as the container and sit side-by-side */
+#sequence .seq-canvas &gt; * {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  white-space: normal;
+  text-align: center;
+  color: white;
+}
+
+/* Used to vertically center align the .content element */
+#sequence .seq-canvas &gt; li:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+/* Vertically center align the .content element */
+#sequence .content {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4%;
+  font-size: 16px;
+}
+
+#sequence .step1 {
+  background-color: #279fe5;
+}
+
+#sequence .step2 {
+  background-color: #f96852;
+}
+
+#sequence .step3 {
+  background-color: #2bbf8e;
+}
+
+#sequence h2,
+#sequence h3 {
+  margin: 0;
+  display: block;
+  line-height: 120%;
+}
+
+#sequence h2 {
+  margin-bottom: .5em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.6em;
+}
+
+#sequence h3 {
+  font-size: 1.4em;
+}
+</code></pre><p>A breakdown of what the above CSS does:</p><ul><li>The Sequence.js container is made 100% wide and 585px tall, centered, and content is prevented from overflowing its boundaries</li><li>A mini-reset is applied to the canvas and its steps for better browser consistency</li><li>The canvas and steps are made the same width/height as the container</li><li>The steps are made to sit side-by-side (using <code>display: inline-block</code> and <code>white-space: nowrap</code>)</li><li><code>&lt;div class="content"&gt;&lt;/div&gt;</code> is vertically aligned in the center</li><li>Each step is given a different background color</li><li>General styles are applied to the text</li></ul><p>When viewed in the browser, the example theme now appears like so:</p><p><img src="http://www.sequencejs.com/images/documentation/basic-theme-styled.gif" alt="Basic theme styled" /></p><p>That&#8217;s cool, but not that impressive though, is it? Don&#8217;t worry, this is just the very start of what Sequence.js is capable of &#8211; your imagination is the only limitation!</p><p>The content is now styled nicely and Sequence.js is automatically <a href="#animating-the-canvas">animating the canvas</a> to show each step as it becomes active. The real power of Sequence.js comes from its ability to <a href="#animating-content">animate content</a> as well.</p><p><strong>Tip</strong>: Sequence.js adds various class names to its container and other related elements to allow you to further style it in its various states. See <a href="#styling-states">Styling States</a> for more information.</p><h2><a name="animation"></a>Animation</h2><p>Both Sequence.js&#8217; <a href="#animating-the-canvas">canvas</a> and <a href="#animating-content">content</a> can be animated.</p><h3><a name="animating-content"></a>Animating Content</h3><p>Sequence.js steps have three phases that they go through when they become active and inactive again.</p><ul><li><em>Start</em>: The starting position prior to the step becoming active</li><li><em>In</em>: The animate in position for when the step is active</li><li><em>Out</em>: The animate out position for when the step is no longer active</li></ul><p>When Sequence.js loads, its first step (by default) will be active, and as such, will be given the class <code>seq-in</code>. When the next step is navigated to, step 1 will be given the class <code>seq-out</code> moving it into the <em>out</em> phase. Step 2 will be moved to its <em>start</em> phase and then given the class of <code>seq-in</code> which will move it to its <em>in</em> phase. This process will repeat with each step and is reversed when navigating between steps backwards.</p><p>By applying styles to these class names, unique transitions can be applied to Sequence.js themes &#8212; no two themes ever need be the same!</p><p>Take the following CSS as an example:</p><pre><code class="css">/* Starting positions */
+#sequence h2,
+#sequence h3 {
+  opacity: 0;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+#sequence h2 {
+  -webkit-transform: translate(0, -20px);
+  transform: translate(0, -20px);
+}
+
+#sequence h3 {
+  -webkit-transform: translate(0, 20px);
+  transform: translate(0, 20px);
+}
+
+/* Animate in positions for content */
+#sequence .seq-in h2,
+#sequence .seq-in h3 {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/* Animate out positions for content */
+#sequence .seq-out h2,
+#sequence .seq-out h3 {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+</code></pre><p>Previewed in a browser, the above CSS make the example theme appear like so:</p><p><img src="http://www.sequencejs.com/images/documentation/basic-theme-animated.gif" alt="Basic theme animated" /></p><p>Using the <code>seq-in</code> and <code>seq-out</code> classes, the content is animated. Each time a step becomes active, the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> elements fade in and subtly transition into place.</p><p>Let&#8217;s take a deeper look at how that worked.</p><p>Firstly, the <em>start</em> phase for the animated elements:</p><pre><code class="css">/* Starting positions */
+#sequence h2,
+#sequence h3 {
+  opacity: 0;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+#sequence h2 {
+  -webkit-transform: translate(0, -20px);
+  transform: translate(0, -20px);
+}
+
+#sequence h3 {
+  -webkit-transform: translate(0, 20px);
+  transform: translate(0, 20px);
+}
+</code></pre><p>The elements are made transparent with the <code>opacity</code> property and are set up ready to transition over a period of <code>.4s</code> (4 seconds). <code>&lt;h2&gt;</code> was moved up by <code>20px</code> and <code>&lt;h3&gt;</code> down by the same amount. These are the <em>starting</em> positions.</p><p>Next, the <em>animate in</em> phase:</p><pre><code class="css">/* Animate in positions for content */
+#sequence .seq-in h2,
+#sequence .seq-in h3 {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+</code></pre><p>With these styles, when a step is given the <code>seq-in</code> class, its <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> will transition to opaque and move from their <em>starting</em> positions to these <em>in</em> positions.</p><p>Finally, the <em>out</em> phase:</p><pre><code class="css">/* Animate out positions for content */
+#sequence .seq-out h2,
+#sequence .seq-out h3 {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+</code></pre><p>You may notice that these are the exact same styles applied for the <em>animate in</em> positions. That is because when the step goes from the <em>in</em> phase to <em>out</em> (losing its <em>active</em> status) and Sequence.js changes its class from <code>seq-in</code> to <code>seq-out</code>, we want the styles to remain in place. If <em>animate out</em> positions aren&#8217;t specified via the <code>seq-out</code> class, the elements will move back to their <em>starting</em> phase instead because the <code>seq-in</code> class is removed. You could also specify different styles for the <code>seq-out</code> class so that the elements do something different as they animate out. The choice is entirely up to you.</p><p>One of Sequence.js&#8217; key philosophies is to allow you to use CSS in the way you are used to. As well as your favorite properties, media queries, etc, you can also make use of the cascade where necessary. The above styles relied on the cascade to apply the <code>transition-duration</code> of <code>.4s</code> to the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> elements, regardless of whether the step they belong to has the <code>seq-in</code> or <code>seq-out</code> class. Utilising the cascade, you could specify a slower <code>transition-duration</code> for the <em>out</em> phase only, like so:</p><pre><code class="css">/* Animate out positions for content */
+#sequence .seq-out h2,
+#sequence .seq-out h3 {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+}
+</code></pre><p><code>seq-in</code> would still inherit the <code>transition-duration</code> of <code>.4s</code> but now <code>seq-out</code> has a <code>transition-duration</code> of <code>1s</code>.</p><h4><a name="watch-elements"></a>Watch Elements</h4><p>You may have noticed the <code>data-seq</code> attributes on some of the elements in the example theme.</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+
+    &lt;li class="step1"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;Powered by Sequence.js&lt;/h2&gt;
+        &lt;h3 data-seq&gt;The open-source CSS animation framework.&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class="step2"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;Create Unique Animated Themes&lt;/h2&gt;
+        &lt;h3 data-seq&gt;For responsive sliders, presentations, &lt;br /&gt;banners, and other step-based applications.&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class="step3"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;No Restrictions, Endless Possibilities&lt;/h2&gt;
+        &lt;h3 data-seq&gt;Use the HTML and CSS syntax you're used to. &lt;br /&gt;No JavaScript knowledge required.&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>This attribute is known as Sequence.js&#8217; <em>watch</em> attribute. It tells Sequence.js that it should <em>watch</em> the element to determine when the step has finished animating.</p><p>Telling Sequence.js which elements it should watch is an important part in creating a Sequence.js theme. Many of Sequence.js&#8217; features rely on this ability to <em>watch</em> element, such as <a href="#autoplay">autoPlay</a>, <a href="#pagination-links">pagination</a>, the <code>stepStarted</code>/<code>stepEnded</code> <a href="#callbacks">callbacks</a> available via the API, and more.</p><p>Take the <a href="#autoplay">autoPlay</a> feature as an example. This enables Sequence.js to automatically navigate between steps after a given time has past. To do this, Sequence.js needs to know which elements you plan on animating so it can wait for them to end before considering the step having finished animating. When a step finishes, Sequence.js will then automatically navigate to the next step after the <code>autoPlayInterval</code> time has experience, as defined in the <code>autoPlay</code> <a href="#autoplay">options</a>.</p><p>In the example HTML above, Sequence.js is told that the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> elements should be watched via the <code>data-seq</code> attribute applied to them.</p><p>Assume it is specified in the CSS that both the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> should move to their &#8220;in&#8221; position over half a second.</p><p>When the &#8220;in&#8221; phase begins, Sequence.js will look at all of its watched elements in the active step and determine how long they will transition for. In this case, they will transition for half a second. Sequence.js knows after a half second period the step has ended and it should begin the <code>autoPlayInterval</code> timer before automatically navigating to the next step.</p><p>If you don&#8217;t apply a transition to an element then it doesn&#8217;t need to be watched. However, you may like for an element to have a transition but not be watched. For example, you may want the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> elements to transition over a half second period but apply a 10 second transition to an image that slowly moves in the background. In this instance, you might use the following HTML:</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+
+    &lt;li class="step1"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;Powered by Sequence.js&lt;/h2&gt;
+        &lt;h3 data-seq&gt;The open-source CSS animation framework.&lt;/h3&gt;
+        &lt;img src="fancy-product1.jpg" alt="Our first fancy product" /&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class="step2"&gt;
+      &lt;div class="content"&gt;
+        &lt;h2 data-seq&gt;Create Unique Animated Themes&lt;/h2&gt;
+        &lt;h3 data-seq&gt;For responsive sliders, presentations, &lt;br /&gt;banners, and other step-based applications.&lt;/h3&gt;
+        &lt;img src="fancy-product2.jpg" alt="Our second fancy product" /&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>With the above code, Sequence.js knows you are happy to ignore the transition time for the <code>&lt;img /&gt;</code> element because you didn&#8217;t specify a <code>data-seq</code> attribute on it. The image will continue to transition over 10 seconds but <code>autoPlay</code> will cause the next step to be automatically navigated to after 5.5 seconds (.5 seconds for the <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> elements to animate plus 5 seconds as defined by the default <code>autoPlayInterval</code> <a href="##autoplayinterval">option</a>).</p><p>If you were to watch the <code>&lt;img /&gt;</code> element as well, the next step would be navigated to after 15 seconds (10 seconds for the <code>&lt;img</code>/> element to finish animating (because it is the longest duration of all the watched elements), plus another 5 for the <code>autoPlayInterval</code>).</p><p>There are no restrictions on which content elements you watch. For example, you may wish to apply a transition to a parent and its child element but only watch the child, like so:</p><pre><code class="html">&lt;li&gt;
+  &lt;h2 data-seq&gt;Create Unique Animated Themes&lt;/h2&gt;
+  &lt;div class="product-details"&gt;
+    &lt;img data-seq src="fancy-product.jpg" alt="Our fancy product" /&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+</code></pre><p>In the above code, Sequence.js will wait for the <code>&lt;h2&gt;</code> and <code>&lt;img /&gt;</code> elements to finish animating before it considers the step finished, but ignore any transitions applied to <code>&lt;div class="product-details"&gt;</code>.</p><p>Another good example where watching elements can make a big difference is when <a href="#navigation-skipping">navigationSkip</a> is disabled. By default, navigationSkip is enabled so a user can move between steps before its elements have finished transitioning. Should your theme disable this option, the user will be forced to wait for a step to fully transition all of its watched elements prior to being able to navigate to another step. This poses somewhat of a user experience problem because preventing the navigation between steps may make your theme feel slow to the user. Careful consideration of which elements should be watched in a step may mean you can make the user wait a brief amount of time whilst the most important content elements in a step transition in, whilst other elements that may transition for longer, such as decorative ones, can still be skippable.</p><h3><a name="animating-the-canvas"></a>Animating the Canvas</h3><p>By default, Sequence.js controls the animation of the canvas automatically via the <code>animateCanvas</code> <a href="#animatecanvas">option</a> and the speed of animation via the <code>animateCanvasDuration</code> <a href="#animatecanvasduration">option</a>.</p><p>When you position steps via CSS, Sequence.js will find the <code>offsetLeft</code> and <code>offsetTop</code> (the final X/Y positions of an element after <code>top</code>, <code>margin</code>, <code>border</code> etc CSS properties are applied) then uses these values to move the canvas so the current step is always shown within the container. Providing the properties you used to layout your steps effect the <code>offset</code> position of the step, Sequence.js will animate to an active step as necessary.</p><p><strong>Note</strong>: Using CSS transforms does not effect the <code>offset</code> value of an element and as such, we recommend you avoid the use of transforms to lay out step elements and instead rely on <code>position</code>, and <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>. However, Sequence.js will always use transforms to animate its canvas for best performance via hardware acceleration.</p><p><strong>Tip</strong>: Should you wish to modify how the canvas animates or apply additional styles, the container is given class names that represent the active step, prefixed with <code>seq-</code>. For example, when step1 is active, the container will have the class of <code>seq-step1</code>, and so on.</p><h4><a name="example-canvas-step-layouts"></a>Example Canvas/Step Layouts</h4><p>Unless you decide to disable the <a href="#animatecanvas">animateCanvas</a> feature, Sequence.js will automatically animate the canvas to always show the active step. this means you can position your steps relative or absolute &#8212; in a grid, in a random order, and so on &#8212; and Sequence.js will move its canvas accordingly so the top left of the active step appears at the top left of the container.</p><p>The following are some of the layout types you might like to try for yourself.</p><h5><a name="traditional-slider-side-by-side-layout"></a>Traditional Slider (Side-by-Side) Layout</h5><p>The following image shows a traditional side-by-side layout, typically used for applications such as presentation sliders:</p><p><img src="http://www.sequencejs.com/images/documentation/side-by-side.png" alt="Side-by-side layout" /></p><p>This layout can be achieved using the following styles:</p><pre><code class="css">/* Style the Sequence container */
+#sequence {
+  position: relative;
+  width: 100%;
+  height: 585px;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Make the canvas the same dimensions as the container and prevent lines from
+   wrapping so each step can sit side-by-side */
+#sequence .seq-canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+/* Make the steps the same size as the container and sit side-by-side */
+#sequence .seq-canvas &gt; * {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  white-space: normal;
+  font-size: 16px;
+}
+</code></pre><p>With this code, the container is made to hide any overflowing content (in the image, content is overflowing the container to demonstrate movement of the canvas but with <code>overflow: hidden</code> applied, nothing would appear outside of the container). The canvas is made the same width/height as the container and <code>white-space: nowrap</code> on the canvas, along with <code>display: inline-block</code> on the steps (via the <code>#sequence .seq-canvas &gt; *</code> selector) will make the steps sit side-by-side. <code>white-space: normal</code> is then applied on the steps so they don&#8217;t inherit <code>white-space: nowrap</code> from the canvas and effect the content of the steps in an undesirable way.</p><p>With the animateCanvas feature enabled, Sequence.js will automatically move the canvas when each step becomes active to position the top/left of that step with the top/left of the container. In the image, step 2 is shown as the active step.</p><p>#####<a name="traditional-slider-top-to-bottom-layout"></a> Traditional Slider (Top-to-Bottom) Layout</p><p>The following image shows a traditional top-to-bottom layout, typically used for applications such as presentation sliders:</p><p><img src="http://www.sequencejs.com/images/documentation/top-to-bottom.png" alt="Top-to-bottom layout" /></p><p>This layout uses exactly the same styles as the side-by-side layout, with the only difference being <code>white-space: nowrap</code> and <code>white-space: normal</code> are not used.</p><p>In the example image, step 2 is shown as the active step and the canvas will move up/down when the steps are navigated between.</p><h5><a name="no-layout-when-canvas-animation-isnt-required"></a>No Layout (When Canvas Animation Isn&#8217;t Required)</h5><p>You may be thinking this is all good but I don&#8217;t want the canvas to animate, just the content. No problem! The following image shows an example of a Sequence.js theme where by all of the steps are in the same position:</p><p><img src="http://www.sequencejs.com/images/documentation/no-layout.png" alt="No layout" /></p><p>Note that the steps are slightly offset in the image although this is just to show the steps are on top of one another and really all have the same position. Step 2 is the active step. Sequence.js controls the stacking order of the steps via its <code>moveActiveStepsToTop</code> option which is enabled by default. When a step is active, Sequence.js will give it the highest <code>z-index</code> value so it appears on top of the other steps.</p><p>The following CSS can be used to stack steps on top of one another:</p><pre><code class="css">/* Style the Sequence container */
+#sequence {
+  position: relative;
+  width: 100%;
+  height: 585px;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Make the canvas and steps the same dimensions as the container  */
+#sequence .seq-canvas,
+#sequence .seq-canvas &gt; * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+</code></pre><p>As with the other layouts, the container is given width/height properties and content is prevented from appearing outside of it. The canvas and its steps are than made the same size as the container.</p><p>You might use this layout (or lack of) when you just want the content to animate in and out as each step becomes active.</p><h2><a name="browser-support-and-fallback-mode"></a>Browser Support and Fallback Mode</h2><p>Sequence.js aims to work fully in the latest versions of all major browsers that support CSS transitions and transforms, as well as older browsers that don&#8217;t (Internet Explorer 8 &amp; 9) via a fallback mode.</p><p>Please see the <a href="/browser-support/">list of supported browsers</a>.</p><p>In fallback mode, content animation is disabled. Sequence.js gives all steps a class of <code>seq-in</code> and will make each step <code>position: absolute</code>. When the user navigates between steps, the step&#8217;s <code>left</code> position will be animated, the current step to <code>-100%</code> or <code>100%</code> (depending on the direction of navigation) and the next to <code>0</code> &#8212; much like a traditional slider. This way, the user still gets to see all of the content available in your Sequence.js theme, just without so many fancy effects. In fallback mode, animation is controlled via JavaScript.</p><p>When in fallback mode, the Sequence.js container is given a class of <code>seq-fallback</code> to allow you to change styles for a fallback theme accordingly and HTML structure is given the following styles via JavaScript:</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas" style="width: 100%; height: 100%;"&gt;
+    &lt;li style="position: absolute; width: 100%; height: 100%;"&gt;
+      Step 1 Content
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>Speed of animation in <a href="#fallback-mode">Fallback Mode</a> is controlled via the <a href="#speed">speed option</a>.</p><p>Please see browser support for each individual property on <a href="http://caniuse.com/">caniuse.com</a>:</p><ul><li><a href="http://caniuse.com/#search=transitions">CSS Transitions</a></li><li><a href="http://caniuse.com/#search=transforms">CSS Transforms</a></li></ul><h2><a name="options"></a>Options</h2><p>Sequence.js comes with many options that allow you to easily control its features and how it behaves.</p><p>As explained in <a href="#add-sequence">Add Sequence.js</a>, each instance of Sequence.js can be passed options that override Sequence.js’ defaults. <a href="#options">Options</a> are stored in an object passed to the <code>sequence()</code> function, like so:</p><pre><code class="javascript"><br />  // Get the Sequence element
+  var sequenceElement = document.getElementById("sequence");
+
+  // Change Sequence's default options
+  var options = {
+    autoPlayInterval: 500
+  };
+
+  // Initiate Sequence
+  var sequence1 = sequence(sequenceElement, options);
+</code></pre><p>Multiple instances of Sequence.js can be passed the same options:</p><pre><code class="javascript"><br />  // Get the Sequence elements
+  var sequenceElement1 = document.getElementById("sequence1");
+  var sequenceElement2 = document.getElementById("sequence2");
+
+  // Change Sequence's default options
+  var options = {
+    autoPlayInterval: 500
+  };
+
+  // Initiate Sequence
+  var sequence1 = sequence(sequenceElement1, options);
+  var sequence2 = sequence(sequenceElement2, options);
+</code></pre><p>Or differing options:</p><pre><code class="javascript"><br />  // Get the Sequence elements
+  var sequenceElement1 = document.getElementById("sequence1");
+  var sequenceElement2 = document.getElementById("sequence2");
+
+  // Change Sequence's default options
+  var options1 = {
+    autoPlayInterval: 500
+  };
+
+  var options2 = {
+    autoPlayInterval: 1000
+  }
+
+  // Initiate Sequence
+  var sequence1 = sequence(sequenceElement1, options1);
+  var sequence2 = sequence(sequenceElement2, options2);
+</code></pre><p>The following is the complete set of options implemented within Sequence.js:</p><h3><a name="general"></a>General</h3><h4><a name="startingstepid"></a><code>startingStepId</code></h4><ul><li>Type: Number</li><li>Default: <code>1</code></li></ul><p>The step that should first be displayed when Sequence.js loads.</p><h4><a name="stratingstepanimatesin"></a><code>startingStepAnimatesIn</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li></ul><p>Whether the starting step should animate from its <em>start</em> phase to its <em>in</em> phase.</p><ul><li><code>true</code>: The starting step will begin in its <em>start</em> phase and move to its <em>in</em> phase when Sequence.js loads.</li><li><code>false</code>: The starting step will begin in its <em>in</em> phase when Sequence.js loads.</li></ul><p>Note: In fallback mode, <code>startingStepAnimatesIn</code> will always be <code>false</code>.</p><h4><a name="cycle"></a><code>cycle</code></h4><ul><li>Type: true/false,</li><li>Default: <code>true</code></li></ul><p>Whether Sequence.js should navigate to the first step after the last step and vice versa.</p><ul><li><code>true</code>: When a user or Sequence.js&#8217; autoPlay navigates forward from the last step, Sequence.js will go to the first step. Likewise, when a user/autoPlay navigates backwards from the first step, Sequence.js will go to the last step.</li><li><code>false</code>: When a user/autoPlay navigates forward from the last step or backwards from the first step, Sequence.js will not go to another step.</li></ul><h4><a name="phasethreshold"></a><code>phaseThreshold</code></h4><ul><li>Type: true/false or a number representing milliseconds</li><li>Default: <code>true</code></li></ul><p>Whether there should be a delay between the current step animating out and the next step animating in.</p><ul><li><code>true</code>: the next step will not animate in until the current step has completely animated out.</li><li><code>false</code>: the next step will animate in at the same time as the current step animating out.</li><li>A number: The amount of milliseconds to wait after animating the current step out, before the next step is animated in.</li></ul><h4><a name="reversewhennavigatingbackwards"></a><code>reverseWhenNavigatingBackwards</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li></ul><p>Whether animations should be reversed when a user navigates backwards by clicking a previous button/swiping/pressing the left key.</p><ul><li><code>true</code>: when navigating backwards, Sequence.js will animate the preceding step from its animate-out position to its animate-in position (creating a reversed animation).</li><li><code>false</code>: when navigating backwards, Sequence.js will animate the preceding step from its starting position to its animate in position (as it does when navigating forwards).</li></ul><h4><a name="reversetimingfunctionwhennavigatingbackwards"></a><code>reverseTimingFunctionWhenNavigatingBackwards</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: reverseWhenNavigatingBackwards: true</li><li>Added: 2.1.0</li></ul><p>Whether the <code>transition-timing-function</code> should be reversed when a user navigates backwards by clicking a previous button/swiping/pressing the left key.</p><ul><li><code>true</code>: when navigating backwards, Sequence.js will automatically reverse a <code>transition-timing-function</code> property so the value <code>ease-in</code> will become <code>ease-out</code> and so on.</li><li><code>false</code>: when navigating backwards, Sequence.js will not automatically reverse a <code>transition-timing-function</code>.</li></ul><h4><a name="moveactivesteptotop"></a><code>moveActiveStepToTop</code></h4><ul><li>Type: true/false</li><li>Default: <code>true</code></li></ul><p>Whether a step should be positioned higher in the stacking order than other steps whilst it is active, to bring it above the others.</p><ul><li><code>true</code>: an active step will be given a a stacking order value the same as the number of steps in the Sequence.js instance (bringing it to the top) and the previous step will be given a value one less than the number of steps in the Sequence.js instance.</li><li><code>false</code>: steps will not have a stacking order applied to them. The cascade will take effect whereby elements positioned lower in the document will be stacked on top of those it succeeds, unless otherwise modified via custom CSS.</li></ul><h3><a name="canvas-animation"></a>Canvas Animation</h3><p>Canvas animation causes Sequence.js to automatically animate the canvas element to show the next step. Automatic animation consists of finding the next step&#8217;s position and then directly animating to it.</p><p>If you&#8217;d like to customize how the canvas animates, set <code>animateCanvas</code> to <code>false</code>. Regardless of the <code>animateCanvas</code> option, the Sequence.js element is given a class representing the current step being viewed. <code>seq-step1</code>, <code>seq-step2</code>, and so on. These classes allow you to control canvas animation manually.</p><p><strong>Browser Support</strong>: In modern browsers, animation is powered by CSS transitions and JavaScript in non-supporting browsers.</p><h4><a name="animatecanvas"></a><code>animateCanvas</code></h4><ul><li>Type: true/false</li><li>Default: <code>true</code></li></ul><p>Whether Sequence.js should automatically control the canvas animation when a step is navigated to.</p><ul><li><code>true</code>: Sequence.js will control the canvas animation when a step is navigated to.</li><li><code>false</code>: Sequence.js will not control the canvas animation when a step is navigated to.</li></ul><p>There are two reasons you may want to disabled <code>animateCanvas</code>:</p><ol><li>You don&#8217;t need the canvas to animate because its steps are layered on top of each other using <code>position: absolute;</code>.</li><li>You want to manually control the canvas animation. When step 1 is viewed, the Sequence.js element will be given the class of <code>seq-step1</code>, and so on. Using these classes you can control animation manually using either CSS3 or JavaScript via Sequence.js&#8217; <a href="#api">API</a>.</li></ol><h4><a name="animatecanvasduration"></a><code>animateCanvasDuration</code></h4><ul><li>Type: A number representing milliseconds</li><li>Default: <code>250</code></li><li>Dependencies: <code>animateCanvas: true</code></li></ul><p>The amount of time it should take the canvas to automatically animate to the next step.</p><h3><a name="autoplay"></a>Autoplay</h3><p>AutoPlay causes Sequence.js to automatically navigate to the next step every X amount of milliseconds after the transitions of <a href="#watch-elements">watched elements</a> in the active step have finished. AutoPlay by default is stopped when the user hovers over the Sequence.js element and can also be stopped/started via the autoPlay button and the methods available via the <a href="#api">API</a>.</p><h4><a name="autoplay"></a><code>autoPlay</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li></ul><p>Once the current step&#8217;s <a href="#watch-elements">watched elements</a> have finished animating (and the step is considered as finished), cause Sequence.js to automatically navigate to the next step after a period of time, as defined in <code>autoPlayInterval</code>.</p><ul><li><code>true</code>: Sequence.js will automatically navigate from step to step with an interval between each step (specified using the <code>autoPlayInterval</code> option).</li><li><code>false</code>: Sequence.js will display the starting step until a user chooses to navigate using next/previous buttons, swiping, etc.</li></ul><h4><a name="autoplayinterval"></a><code>autoPlayInterval</code></h4><ul><li>Type: a number representing milliseconds</li><li>Default: <code>5000</code></li><li>Dependencies: <code>autoPlay: true</code></li></ul><p>The duration in milliseconds to wait before autoPlay navigates to the next step. Default is 5000 milliseconds or 5 seconds.</p><h4><a name="autoplaydelay"></a><code>autoPlayDelay</code></h4><ul><li>Type: a number representing milliseconds</li><li>Default: <code>null</code> (the same value as <code>autoPlayInterval</code>)</li><li>Dependencies: <code>autoPlay: true</code></li></ul><p>The duration in milliseconds to wait before autoPlay navigates to the next step when <em>started</em> from an <code>autoPlayButton</code>, or <code>sequence.start(delay)</code> when the <code>delay</code> argument is <code>true</code>.</p><p>If you want Sequence.js to immediately navigate to the next step when started, set this to <code>0</code>. This may be a good idea when your Sequence.js theme has no visual representation of having been stopped because the next step will immediately be navigated to and the user will see their interaction with the page had an immediate effect.</p><h4><a name="autoplaydirection"></a><code>autoPlayDirection</code></h4><ul><li>Type: a number (<code>1</code> = forward, <code>-1</code> = reverse)</li><li>Default:<code>1</code></li><li>Dependencies: <code>autoPlay: true</code></li></ul><p>The direction in which Sequence.js&#8217; <code>autoPlay</code> should navigate.</p><ul><li><code>1</code>: Sequence.js will navigate forwards, from step to step</li><li><code>-1</code>: Sequence.js will navigate backwards, from step to step</li></ul><h5><a name="autoplaybutton"></a><code>autoPlayButton</code></h5><p>See <code>autoPlayButton</code> in the <a href="#user-interface">User Interface</a> section.</p><h5><a name="autoplaypauseonhover"></a><code>autoPlayPauseOnHover</code></h5><ul><li>Type: true/false</li><li>Default: <code>true</code></li><li>Dependencies: <code>autoPlay: true</code></li></ul><p>Whether autoPlay should pause when the user hovers over Sequence.js. autoPlay will continue again when the user moves their cursor outside of Sequence.js.</p><p><strong>Note</strong>: The user is only deemed to be hovering over Sequence.js when their cursor is within the container&#8217;s boundaries.</p><h3><a name="navigation-skipping"></a>Navigation Skipping</h3><p>Navigation skipping controls whether a step can be navigated to whilst another is actively animating and how to most gracefully deal with skipped steps when enabled.</p><p><strong>Tip</strong>: A step is only considered as &#8220;active&#8221; whilst its <a href="#watch-elements">watched elements</a> are animating. Elements that are animating but not watched are ignored.</p><p><strong>Browser Support</strong>: When in <a href="#browser-support-and-fallback-mode">fallback mode</a> (used by browsers that don&#8217;t have support for CSS transforms and transitions), navigation skipping is not allowed, regardless of the following options.</p><h4><a name="navigationskip"></a><code>navigationSkip</code></h4><ul><li>Type: true/false</li><li>Default: <code>true</code></li></ul><p>Whether the user can navigate to a step before another step has finished animating.</p><ul><li><code>true</code>: The user can navigate to another step whilst the current one still has <a href="#watch-elements">watched elements</a> that are actively animating</li><li><code>false</code>: The user is prevented from navigating to another step whilst the current one has <a href="#watch-elements">watched elements</a> that are actively animating</li></ul><h4><a name="navigationskipthreshold"></a><code>navigationSkipThreshold</code></h4><ul><li>Type: a number representing time in milliseconds</li><li>Default: <code>250</code></li><li>Dependencies: <code>navigationSkip: true</code></li></ul><p>Amount of time that must pass before another step can be skipped. Example, if the user hits the next button, a period of 250ms (by default) must pass before they can navigate to another step.</p><h4><a name="fadestepwhenskipped"></a><code>fadeStepWhenSkipped</code></h4><ul><li>Type: true/false</li><li>Default: <code>true</code></li><li>Dependencies: <code>navigationSkip: true</code></li></ul><p>If a step is skipped before it finishes animating, cause it to fade out over a specific period of time (see <code>fadeStepTime</code>).</p><h4><a name="fadesteptime"></a><code>fadeStepTime</code></h4><ul><li>Type: a number representing time in milliseconds</li><li>Default: <code>500</code></li><li>Dependencies: <code>navigationSkip: true</code>, <code>fadeStepWhenSkipped: true</code></li></ul><p>How quickly a step should fade out when skipped (in milliseconds).</p><p><strong>Browser Support</strong>: In modern browsers, animation is powered by CSS transitions and JavaScript in non-supporting browsers.</p><h4><a name="ignorephasethresholdwhenskipped"></a><code>ignorePhaseThresholdWhenSkipped</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: <code>navigationSkip: true</code></li></ul><p>With <code>ignorePhaseThresholdWhenSkipped</code> set to <code>true</code> and a step is navigated away from whilst it is still animating, Sequence.js will treat the <code>phaseThreshold</code> option as being <code>false</code>, regardless of developer defined options. This may help improve user experience as when the user is quickly navigating between steps there won&#8217;t be any delay before the next step animates in &#8212; the user&#8217;s interaction is always presented with immediate action on screen.</p><h4><a name="preventreverseskipping"></a><code>preventReverseSkipping</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: <code>navigationSkip: true</code></li></ul><p>Whether the user can change the direction of navigation during steps animating (if navigating forward, the user can only skip forwards when other steps are animating but not backwards, and vice versa).</p><h3><a name="user-interface"></a>User Interface</h3><p>Sequence.js has many options that allow you to customize the elements that allow the user to interact with Sequence.js.</p><p>The element types that can be added include:</p><ul><li><a href="#next-and-previous-buttons">Next/Previous</a></li><li><a href="#autoplay-button">AutoPlay</a></li><li><a href="#pagination-links">Pagination</a></li><li><a href="#preloader">Preloader</a></li></ul><p>Multiples of the same user interface type can be used in each instance of Sequence.js (except for preloader which currently only allows one per instance), if you wish to have a next button in each step for example.</p><p>When using multiple instances of Sequence.js, note that user interface elements by default will control all Sequence.js instances. A next button for example will control every instance of Sequence.js on the page. Should you wish to have an UI element only control one instance of Sequence.js, please use a <code>rel</code> attribute on the UI element, with a value the same as the <code>id</code> for the Sequence.js instance you want the UI element to control. For example:</p><pre><code class="html">&lt;div rel="sequence1" class="seq-next"&gt;Next →&lt;/div&gt;
+
+&lt;div id="sequence1"&gt;
+  &lt;!-- additional code removed for brevity --&gt;
+&lt;/div&gt;
+
+&lt;div id="sequence2"&gt;
+  &lt;!-- additional code removed for brevity --&gt;
+&lt;/div&gt;
+</code></pre><p>In the above code example, we have two instances of Sequence.js on the page. With an attribute of <code>rel="sequence1"</code> applied to a next button, only <code>&lt;div id="sequence1"&gt;</code> will go to its next slide when the next button is clicked. Likewise, should we change the attribute to <code>rel="sequence2"</code>, the second Sequence.js instance <code>&lt;div id="sequence2"&gt;</code> will navigate to its next slide. If the <code>rel</code> attribute is removed entirely, both instances will go to the next slide. This applies to all UI elements regardless of their position on the page &#8212; they can be within or outside of Sequence.js elements.</p><h4><a name="next-and-previous-buttons"></a>Next and Previous Buttons</h4><p>Next and previous buttons allow the user to navigate between steps.</p><p>By default, these buttons are enabled, however, Sequence.js doesn&#8217;t automatically add these elements so the necessary HTML must be added to the page. For example, a next button can be added using the default class <code>seq-next</code>, like so:</p><pre><code class="html">&lt;button type="button" class="seq-next"&gt;Next →&lt;/button&gt;
+</code></pre><p>Any element can be used as a next/previous button, as long as it is given the specified selector and is clickable.</p><h5><a name="nextbutton"></a><code>nextButton</code></h5><ul><li>Type: true/false or a class/ID selector</li><li>Default: <code>true</code></li></ul><p>Defines a button that when clicked, causes the next step to become active.</p><pre><code class="html">&lt;button type="button" class="seq-next"&gt;Next&lt;/button&gt;
+</code></pre><ul><li><code>true</code>: Use a next button with the default CSS selector (<code>.seq-next</code>)</li><li><code>false</code>: Don&#8217;t use a next button</li><li>class/ID selector: Use a next button but change the default selector to a class/ID selector of you liking</li></ul><p><strong>Note</strong>: the button must be added to the HTML manually.</p><h5><a name="prevbutton"></a><code>prevButton</code></h5><ul><li>Type: true/false or a class/ID selector</li><li>Default: <code>true</code></li></ul><p>Defines a button that when clicked, causes the previous step to become active.</p><pre><code class="html">&lt;button type="button" class="seq-prev"&gt;Previous&lt;/button&gt;
+</code></pre><ul><li><code>true</code>: Use a previous button with the default CSS selector (<code>.seq-prev</code>)</li><li><code>false</code>: Don&#8217;t use a previous button</li><li>class/ID selector: Use a previous button but change the default selector to a class/ID selector of you liking</li></ul><p><strong>Note</strong>: the button must be added to the HTML manually.</p><h4><a name="autoplay-button"></a>AutoPlay Button</h4><p>An autoPlay button allows a user to stop and start autoPlay as they wish.</p><p>By default, the <code>autoPlayButton</code> is enabled, however, Sequence.js doesn&#8217;t automatically add the element so the necessary HTML must be added to the page. For example, an autoPlay button can be added using the default class <code>seq-autoplay</code>, like so:</p><pre><code class="html">&lt;button type="button" class="seq-autoplay"&gt;Play&lt;/button&gt;
+</code></pre><p>Any element can be used as an autoPlay button, as long as it is given the specified selector and is clickable.</p><h5><a name="autoplaybutton"></a><code>autoPlayButton</code></h5><ul><li>Type: true/false or a class/ID selector</li><li>Default: <code>true</code></li><li>Dependencies: <code>autoPlay: true</code></li></ul><p>Defines a button that when clicked, toggles (starts/stops) the autoPlay feature.</p><ul><li><code>true</code>: Use an autoPlay button with the default CSS selector (<code>.seq-autoplay</code>)</li><li><code>false</code>: Don&#8217;t use an autoPlay button</li><li>class/ID selector: Use an autoPlay button but change the default selector to a class/ID selector of you liking</li></ul><h4><a name="pagination-links"></a>Pagination Links</h4><p>Pagination allows for a list of links that represents each step within Sequence.js. These links can be clicked to navigate to the relevant step.</p><h5><a name="pagination"></a><code>pagination</code></h5><ul><li>Type: true/false or a class/ID selector</li><li>Default: <code>true</code></li></ul><p>Pagination associates immediate descendant elements within the pagination selector (<code>.seq-pagination</code> by default) to each Sequence.js step. If <code>pagination</code> is <code>true</code>, the following HTML can be included in your document to act as pagination:</p><pre><code class="html">&lt;ul class="seq-pagination"&gt;
+  &lt;li&gt;Step 1&lt;/li&gt;
+  &lt;li&gt;Step 2&lt;/li&gt;
+  &lt;li&gt;Step 3&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>When the first <code>&lt;li&gt;</code> element is clicked, Sequence will navigate to its first step. When the second is clicked, Sequence.js will navigate to its second step, and so on.</p><p>The pagination and its immediate descendants can consist of any element(s). So, if you&#8217;d prefer, you could use <code>&lt;div&gt;</code> and <code>&lt;button&gt;</code> elements instead of <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> elements, like so:</p><pre><code class="html">&lt;div class="seq-pagination"&gt;
+  &lt;button&gt;Step 1&lt;/button&gt;
+  &lt;button&gt;Step 2&lt;/button&gt;
+  &lt;button&gt;Step 3&lt;/button&gt;
+&lt;/div&gt;
+</code></pre><p>The immediate descendants can also have child elements of their own. These additional elements do not affect how the pagination works.</p><p>When a Sequence.js step is navigated to (via any navigation method, such as clicking pagination links, pressing a keyboard key etc), the associated pagination link will be given a class of <code>seq-current</code>, so you can style the current pagination link as you wish:</p><p>HTML:</p><pre><code class="html">&lt;ul class="seq-pagination"&gt;
+  &lt;li&gt;Step 1&lt;/li&gt;
+  &lt;li class="seq-current"&gt;Step 2&lt;/li&gt;
+  &lt;li&gt;Step 3&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>CSS:</p><pre><code class="css">.seq-pagination .seq-current {
+  font-weight: bold;
+}
+</code></pre><ul><li><code>true</code>: Use pagination with the default CSS selector (<code>.seq-pagination</code>)</li><li><code>false</code>: Don&#8217;t use pagination</li><li>class/ID selector: Use pagination but change the default selector to a class/ID selector of you liking</li></ul><p><strong>Note</strong>: the pagination elements must be added to the HTML manually.</p><h4><a name="preloader"></a>Preloader</h4><p>Sequence.js&#8217; preloader allows the ability to hide content or display some form of loading indicator until your chosen content has loaded.</p><p>Sequence.js relies on the third-party <a href="https://github.com/desandro/imagesloaded/">imagesLoaded</a> to determine when images have loaded. <a href="https://github.com/IanLunn/Sequence/wiki/Third-Party-Library-Support">Third-party support details</a>.</p><p>To use Sequence.js&#8217; preloader, please add a reference to <code>imagesloaded.pkgd.min.js</code> above your reference to the Sequence.js library, like so:</p><pre><code class="html">&lt;script src="scripts/imagesloaded.pkgd.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/sequence.min.js"&gt;&lt;/script&gt;
+</code></pre><h5><a name="preloader"></a><code>preloader</code></h5><ul><li>Type: true/false or a class/ID selector</li><li>Default: <code>false</code></li><li><p><code>true</code>: Append the default preloader element with the CSS selector (<code>.seq-preloader</code>) to the Sequence.js element, and add the preloader styles to <code>&lt;head&gt;&lt;/head&gt;</code></p></li><li><code>false</code>: Don&#8217;t use a preloader</li><li>class/ID selector: Use a preloader element and styles of your own</li></ul><p>When the preloader is being used, the Sequence.js element is give a class of <code>seq-preloading</code>. Both the Sequence.js element and the preloader element are given a class of <code>seq-preloaded</code> when preloading is complete.</p><p>When using the default preloader (<code>preloader: true</code>), default styles are also applied. These styles can be overridden via CSS (except for the animation wich is driven by SVG). If you&#8217;d like to use a preloader of your own, it&#8217;s recommend you use a CSS selector for the <code>preloader</code> element and apply your own preloader element to the page for styling however you please. To do this specify a custom preloader with your own class or ID selector on the <code>preloader</code> option, such as <code>preloader: ".my-preloader"</code> and add the element to your HTML, like so: <code>&lt;div class="my-preloader"&gt;Preloading...&lt;/div&gt;</code>. This element will have no default styles so you can style it using your own CSS. Like the default preloader, when Sequence.js finishes preloading, your custom preload element will be given the class <code>seq-preloaded</code>. You might like to use this class to apply styles to remove the preloader, such as <code>display: none</code>, <code>z-index: -1</code> etc. A custom preloader element can be placed anywhere on the page.</p><p>If using the default preloader with the option <code>preloader: true</code>, the following HTML will be appended to the Sequence.js element:</p><p>HTML:</p><pre><code class="html">&lt;div class="seq-preloader"&gt;
+  &lt;svg width="39" height="16" viewBox="0 0 39 16" xmlns="http://www.w3.org/2000/svg" class="seq-preload-indicator"&gt;&lt;title&gt;Sequence.js Preloading Indicator&lt;/title&gt;&lt;desc&gt;Three orange dots increasing in size from left to right&lt;/desc&gt;&lt;g fill="#F96D38"&gt;&lt;path class="seq-preload-circle seq-preload-circle-1" d="M3.999 12.012c2.209 0 3.999-1.791 3.999-3.999s-1.79-3.999-3.999-3.999-3.999 1.791-3.999 3.999 1.79 3.999 3.999 3.999z"/&gt;&lt;path class="seq-preload-circle seq-preload-circle-2" d="M15.996 13.468c3.018 0 5.465-2.447 5.465-5.466 0-3.018-2.447-5.465-5.465-5.465-3.019 0-5.466 2.447-5.466 5.465 0 3.019 2.447 5.466 5.466 5.466z"/&gt;&lt;path class="seq-preload-circle seq-preload-circle-3" d="M31.322 15.334c4.049 0 7.332-3.282 7.332-7.332 0-4.049-3.282-7.332-7.332-7.332s-7.332 3.283-7.332 7.332c0 4.05 3.283 7.332 7.332 7.332z"/&gt;&lt;/g&gt;&lt;/svg&gt;
+&lt;/div&gt;
+</code></pre><p>With the following CSS appended to <code>&lt;head&gt;&lt;/head&gt;</code> within <code>&lt;style&gt;&lt;/style&gt;</code> tags:</p><p>CSS:</p><pre><code class="css">  @keyframes seq-preloader {
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .seq-preloader {
+    background: white;
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .seq-preloader.seq-preloaded {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s .5s, opacity .5s;
+  }
+
+  .seq-preload-indicator {
+    overflow: visible;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .seq-preload-circle {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    fill: #F96D38;
+    opacity: 0;
+    animation: seq-preloader 1.25s infinite;
+  }
+
+  .seq-preload-circle-2 {
+    animation-delay: .15s;
+  }
+
+  .seq-preload-circle-3 {
+    animation-delay: .3s;
+  }
+
+  .seq-preload-indicator-fallback {
+    width: 42px;
+    margin-left: -21px;
+    overflow: visible;
+  }
+
+  .seq-preload-indicator-fallback .seq-preload-circle {
+    width: 8px;
+    height:8px;
+    background-color: #F96D38;
+    border-radius: 100%;
+    opacity: 1;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .seq-preload-indicator-fallback .seq-preload-circle-2 {
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .seq-preload-indicator-fallback .seq-preload-circle-3 {
+    width: 16px;
+    height: 16px;
+  }
+</code></pre><p><strong>Note</strong>: Vendor prefixes are omitted from the above CSS for brevity.</p><h6><a name="changing-default-styles"></a>Changing Default Styles</h6><p>If you&#8217;d like to use the default preloader but want to modify some of its styles, they can be easily overriden in your CSS. As the default styles are appended to the end of the <code>&lt;head&gt;&lt;/head&gt;</code> element (and your stylesheets will most likely be declared before it, you&#8217;ll need to be sure your overriding styles have a greater specifity. To do that, you can either make an overriding selector more specific or use the <code>!important</code> tag.</p><p>The following are some of the common changes made to the default preloader styles.</p><p><strong>Color of Circle Indicators</strong></p><p>To change the color of the preloader indicator circles, add the following to your stylesheet:</p><pre><code class="css">  .seq-preload-circle {
+    fill: red !important;
+  }
+</code></pre><p><strong>Background Color of Preloader</strong></p><p>To change the background color of the preloader, add the following to your stylesheet:</p><pre><code class="css">  .seq-preloader {
+    background: blue !important;
+  }
+</code></pre><p><strong>Length of Fade Out</strong></p><p>To change the speed at which the preloader fades out when preloading is complete, add the following to your stylesheet:</p><pre><code class="css">  .seq-preloader.seq-preloaded {
+    transition: visibility 0s 3s, opacity 3s !important;
+  }
+</code></pre><p>This will fade the preloader out over 3 seconds. Note that two properties transition when preloading is complete; <code>visibility</code> and <code>opacity</code>. <code>visibility</code> is given a <code>transition-duration</code> of <code>0s</code> and a <code>transition-delay</code> of <code>3s</code>, with <code>opacity</code> given a <code>transition-duration</code> of <code>3s</code> and no delay. This means that the opacity will fade out over 3 seconds. After those 3 seconds, the preloader&#8217;s <code>visibility</code> will instantly be changed to <code>hidden</code>.</p><h5><a name="preloadthesesteps"></a><code>preloadTheseSteps</code></h5><ul><li>Type: An integer array containing a list of step numbers</li><li>Default: <code>[1]</code></li><li>Dependencies: <code>preloader: true</code></li></ul><p>Specify which steps should have their images loaded before Sequence.js initiates. By default, images in the first step are loaded before Sequence.js initiates.</p><p>The following example will load all images in steps 1 and 2:</p><pre><code class="javascript">preloadTheseSteps: [1, 2]
+</code></pre><h5><a name="preloadtheseimages"></a><code>preloadTheseImages</code></h5><ul><li>Type: A string array containing a list of image sources</li><li>Default: <code>[]</code></li><li>Dependencies: <code>preloader: true</code></li></ul><p>Specify which images should be loaded before Sequence.js initiates. By default, no individual images are loaded (note that all images in step 1 load by default, as described in the <code>preloadTheseSteps</code> option).</p><p>The following example will load all images in step 1 (via the <code>preloadTheseSteps</code> option), as well as an image from step 2, an image in the footer of the page, and an image applied via CSS:</p><pre><code class="javascript">preloadTheseSteps: [1],
+preloadTheseImages: [
+  "images/step2image.png",
+  "images/footer-logo.png",
+  "css/images/background.png"
+]
+</code></pre><h5><a name="hidestepsuntilpreloaded"></a><code>hideStepsUntilPreloaded</code></h5><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: <code>preloader: true</code></li></ul><p>Specify whether steps should be hidden during preloading and then shown afterwards.</p><ul><li><code>true</code>: Hide steps until preloaded</li><li><code>false</code>: Don&#8217;t hide steps during preloading</li></ul><h5><a name="pausepreloader"></a><code>pausePreloader</code></h5><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: <code>preloader: true</code></li></ul><p>Specify whether Sequence.js should pause its preloader, preventing it from being hidden even when preloading has finished. This is a <strong>debug</strong> only option and can be useful to test a preloader&#8217;s styles during development of a Sequence.js theme.</p><ul><li><code>true</code>: Prevent the preloader from hiding so it is always visible</li><li><code>false</code>: The preloader should act as expected &#8212; hiding when preloading has finished</li></ul><h3><a name="styling-states"></a>Styling States</h3><p>Sequence.js will automatically add the following class names to the container and other Sequence.js related elements when required. All class names are prefixed with <code>seq-</code>. These class names can be used to further style your Sequence.js theme:</p><h4><a name="seq-in"></a><code>.seq-in</code></h4><p>Added to a step when it becomes active. See <a href="#animating-content">Animating Content</a>.</p><h4><a name="seq-out"></a><code>.seq-out</code></h4><p>Added to a step when it becomes inactive. See <a href="#animating-content">Animating Content</a>.</p><h4><a name="seq-active"></a><code>.seq-active</code></h4><p>Added to <code>$container</code> when Sequence.js has been successfully initiated.</p><h4><a name="seq-preloading"></a><code>.seq-preloading</code></h4><p>Added to <code>$container</code> and <code>$preloader</code> when Sequence.js begins preloading and removed when completed.</p><h4><a name="seq-preloaded"></a><code>.seq-preloaded</code></h4><p>Added to <code>$container</code> and <code>$preloader</code> when Sequence.js has finished preloading.</p><h4><a name="seq-reversed"></a><code>.seq-reversed</code></h4><p>Added to <code>$container</code> when <code>reverseWhenNavigatingBackwards</code> is enabled and the user is navigating backwards. Useful for overriding animations that Sequence.js automatically reverses.</p><h4><a name="seq-step"></a><code>.seq-step1</code>, <code>.seq-step2</code>, etc</h4><p>Added to <code>$container</code> to represent the active step.</p><h4><a name="seq-autoplaying"></a><code>.seq-autoplaying</code></h4><p>Added to <code>$container</code> and <code>$autoPlay</code> element when the autoPlay feature is active. Removed when inactive.</p><h4><a name="seq-fallback"></a><code>.seq-fallback</code></h4><p>Added to <code>$container</code> when Sequence.js goes into <a href="#browser-support-and-fallback-mode">fallback mode</a>.</p><h4><a name="seq-current"></a><code>.seq-current</code></h4><p>Added to the <code>$pagination.currentLinks</code> link when its related step is active.</p><h4><a name="seq-touch"></a><code>.seq-touch</code></h4><p>Added to <code>$container</code> when the browser supports touch capabilities</p><h4><a name="seq-no-touch"></a><code>.seq-no-touch</code></h4><p>Added to <code>$container</code> when the browser doesn&#8217;t support touch capabilities</p><h3><a name="keyboard"></a>Keyboard</h3><p>Keyboard options enable the user to navigate to steps using specific keyboard buttons.</p><h4><a name="keynavigation"></a><code>keyNavigation</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li></ul><p>Whether to allow the user to navigate between steps using the left/right arrow keys.</p><h4><a name="numerickeysgotosteps"></a><code>numericKeysGoToSteps</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li></ul><p>Whether Sequence.js should go to a specific step when the user presses a numeric key. Pressing 1 goes to step 1, 2 to step 2, and so on.</p><h4><a name="keyevents"></a><code>keyEvents</code></h4><ul><li>Type: An object or false</li></ul><p>The public Sequence.js method that should occur when the left or right arrow keys are pressed.</p><p>By default the <code>keyEvents</code> option is the following object:</p><pre><code class="javascript">keyEvents: {
+  left: function(sequence) {sequence.prev()},
+  right: function(sequence) {sequence.next()}
+}
+</code></pre><p>When the left button is pressed, the Sequence.js event <code>self.prev()</code> is initiated. <code>self.next()</code> is initiated when the right button is pressed.</p><ul><li>object: An object containing <code>left</code> and <code>right</code> properties that have a related public method to be executed when the left and right buttons are pressed</li><li><code>false</code>: No keyboard events</li></ul><h3><a name="touch-swipe"></a>Touch Swipe</h3><p>Touch swipe capabilities are powered via the third-party library <a href="http://eightmedia.github.io/hammer.js/">Hammer.js</a>. <a href="https://github.com/IanLunn/Sequence/wiki/Third-Party-Library-Support">Third-party support details</a>.</p><p><strong>Browser Support:</strong> Touch capabilities are disabled in Internet Explorer 8.</p><p>To use Sequence.js&#8217; touch features, please add a reference to <code>hammer.min.js</code> above your reference to the Sequence.js library, like so:</p><pre><code class="html">&lt;script src="scripts/hammer.min.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/sequence.min.js"&gt;&lt;/script&gt;
+</code></pre><h4><a name="swipenavigation"></a><code>swipeNavigation</code></h4><ul><li>Type: true/false</li><li>Default: <code>true</code></li></ul><p>Whether to allow the user to navigate between steps by swiping left and right on touch enabled devices.</p><h4><a name="swipeevents"></a><code>swipeEvents</code></h4><ul><li>Type: An object or false</li><li>Default: <code>{left: function(sequence) {sequence.next();}, right: function(sequence) {sequence.prev();}, up: undefined, down: undefined}</code></li></ul><p>The public Sequence.js method that should occur when the user swipes in a particular direction.</p><p>By default the <code>swipeEvents</code> option is the following object:</p><pre><code class="javascript">swipeEvents: {
+  left: function(sequence) {sequence.next();},
+  right: function(sequence) {sequence.prev();},
+  up: undefined,
+  down: undefined
+}
+</code></pre><p>When the user swipes left, the Sequence.js event <code>self.next()</code> is initiated. <code>self.prev()</code> is initiated when the user swipes right.</p><p>By default, up and down swipe events aren&#8217;t specified as typically up/down swiping is reserved for scrolling. Should you specify <code>up</code> and/or <code>down</code> events, scrolling will be prevented on the Sequence.js element so care should be taken to ensure this doesn&#8217;t cause a user experience problem.</p><p><strong>Note</strong>: Sequence.js will determine the best <a href="http://hammerjs.github.io/api/#directions">Hammer directions</a> to use based on the events specified but should you wish, these directions as well as other Hammer options can be overriden by the publicly available <code>sequence.hammerTime</code> property.</p><ul><li>object: An object containing <code>left</code>, <code>right</code>, <code>up</code>, and <code>down</code> properties that have a related public method to executed when the user swipes in one of those directions</li><li><code>false</code>: No swipe events</li></ul><h4><a name="swipehammeroptions"></a><code>swipeHammerOptions</code></h4><ul><li>Type: An object</li><li>Default: <code>{}</code></li></ul><p>Options to be used in the third-party Hammer.js library that powers touch functionality. See the <a href="http://hammerjs.github.io/recognizer-swipe/">Hammer.js Swipe Options</a> for a complete list of options.</p><p>Sequence.js relies on Hammer&#8217;s default Swipe recognizer options.</p><p>The Hammer event used by Sequence.js is <code>swipe</code>.</p><h3><a name="hash-tags"></a>Hash Tags</h3><p>When enabled, the hash tag options will append a hash tag to a page&#8217;s URL, reflecting the currently active slide&#8217;s <code>id</code> or <code>data-seq-hashtag</code> attribute.</p><p><strong>Note</strong>: The hashTags options make use of a &#8220;hash bang&#8221;, a hash followed by an exclamation point <code>#!</code>. This is to prevent the browser from jumping when the URL is changed.</p><p><strong>Browser Support</strong>: In supporting browsers, <a href="http://caniuse.com/#search=pushstate">pushState</a> is used to change the URL.</p><h4><a name="hashtags"></a><code>hashTags</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li></ul><li><p><code>true</code>: When a step is navigated to and becomes active, the hash tag will change to reflect the steps <code>id</code> attribute</p></li><li><code>false</code>: the hash tag will not change</li><p>In the following example, when <code>hashTags</code> is enabled and the second step becomes active, the URL will be changed to end with the hash tag <code>#!second-step</code>. The name &#8220;second-step&#8221; is taken from the step&#8217;s <code>id</code> attribute.</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+    &lt;li id="intro"&gt;
+      &lt;h2 data-seq&gt;Built using Sequence.js&lt;/h2&gt;
+    &lt;/li&gt;
+    &lt;li id="second-step"&gt;
+      &lt;h2 data-seq&gt;Super awesome!&lt;/h2&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><h4><a name="hashdataattribute"></a><code>hashDataAttribute</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: <code>hashTags: true</code></li></ul><li><p><code>true</code>: the hash tag name, will not be taken from the step&#8217;s <code>id</code> attribute but instead a data attribute called <code>data-seq-hashtag</code>.</p></li><li><code>false</code>: Use the <code>id</code> attribute instead of the data attribute.</li><p>In the following example, when <code>hashTags</code> and <code>hashDataAttribute</code> are true, and the first step becomes active, the URL will be changed to end with the hash tag <code>#!superAwesome</code>.</p><pre><code class="html">&lt;div id="sequence"&gt;
+  &lt;ul class="seq-canvas"&gt;
+    &lt;li id="intro" data-seq-hashtag="superAwesome"&gt;
+      &lt;h2 data-seq&gt;Built using Sequence.js&lt;/h2&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><h4><a name="hashchangesonfirststep"></a><code>hashChangesOnFirstStep</code></h4><ul><li>Type: true/false</li><li>Default: <code>false</code></li><li>Dependencies: <code>hashTags: true</code></li></ul><p>Whether the hash tag should be changed when the first step becomes active.</p><ul><li><code>true</code>: The hash tag will change as soon as Sequence.js is initiated</li><li><code>false</code>: The hash tag will not change when the first step becomes active but will change for every other step after that</li></ul><h3><a name="fallback-mode"></a>Fallback Mode</h3><p>The fallback mode is used when a browser does not fully support the features used by Sequence.js. For a more detailed description, please see <a href="#browser-support-and-fallback-mode">Browser Support</a>.</p><p>Fallback mode options are included in the options of each instance of Sequence.js, like so:</p><pre><code class="javascript">  var options = {
+    fallback: {
+      speed: 500
+    }
+  };
+
+  var sequenceElement = document.getElementById("sequence");
+
+  var sequence1 = sequence(sequenceElement, options);
+</code></pre><h5><a name="speed"></a><code>speed</code></h5><ul><li>Type: a number representing milliseconds</li><li>Default: <code>500</code></li></ul><p>The speed at which steps should transition between one another when in fallback mode.</p><h2><a name="api"></a>API</h2><p>Sequence.js&#8217; API allows you to use its <a href="#properties">properties</a>, <a href="#methods">methods</a> and <a href="#callbacks">callbacks</a> to extend its functionality.</p><h3><a name="callbacks"></a>Callbacks</h3><p>Callbacks allow you to execute custom JavaScript functions at specific key points during Sequence.js&#8217; operation. For example, callbacks are executed every time the autoPlay feature is stopped/starting, allowing you to change the text of the autoPlay button for example.</p><p>A callback can be accessed via the variable Sequence.js is saved in, like so:</p><pre><code class="javascript">  var sequenceElement = document.getElementById("sequence");
+  var mySequence = sequence(sequenceElement);
+
+  // When autoPlay is stopped
+  mySequence.stopped = function() {
+
+    // Add code to execute here, such as:
+    alert("Sequence's auto play featured has been stopped");
+  }
+
+  // When Sequence is started
+  mySequence.started = function() {
+
+    // Add code to execute here, such as:
+    alert("Sequence's auto play featured has been started");
+  }
+</code></pre><h4><a name="stopped"></a><code>stopped(sequence)</code></h4><p>Executed when autoPlay is stopped.</p><ul><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="started"></a><code>started(sequence)</code></h4><p>Executed when autoPlay is started.</p><ul><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="animationstarted"></a><code>animationStarted(id, sequence)</code></h4><p>Executed when a step animation starts.</p><ul><li><code>id</code>: The id of the step that started animating in</li><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="animationended"></a><code>animationEnded(id, sequence)</code></h4><p>Executed when a step animation ends (both the &#8220;in&#8221; and &#8220;out&#8221; phases finish).</p><ul><li><code>id</code>: The id of the step that finished animating</li></ul><h4><a name="currentphasestarted"></a><code>currentPhaseStarted(id, sequence)</code></h4><p>Executed when the current phase starts animating out.</p><ul><li><code>id</code>: The id of the step the phase belongs to</li><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="currentphaseended"></a><code>currentPhaseEnded(id, sequence)</code></h4><p>Executed when the current phase finishes animating out.</p><ul><li><code>id</code>: The id of the step the phase belongs to</li><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="nextphasestarted"></a><code>nextPhaseStarted(id, sequence)</code></h4><p>Executed when the next phase starts animating in.</p><ul><li><code>id</code>: The id of the step the phase belongs to</li><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="nextphaseended"></a><code>nextPhaseEnded(id, sequence)</code></h4><p>Executed when the next phase finishes animating in.</p><ul><li><code>id</code>: The id of the step the phase belongs to</li><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="throttledresize"></a><code>throttledResize(sequence)</code></h4><p>Executed every 100 milliseconds when the browser window is resized.</p><ul><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="preloaded"></a><code>preloaded(sequence)</code></h4><p>Executed when Sequence has finished preloading.</p><ul><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="preloadprogress"></a><code>preloadProgress(result, src, progress, length, sequence)</code></h4><p>Executed for every image that Sequence.js preloads.</p><ul><li><code>result</code>: Whether the image is &#8220;loaded&#8221; or &#8220;broken&#8221;</li><li><code>src</code>: The source of the image</li><li><code>progress</code>: The number of images that have returned a result</li><li><code>length</code>: The total number of images that are being preloaded</li></ul><p>Example use:</p><pre><code class="javascript">sequence.preloadProgress = function(result, src, progress, length) {
+
+  console.log( "image is " + result + " for " + src );
+  console.log("progress: " + progress + " of " + length);
+}
+</code></pre><p>Example output to the web browser&#8217;s console:</p><pre><code>image is loaded for "images/smiley.gif"
+progress: 1 of 4
+</code></pre><h4><a name="ready"></a>ready(sequence)</h4><p>Executed when Sequence.js is deemed to be ready. This is executed after the <code>preloaded()</code> callback, plus an additional 50 milliseconds as defined via the <code>domThreshold</code> private variable in sequence.js. This callback can be used when you need to be certain Sequence.js has completely finished setting itself up, preloading, and manipulating the DOM. The additional 50 milliseconds is enough time for all DOM manipulations to complete.</p><ul><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h4><a name="destroyed"></a>destroyed(sequence)</h4><p>Executed when Sequence.js is destroyed (removed from the element it is attached to and all Sequence.js functionality stopped) via the <code>destroy()</code> method.</p><ul><li><code>sequence</code>: All properties and methods available to this instance</li></ul><h3><a name="methods"></a>Methods</h3><p>Public methods are the functions that Sequence.js utilises, made available for developers to extend and enhance their particular instance.</p><h4><a name="destroy"></a><code>destroy()</code></h4><p>Remove Sequence.js from the element it is attached to and stop all Sequence.js functionality.</p><h4><a name="goto"></a><code>goTo(id, direction, ignoreTransitionThreshold)</code></h4><p>Causes Sequence.js to animate to a specific step.</p><ul><li><code>id</code> (required): The ID of the step to go to</li><li><code>direction</code> (optional): Direction to get to the step (<code>1</code> = forward, <code>-1</code> = reverse)</li><li><code>ignoreTransitionThreshold</code> (optional): if <code>true</code>, ignore the <code>phaseThreshold</code> option and immediately go to the specified step.</li></ul><p>If a &#8220;direction&#8221; is not specified, Sequence.js will determine the shortest direction to the step and use that. For example, if <code>cycle</code> is enabled, going from step 1 to 4 will use a direction of <code>-1</code>, as going in reverse is the shortest direction.</p><p>Examples:</p><pre><code class="javascript">// Navigate forward to step 3
+sequence.goTo(3, 1);
+
+// Navigate in reverse to step 2
+sequence.goTo(2, -1);
+</code></pre><h4><a name="next"></a><code>next()</code></h4><p>Causes Sequence.js to go to the next step.</p><p>Example:</p><pre><code class="javascript">sequence.next();
+</code></pre><h4><a name="prev"></a><code>prev()</code></h4><p>Causes Sequence.js to go to the previous step.</p><p>Example:</p><pre><code class="javascript">sequence.prev();
+</code></pre><h4><a name="start"></a><code>start()</code></h4><p>Start Sequence.js&#8217; autoPlay feature.</p><p>Example:</p><pre><code class="javascript">sequence.start();
+</code></pre><p>Note: even if <code>autoPlay</code> is disabled in the options, autoPlay can still later be enabled by using the <code>start()</code> method.</p><h4><a name="stop"></a><code>stop()</code></h4><p>Stop Sequence.js&#8217; autoPlay feature.</p><p>Example:</p><pre><code class="javascript">sequence.stop();
+</code></pre><h4><a name="toggleautoplay"></a><code>toggleAutoPlay()</code></h4><p>Stop or start Sequence.js&#8217; autoPlay feature based on its current state.</p><p>Example:</p><pre><code class="javascript">sequence.toggleAutoPlay();
+</code></pre><p>Note: even if <code>autoPlay</code> is disabled in the options, autoPlay can still later be enabled by using the <code>toggleAutoPlay()</code> method.</p><h4><a name="utils"></a><code>utils</code></h4><p><code>utils</code> (utilities) are cross browser helper functions that may be useful in custom theme code.</p><p>The following functions are available under the <code>utils</code> property:</p><h5><a name="addclass"></a><code>addClass(elements, name)</code></h5><p>Cross browser function for adding classes to elements.</p><p>Arguments:</p><ul><li><code>elements</code> &#8211; an HTML object</li><li><code>name</code> &#8211; the class name you&#8217;d like to add to the element</li></ul><h5><a name="removeclass"></a><code>removeClass(elements, name)</code></h5><p>Cross browser function for removing classes from elements</p><p>Arguments:</p><ul><li><code>elements</code> &#8211; an HTML object</li><li><code>name</code> &#8211; the class name you&#8217;d like to remove from the element</li></ul><h5><a name="addevent"></a><code>addEvent(element, eventName, handler)</code></h5><p>Cross browser function for adding events</p><p>Arguments:</p><ul><li><code>element</code> &#8211; an HTML object</li><li><code>eventName</code> &#8211; the name of the event, for example <code>"click"</code></li><li><code>handler</code> &#8211; the function to execute when the event occurs</li></ul><h5><a name="removeevent"></a><code>removeEvent(element, eventName, handler)</code></h5><p>Cross browser function for removing events</p><p>Arguments:</p><ul><li><code>element</code> &#8211; an HTML object</li><li><code>eventName</code> &#8211; the name of the event, for example <code>"click"</code></li><li><code>handler</code> &#8211; the handler to remove</li></ul><h3><a name="properties"></a>Properties</h3><p>Properties can be used to get certain information about the state of Sequence.js, for example, the ID of the current step.</p><p>Properties can be taken from the variable the Sequence.js object is saved in to, like so:</p><pre><code class="javascript">  var sequenceElement = document.getElementById("sequence");
+  var mySequence = sequence(sequenceElement);
+
+  alert(mySequence.currentStepId);
+</code></pre><p>Or from the last argument of a callback:</p><pre><code class="javascript">  var sequenceElement = document.getElementById("sequence");
+  var mySequence = sequence(sequenceElement);
+
+  mySequence.started(sequence) = function() {
+
+    alert(sequence.currentStepId);
+  }
+</code></pre><p>Properties that hold elements or arrays containing elements are prefixed with <code>$</code>.</p><h4><a name="$autoplay"></a><code>$autoPlay</code></h4><ul><li>Type: Array</li><li>Dependencies: <code>autoPlayButton: true</code> | <code>autoPlayButton: [css selector]</code></li></ul><p>Returns an array containing the HTML elements used as Sequence.js&#8217; autoPlay button(s).</p><h4><a name="$canvas"></a><code>$canvas</code></h4><ul><li>Type: HTMLElement</li></ul><p>Returns the HTML element used as Sequence.js&#8217; canvas.</p><h4><a name="$container"></a><code>$container</code></h4><ul><li>Type: HTMLElement</li></ul><p>Returns the HTML element used as Sequence.js&#8217; container.</p><h4><a name="$next"></a><code>$next</code></h4><ul><li>Type: Array</li><li>Dependencies: <code>nextButton: true</code> | <code>nextButton: [css selector]</code></li></ul><p>Returns an array containing the HTML elements used as Sequence.js&#8217; next button(s).</p><h4><a name="$pagination"></a><code>$pagination</code></h4><ul><li>Type: Object</li><li>Dependencies: <code>pagination: true</code> | <code>pagination: [css selector]</code></li></ul><p>Returns an object containing the HTML elements used as Sequence.js&#8217; pagination and pagination links, as well as the ID of the Sequence.js element the pagination controls.</p><p>Object properties:</p><ul><li><code>relatedElementId</code> &#8211; The ID/instance number of the Sequence.js element that pagination controls.</li><li><code>elements</code> &#8211; An array containing the pagination elements associated with the Sequence.js instance</li><li><code>links</code> &#8211; An array containing the pagination links that control the Sequence.js instance</li><li><code>currentLinks</code> &#8211; An array containing the current pagination links</li></ul><h4><a name="$preloader"></a><code>$preloader</code></h4><ul><li>Type: Array</li><li>Dependencies: <code>pagination: true</code> | <code>pagination: [css selector]</code></li></ul><p>Returns an array containing the HTML elements used as Sequence.js&#8217; preloader(s).</p><h4><a name="$prev"></a><code>$prev</code></h4><ul><li>Type: Array</li><li>Dependencies: <code>prevButton: true</code> | <code>prevButton: [css selector]</code></li></ul><p>Returns an array containing the HTML elements used as Sequence.js&#8217; previous button(s).</p><h4><a name="$steps"></a><code>$steps</code></h4><ul><li>Type: Array</li></ul><p>Returns an array containing the HTML elements used as Sequence.js&#8217; steps.</p><h4><a name="currentstepid"></a><code>currentStepId</code></h4><ul><li>Type: Number</li></ul><p>Returns a number representing the step that is currently being viewed.</p><h4><a name="direction"></a><code>direction</code></h4><ul><li>Type: Number</li></ul><p>Returns a number representing the direction Sequence.js is last navigated in.</p><h4><a name="firstrun"></a><code>firstRun</code></h4><ul><li>Type: True/false</li></ul><p>Returns true when Sequence.js is navigating to a step for the first time. False every time after</p><ul><li><code>1</code>: Forward</li><li><code>-1</code>: Reverse</li></ul><h4><a name="hammertime"></a><code>hammerTime</code></h4><ul><li>Type: Object</li></ul><p>Returns an object containing the Hammer event when the <code>swipeNavigation</code> option is enabled.</p><h4><a name="isanimating"></a><code>isAnimating</code></h4><ul><li>Type: true/false</li></ul><p>Returns whether Sequence.js is currently animating.</p><h4><a name="isautoplaying"></a><code>isAutoPlaying</code></h4><ul><li>Type: true/false</li></ul><p>Returns whether autoPlay is active. Note that autoplay is still active even if <code>isAutoPlayPaused</code> is true.</p><h4><a name="isautoplaypaused"></a><code>isAutoPlayPaused</code></h4><ul><li>Type: true/false</li></ul><p>Returns whether autoPlay is paused. autoPlay is paused when the user hovers over the Sequence.js container and the <code>autoPlayPauseOnHover</code> is enabled.</p><h4><a name="isfallbackmode"></a><code>isFallbackMode</code></h4><ul><li>Type: True/False</li></ul><p>Returns true if Sequence.js is in <a href="#browser-support-and-fallback-mode">fallback mode</a>.</p><h4><a name="ismouseover"></a><code>isMouseOver</code></h4><ul><li>Type: True/False</li></ul><p>Returns true if the user&#8217;s cursor is over the container.</p><h4><a name="isready"></a><code>isReady</code></h4><ul><li>Type: True/False</li></ul><p>Returns true when Sequence.js is ready. Sequence.js is ready after the <code>preloaded()</code> callback, plus an additional 50 milliseconds as defined via the <code>domThreshold</code> private variable in sequence.js.</p><h4><a name="modernizr"></a><code>modernizr</code></h4><ul><li>Type: Object</li></ul><p>Returns Sequence.js&#8217; custom build of <a href="http://modernizr.com/download/#-cssanimations-csstransforms-csstransitions-svg-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes">Modernizr</a>.</p><h4><a name="navigationskipthresholdactive"></a><code>navigationSkipThresholdActive</code></h4><ul><li>Type: true/false</li><li>Dependencies: <code>navigationSkip: true</code></li></ul><p>Returns whether the navigationSkipThreshold is currently active (preventing the user from skipping steps).</p><h4><a name="noofsteps"></a><code>noOfSteps</code></h4><ul><li>Type: Number</li></ul><p>Returns the number of steps the Sequence.js instance is made up of.</p><h4><a name="options"></a><code>options</code></h4><ul><li>Type: Object</li></ul><p>Returns Sequence.js options &#8211; defaults combined with developer defined options.</p><h4><a name="prevstepid"></a><code>prevStepId</code></h4><ul><li>Type: Number</li></ul><p>Returns a number representing the step that was previously being viewed (the one before <code>currentStepId</code>).</p><h4><a name="propertysupport"></a><code>propertySupport</code></h4><ul><li>Type: Object</li></ul><p>An object containing the following properties:</p><ul><li><code>animations</code>: returns true when the browser supports CSS animations</li><li><code>transitions</code>: returns true when the browser supports CSS transitions</li></ul><h4><a name="stepsanimating"></a><code>stepsAnimating</code></h4><ul><li>Type: Number</li></ul><p>Returns the number of steps that are currently animating.</p><h4><a name="stepproperties"></a><code>stepProperties</code></h4><ul><li>Type: Object</li></ul><p>Returns an object used by Sequence.js to know how many steps it will consist of, the elements that will animate, and their durations.</p></div> </article> </section></div></div></main><footer class="footer" role="contentinfo"><div class="container"><div class="three-up group"><div class="column five"><object class="logo footer__logo" type="image/svg+xml" data="http://www.sequencejs.com/wp-content/themes/sequence/images/logo__sequence--white.svg" width="160" height="31"> <a href="/"> <img src="http://www.sequencejs.com/wp-content/themes/sequence/images/logo__sequence--white.png" alt="Sequence.js" /> </a> </object><nav class="nav group"><ul><li ><a href="http://www.sequencejs.com/themes/">Themes</a></li><li class="current"><a href="http://www.sequencejs.com/documentation/">Documentation</a></li><li ><a href="http://www.sequencejs.com/licenses/">Licenses</a></li><li ><a href="http://www.sequencejs.com/download/">Download <i class="fa fa-arrow-circle-down"></i></a></li></ul><ul class="nav__secondary"><li ><a href="http://www.sequencejs.com/support/">Support</a></li><li ><a href="http://www.sequencejs.com/terms/">Terms</a></li><li ><a href="http://www.sequencejs.com/account/">My Account</a></li><li ><a href="http://www.sequencejs.com/contact/">Contact</a></li></ul> </nav></div><div class="column five"><div class="sponsor"> <a href="https://www.browserstack.com/" title="BrowserStack - Cross Browser Testing Tool" target="_blank"><img src="http://www.sequencejs.com/wp-content/themes/sequence/images/browserstack-logo.png" alt="BrowserStack Logo" srcset="http://www.sequencejs.com/wp-content/themes/sequence/images/browserstack-logo.png 1x, http://www.sequencejs.com/wp-content/themes/sequence/images/browserstack-logo@2x.png 2x" width="142" height="31" /></a><p>Cross browser testing environment provided by <a href="https://www.browserstack.com/" title="BrowserStack - Cross Browser Testing Tool" target="_blank">BrowserStack</a>.</p></div></div><div class="column five"><div id="mc_embed_signup" class="newsletter-signup group"><h3><i class="fa fa-envelope"></i> Signup to our Mailing List</h3><p>We'll send the occassional email with updates and coupons. You can unsubscribe at any time.</p><form action="//sequencejs.us11.list-manage.com/subscribe/post?u=f6760841c5edb58fae9182b3d&amp;id=f8918f017f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"><div id="mc_embed_signup_scroll"><div class="mc-field-group"> <label for="mce-EMAIL">Email Address</label> <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address" required></div><div style="position: absolute; left: -5000px;"><input type="text" name="b_f6760841c5edb58fae9182b3d_f8918f017f" tabindex="-1" value=""></div> <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></form></div></div></div><div class="made-by group"><ul><li> <a cass="icon__ild" href="http://ianlunn.co.uk/" title="Ian Lunn - Freelance Web Designer &amp; Front End Developer" target="_blank" class="ild-ident"> <svg class="" onmouseenter="el=this;el.classList.add('active');setTimeout(function(){el.classList.remove('active')},600);" xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 52 52"> <g class="circle-holder"> <path class="circle" fill="#2E96D6" d="M5.4 26c0-11.4 9.2-20.6 20.6-20.6s20.6 9.2 20.6 20.6c0 11.4-9.2 20.6-20.6 20.6s-20.6-9.2-20.6-20.6zm-5.4 0c0 14.4 11.6 26 26 26s26-11.6 26-26-11.6-26-26-26-26 11.6-26 26z"></path> </g> <path class="i" fill="#fff" d="M15 22h9v16h-9v-16z"></path> <path class="l" fill="#fff" d="M28 14h9v24h-9v-24z"></path> </svg> </a></li><li><a class="icon__twitter" href="https://twitter.com/IanLunn/" title="Ian Lunn on Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li><li><a class="icon__github" href="https://github.com/IanLunn/Sequence/" title="Sequence on GitHub" target="_blank"><i class="fa fa-github"></i></a></li></ul><p>Made by<br /><a href="http://ianlunn.co.uk/" title="Ian Lunn - Freelance Web Designer &amp; Front End Developer" target="_blank">Ian Lunn - Web Designer &amp; Front End Developer</a></p><p class="follow"><a href="https://twitter.com/IanLunn" class="twitter-follow-button" data-show-count="false" data-dnt="true" data-size="large">Follow @IanLunn</a> for Sequence.js news, web design &amp;<br /> development links, tips, and opinions</p> <small>Copyright &copy; 2015 <a href="http://ianlunn.co.uk/" title="Ian Lunn - Freelance Web Designer &amp; Front End Developer" target="_blank">Ian Lunn Design Limited</a></small></div></div> </footer><script type='text/javascript'>var woocommerce_params={"ajax_url":"\/wp-admin\/admin-ajax.php"};</script><script type='text/javascript'>var wc_cart_fragments_params={"ajax_url":"\/wp-admin\/admin-ajax.php","fragment_name":"wc_fragments"};</script><script type='text/javascript' src='http://www.sequencejs.com/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');</script><script type="text/javascript" src="http://www.sequencejs.com/wp-content/cache/minify/000000/158d0/default.include-footer.ae7917.js"></script></body></html>

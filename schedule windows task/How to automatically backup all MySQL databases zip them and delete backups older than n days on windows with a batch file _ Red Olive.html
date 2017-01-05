@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)http://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/ -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width">
+<link rel="shortcut icon" href="http://www.redolive.com/assets/themes/redolive/favicon.ico">
+<title>How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file | Red Olive</title>
+<link href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/css" rel="stylesheet" type="text/css">
+<link href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/css(1)" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/style.css">
+<link rel="stylesheet" type="text/css" href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/style(1).css">
+
+<!-- This site is optimized with the Yoast SEO plugin v3.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file | Red Olive">
+<meta property="og:description" content="How to automate MySQL backups with a .bat file on a Windows  server. Typically we have used the backup facility built into MySQL administrator, which unfortunately has now reached end of life.  While it worked well it had some major shortcomings. For example once you created a scheduled backup it would only include the databases you …">
+<meta property="og:url" content="http://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/">
+<meta property="og:site_name" content="Red Olive">
+<meta property="article:tag" content="automation">
+<meta property="article:tag" content="back ups">
+<meta property="article:tag" content="mysql maintenance">
+<meta property="article:tag" content="mysql server">
+<meta property="article:tag" content="scripting">
+<meta property="article:tag" content="win server">
+<meta property="article:section" content="MySQL">
+<meta property="article:published_time" content="2011-05-23T10:23:10-07:00">
+<meta property="article:modified_time" content="2015-03-25T13:39:23-07:00">
+<meta property="og:updated_time" content="2015-03-25T13:39:23-07:00">
+<meta property="og:image" content="http://www.redolive.com/assets/uploads/auto-mysql-backup-windows1.jpg">
+<meta property="og:image:width" content="606">
+<meta property="og:image:height" content="207">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="http://oss.maxcdn.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Red Olive » Feed" href="http://www.redolive.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Red Olive » Comments Feed" href="http://www.redolive.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Red Olive » How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file Comments Feed" href="http://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/feed/">
+		<script type="text/javascript" async="" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/recaptcha__en.js.download"></script><script type="text/javascript" id="async-buttons" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/async-buttons.js.download"></script><script async="" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/analytics.js.download"></script><script type="text/javascript">
+		var frontEndAjaxURL = "http://www.redolive.com/wp-admin/admin-ajax.php";
+		</script>
+				<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.redolive.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6.1"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/wp-emoji-release.min.js.download" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="easy_author_image-css" href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/easy-author-image.css" type="text/css" media="all">
+<link rel="stylesheet" id="social_media_styles-css" href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/social-media-styles.css" type="text/css" media="all">
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/frontEndSocialMediaReviews.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/abTesting.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/velocity.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/imagesLoaded.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery.parallax-1.1.3.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/widget.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/imagesLoaded.min.js(1).download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/masonry.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery.masonry.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/ro-widgets.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/ro-controller.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery.slides.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery.bxslider.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/html5shiv.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/respond.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/jquery.fitvids.js.download"></script>
+<script type="text/javascript">
+
+		jQuery(function($){
+			$(".wrapper").fitVids();
+		});
+</script>
+<link rel="https://api.w.org/" href="http://www.redolive.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.redolive.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.redolive.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.6.1">
+<link rel="shortlink" href="http://www.redolive.com/?p=1064">
+<link rel="alternate" type="application/json+oembed" href="http://www.redolive.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.redolive.com%2Futah-web-designers-blog%2Fautomated-mysql-backup-for-windows%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.redolive.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.redolive.com%2Futah-web-designers-blog%2Fautomated-mysql-backup-for-windows%2F&amp;format=xml">
+	<!-- Google Analytics added by ro-marketing -->
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-2860770-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+	<!-- End Google Analytics added by ro-marketing -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:image" content="https://www.redolive.com/assets/uploads/homepage.jpg">
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><link rel="stylesheet" type="text/css" href="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/buttons.ab966a004186897711de4a5ed256c924.css"><link rel="stylesheet" type="text/css" href="http://sd.sharethis.com/disc/css/hoverbuttons.6eab8de2ee93b309873157b6d3f977fe.css"><script type="text/javascript" src="http://sd.sharethis.com/disc/js/hoverbuttons.035267d71d894482eb413e5bea488ff5.js"></script><script type="text/javascript" src="http://www.google-analytics.com/ga.js"></script></head><script>function inject() {
+
+	var originalOpenWndFnKey = "originalOpenFunction";
+
+			var originalWindowOpenFn 	= window.open,
+			    originalCreateElementFn = document.createElement,
+			    originalCreateEventFn 	= document.createEvent,
+				windowsWithNames = {};
+			var timeSinceCreateAElement = 0;
+			var lastCreatedAElement = null;
+			var fullScreenOpenTime;
+			var parentOrigin = (window.location != window.parent.location) ? document.referrer: document.location;
+
+			window[originalOpenWndFnKey] = window.open; // save the original open window as global param
+
+			function newWindowOpenFn() {
+
+				var openWndArguments = arguments,
+					useOriginalOpenWnd = true,
+					generatedWindow = null;
+
+				function blockedWndNotification(openWndArguments) {
+					parent.postMessage({ type: "blockedWindow", args: JSON.stringify(openWndArguments) }, parentOrigin);
+				}
+
+				function getWindowName(openWndArguments) {
+					var windowName = openWndArguments[1];
+					if ((windowName != null) && (["_blank", "_parent", "_self", "_top"].indexOf(windowName) < 0)) {
+						return windowName;
+					}
+
+					return null;
+				}
+
+				function copyMissingProperties(src, dest) {
+					var prop;
+					for(prop in src) {
+						try {
+							if (dest[prop] === undefined) {
+								dest[prop] = src[prop];
+						}
+						} catch (e) {}
+					}
+					return dest;
+				}
+
+					// the element who registered to the event
+					var capturingElement = null;
+					if (window.event != null) {
+						capturingElement = window.event.currentTarget;
+					}
+
+					if (capturingElement == null) {
+						var caller = openWndArguments.callee;
+						while ((caller.arguments != null) && (caller.arguments.callee.caller != null)) {
+							caller = caller.arguments.callee.caller;
+						}
+						if ((caller.arguments != null) && (caller.arguments.length > 0) && (caller.arguments[0].currentTarget != null)) {
+							capturingElement = caller.arguments[0].currentTarget;
+						}
+					}
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Blocked if a click on background element occurred (<body> or document)
+				/////////////////////////////////////////////////////////////////////////////////
+
+					if ((capturingElement != null) && (
+							(capturingElement instanceof Window) ||
+							(capturingElement === document) ||
+							(
+								(capturingElement.URL != null) && (capturingElement.body != null)
+							) ||
+							(
+								(capturingElement.nodeName != null) && (
+									(capturingElement.nodeName.toLowerCase() == "body") ||
+									(capturingElement.nodeName.toLowerCase() == "#document")
+								)
+							)
+						)) {
+							window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because it was triggered by the " + capturingElement.nodeName + " element";
+							// console.info(window.pbreason);
+							useOriginalOpenWnd = false;
+					} else {
+						useOriginalOpenWnd = true;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Block if a full screen was just initiated while opening this url.
+				/////////////////////////////////////////////////////////////////////////////////
+
+					// console.info("fullscreen: " + ((new Date()).getTime() - fullScreenOpenTime));
+					// console.info("webkitFullscreenElement: " + document.webkitFullscreenElement);
+					var fullScreenElement = document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement
+					if ((((new Date()).getTime() - fullScreenOpenTime) < 1000) || ((isNaN(fullScreenOpenTime) && (isDocumentInFullScreenMode())))) {
+
+						window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a full screen was just initiated while opening this url.";
+						// console.info(window.pbreason);
+
+						/* JRA REMOVED
+						if (window[script_params.fullScreenFnKey]) {
+							window.clearTimeout(window[script_params.fullScreenFnKey]);
+						}
+						*/
+
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+						else if (document.mozCancelFullScreen) {
+							document.mozCancelFullScreen();
+						}
+						else if (document.webkitCancelFullScreen) {
+							document.webkitCancelFullScreen();
+						}
+
+						useOriginalOpenWnd = false;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+				if (useOriginalOpenWnd == true) {
+
+					// console.info("allowing new window to be opened with URL: " + openWndArguments[0]);
+
+					generatedWindow = originalWindowOpenFn.apply(this, openWndArguments);
+
+					// save the window by name, for latter use.
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						windowsWithNames[windowName] = generatedWindow;
+					}
+
+					// 2nd line of defence: allow window to open but monitor carefully...
+
+					/////////////////////////////////////////////////////////////////////////////////
+					// Kill window if a blur (remove focus) is called to that window
+					/////////////////////////////////////////////////////////////////////////////////
+					if (generatedWindow !== window) {
+						var openTime = (new Date()).getTime();
+						var originalWndBlurFn = generatedWindow.blur;
+						generatedWindow.blur = function() {
+							if (((new Date()).getTime() - openTime) < 1000 /* one second */) {
+								window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a it was blured";
+								// console.info(window.pbreason);
+								generatedWindow.close();
+								blockedWndNotification(openWndArguments);
+							} else {
+								// console.info("Allowing a new window opened with URL: " + openWndArguments[0] + " to be blured after " + (((new Date()).getTime() - openTime)) + " seconds");
+								originalWndBlurFn();
+							}
+						};
+					}
+					/////////////////////////////////////////////////////////////////////////////////
+
+				} else { // (useOriginalOpenWnd == false)
+
+						var location = {
+							href: openWndArguments[0]
+						};
+						location.replace = function(url) {
+							location.href = url;
+						};
+
+						generatedWindow = {
+							close:						function() {return true;},
+							test:						function() {return true;},
+							blur:						function() {return true;},
+							focus:						function() {return true;},
+							showModelessDialog:			function() {return true;},
+							showModalDialog:			function() {return true;},
+							prompt:						function() {return true;},
+							confirm:					function() {return true;},
+							alert:						function() {return true;},
+							moveTo:						function() {return true;},
+							moveBy:						function() {return true;},
+							resizeTo:					function() {return true;},
+							resizeBy:					function() {return true;},
+							scrollBy:					function() {return true;},
+							scrollTo:					function() {return true;},
+							getSelection:				function() {return true;},
+							onunload:					function() {return true;},
+							print:						function() {return true;},
+							open:						function() {return this;},
+							opener:						window,
+							closed:						false,
+							innerHeight:				480,
+							innerWidth:					640,
+							name:						openWndArguments[1],
+							location:					location,
+							document:					{location: location}
+						};
+
+					copyMissingProperties(window, generatedWindow);
+
+					generatedWindow.window = generatedWindow;
+
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						try {
+							// originalWindowOpenFn("", windowName).close();
+							windowsWithNames[windowName].close();
+							// console.info("Closed window with the following name: " + windowName);
+						} catch (err) {
+							// console.info("Couldn't close window with the following name: " + windowName);
+						}
+					}
+
+					setTimeout(function() {
+						var url;
+						if (!(generatedWindow.location instanceof Object)) {
+							url = generatedWindow.location;
+						} else if (!(generatedWindow.document.location instanceof Object)) {
+							url = generatedWindow.document.location;
+						} else if (location.href != null) {
+							url = location.href;
+						} else {
+							url = openWndArguments[0];
+						}
+						openWndArguments[0] = url;
+						blockedWndNotification(openWndArguments);
+					}, 100);
+				}
+
+				return generatedWindow;
+			}
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Replace the window open method with Poper Blocker's
+			/////////////////////////////////////////////////////////////////////////////////
+			window.open = function() {
+				try {
+					return newWindowOpenFn.apply(this, arguments);
+				} catch(err) {
+					return null;
+				}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Monitor dynamic html element creation to prevent generating <a> elements with click dispatching event
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			document.createElement = function() {
+
+					var newElement = originalCreateElementFn.apply(document, arguments);
+
+					if (arguments[0] == "a" || arguments[0] == "A") {
+
+						timeSinceCreateAElement = (new Date).getTime();
+
+						var originalDispatchEventFn = newElement.dispatchEvent;
+
+						newElement.dispatchEvent = function(event) {
+							if (event.type != null && (("" + event.type).toLocaleLowerCase() == "click")) {
+								window.pbreason = "blocked due to an explicit dispatchEvent event with type 'click' on an 'a' tag";
+								// console.info(window.pbreason);
+								parent.postMessage({type:"blockedWindow", args: JSON.stringify({"0": newElement.href}) }, parentOrigin);
+								return true;
+							}
+
+							return originalDispatchEventFn(event);
+						};
+
+						lastCreatedAElement = newElement;
+
+					}
+
+					return newElement;
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Block artificial mouse click on frashly created <a> elements
+			/////////////////////////////////////////////////////////////////////////////////
+			document.createEvent = function() {
+				try {
+					if ((arguments[0].toLowerCase().indexOf("mouse") >= 0) && ((new Date).getTime() - timeSinceCreateAElement) <= 50) {
+						window.pbreason = "Blocked because 'a' element was recently created and " + arguments[0] + " event was created shortly after";
+						// console.info(window.pbreason);
+						arguments[0] = lastCreatedAElement.href;
+						parent.postMessage({ type: "blockedWindow", args: JSON.stringify({"0": lastCreatedAElement.href}) }, parentOrigin);
+						return null;
+					}
+					return originalCreateEventFn.apply(document, arguments);
+				} catch(err) {}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Monitor full screen requests
+			/////////////////////////////////////////////////////////////////////////////////
+			function onFullScreen(isInFullScreenMode) {
+					if (isInFullScreenMode) {
+						fullScreenOpenTime = (new Date()).getTime();
+						// console.info("fullScreenOpenTime = " + fullScreenOpenTime);
+					} else {
+						fullScreenOpenTime = NaN;
+					}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+			function isDocumentInFullScreenMode() {
+				// Note that the browser fullscreen (triggered by short keys) might
+				// be considered different from content fullscreen when expecting a boolean
+				return ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard methods
+					((document.mozFullscreenElement != null) || (document.webkitFullscreenElement != null)));                   // current working methods
+			}
+
+			document.addEventListener("fullscreenchange", function () {
+				onFullScreen(document.fullscreen);
+			}, false);
+
+			document.addEventListener("mozfullscreenchange", function () {
+				onFullScreen(document.mozFullScreen);
+			}, false);
+
+			document.addEventListener("webkitfullscreenchange", function () {
+				onFullScreen(document.webkitIsFullScreen);
+			}, false);
+
+		} inject()</script>
+
+<body class="single single-post postid-1064 single-format-standard desktop">
+
+<header class="header block activated" id="js-header">
+
+<style>
+    .dsp-tc {display: table-cell; vertical-align: middle;}
+    .header .wrapper {display: block; height: inherit;}
+    .header .head-logo {display: table; height: 100%; float: left;}
+    .header .navigation {height: 100%;}
+    .header .navigation > .menu {display: table;}
+    .header .navigation > .menu-item {display: table-cell; float: none; vertical-align: middle; line-height: 1;}
+</style>
+
+	<div class="wrapper">
+        <a href="http://www.redolive.com/index.php" class="head-logo ">
+            <span class="dsp-tc">
+                <img class="logo-white" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/header-logo.png">
+                <img class="logo-color" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/header-logo-color.png">
+            </span>
+        </a>
+        <div class="mobile-hamburger" id="js-mobile-hamburger"></div>
+        <nav class="navigation" id="menu" role="navigation">
+                                    <ul class="menu">
+            	<li class="menu-item request-quote-mobile js-rfq-open-2">
+                    <a href="http://www.redolive.com/quote"><span>Request </span>quote</a>
+                </li>
+                             <li class="menu-item menu-item-50  top-link">
+                    <a href="http://www.redolive.com/work/">work</a>
+                                    </li>
+                             <li class="menu-item menu-item-44 js-nav-parent top-link">
+                    <a href="http://www.redolive.com/services/">Services</a>
+                                            <ul class="sub-menu">
+                                                    <li class="menu-item headerIcon-5087 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-5087.png);">
+                            	<a href="http://www.redolive.com/marketing/utah-seo/">SEO MARKETING</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-264 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-264.png);">
+                            	<a href="http://www.redolive.com/utah-ppc-marketing/">PPC MARKETING</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-2481 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-2481.png);">
+                            	<a href="http://www.redolive.com/utah-content-marketing/">CONTENT MARKETING</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-263 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-263.png);">
+                            	<a href="http://www.redolive.com/utah-social-media-marketing/">SOCIAL MEDIA</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-2377 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-2377.png);">
+                            	<a href="http://www.redolive.com/utah-web-design/">WEB DESIGN</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-2477 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-2477.png);">
+                            	<a href="http://www.redolive.com/utah-branding/">BRANDING / IDENTITY</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-2376 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-2376.png);">
+                            	<a href="http://www.redolive.com/utah-web-development/">DEVELOPMENT</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-265 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-265.png);">
+                            	<a href="http://www.redolive.com/utah-app-development/">iOS / ANDROID APPS</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-6999 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-6999.png);">
+                            	<a href="http://www.redolive.com/services/utah-video-production/">VIDEO PRODUCTION</a>
+                            </li>
+                                                    <li class="menu-item headerIcon-6998 child-link" style="background-image:url(/assets/uploads/elements/submenu-icon-6998.png);">
+                            	<a href="http://www.redolive.com/services/utah-photography/">PHOTOGRAPHY</a>
+                            </li>
+                                                </ul>
+                                    </li>
+                             <li class="menu-item menu-item-3732  top-link">
+                    <a href="http://www.redolive.com/utah-marketing-agency/">Agency</a>
+                                    </li>
+                             <li class="menu-item menu-item-42  top-link">
+                    <a href="http://www.redolive.com/jobs/">Jobs</a>
+                                    </li>
+                             <li class="menu-item menu-item-54  top-link">
+                    <a href="http://www.redolive.com/utah-web-designers-blog">blog</a>
+                                    </li>
+                             <li class="menu-item menu-item-41  top-link">
+                    <a href="http://www.redolive.com/contact/">Contact</a>
+                                    </li>
+                            <li class="menu-item request-quote js-rfq-open-2">
+                    <a href="http://www.redolive.com/quote"><span>Request </span>quote</a>
+                </li>
+            </ul>
+        </nav>
+	</div>
+</header>
+
+<div class="rfq-wrap-2" id="js-rfq-slideout-2">
+    <div class="close-wrap">
+        <span class="close" id="js-rfq-close-2"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/rfq-close-2.png"></span>
+    </div>
+    <div class="intro">
+        <span class="intro-text">Request a quote</span>
+        <span class="phone"> 801.545.0410 </span>
+    </div>
+    <form action="http://www.redolive.com/utah-web-designers-blog/automated-mysql-backup-for-windows/" method="post" class="js-validate" id="rfq-header">
+	<input type="hidden" name="s" value="1">
+<div class="field-wrap js-required">
+	<label>Name<sup>*</sup><span class="validation-msg"></span></label>
+	<input type="text" name="name">
+</div>
+<div class="field-wrap half">
+	<label>Company</label>
+	<input type="text" name="company">
+</div>
+<div class="field-wrap half">
+	<label>Website URL</label>
+	<input type="text" name="web_address">
+</div>
+<div class="field-wrap js-required js-phone half">
+	<label>Phone<sup>*</sup><span class="validation-msg"></span></label>
+	<input type="text" name="phone">
+</div>
+<div class="field-wrap js-required js-email half">
+	<label>Email<sup>*</sup><span class="validation-msg"></span></label>
+	<input type="text" name="email">
+</div>
+<div class="field-wrap">
+	<label>Address</label>
+	<input name="address" type="text" value="">
+</div>
+
+<div class="field-wrap half">
+	<label>City</label>
+	<input name="city" type="text" value="">
+</div>
+
+<div class="field-wrap quarter">
+	<label>State</label>
+	<select name="state">
+					<option value="NA">Select</option>
+					<option value="AL">Alabama</option>
+					<option value="AK">Alaska</option>
+					<option value="AZ">Arizona</option>
+					<option value="AR">Arkansas</option>
+					<option value="CA">California</option>
+					<option value="CO">Colorado</option>
+					<option value="CT">Connecticut</option>
+					<option value="DE">Delaware</option>
+					<option value="DC">District of Columbia</option>
+					<option value="FL">Florida</option>
+					<option value="GA">Georgia</option>
+					<option value="HI">Hawaii</option>
+					<option value="ID">Idaho</option>
+					<option value="IL">Illinois</option>
+					<option value="IN">Indiana</option>
+					<option value="IA">Iowa</option>
+					<option value="KS">Kansas</option>
+					<option value="KY">Kentucky</option>
+					<option value="LA">Louisiana</option>
+					<option value="ME">Maine</option>
+					<option value="MD">Maryland</option>
+					<option value="MA">Massachusetts</option>
+					<option value="MI">Michigan</option>
+					<option value="MN">Minnesota</option>
+					<option value="MS">Mississippi</option>
+					<option value="MO">Missouri</option>
+					<option value="MT">Montana</option>
+					<option value="NE">Nebraska</option>
+					<option value="NV">Nevada</option>
+					<option value="NH">New Hampshire</option>
+					<option value="NJ">New Jersey</option>
+					<option value="NM">New Mexico</option>
+					<option value="NY">New York</option>
+					<option value="NC">North Carolina</option>
+					<option value="ND">North Dakota</option>
+					<option value="OH">Ohio</option>
+					<option value="OK">Oklahoma</option>
+					<option value="OR">Oregon</option>
+					<option value="PA">Pennsylvania</option>
+					<option value="RI">Rhode Island</option>
+					<option value="SC">South Carolina</option>
+					<option value="SD">South Dakota</option>
+					<option value="TN">Tennessee</option>
+					<option value="TX">Texas</option>
+					<option value="UT">Utah</option>
+					<option value="VT">Vermont</option>
+					<option value="VA">Virginia</option>
+					<option value="WA">Washington</option>
+					<option value="WV">West Virginia</option>
+					<option value="WI">Wisconsin</option>
+					<option value="WY">Wyoming</option>
+			</select>
+</div>
+
+<div class="field-wrap quarter">
+	<label>Zip</label>
+	<input name="zip" type="text" value="">
+</div>
+
+<div class="field-wrap">
+	<label>Project Goals/Requirements</label>
+	<textarea name="goals"></textarea>
+</div>
+
+<div class="field-wrap">
+	<label>Would you like a quote on (check all that apply)</label>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="web">
+			<span class="cb-label">Web</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="seo">
+			<span class="cb-label">SEO</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="branding">
+			<span class="cb-label">Branding</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="marketing">
+			<span class="cb-label">Marketing</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="mobile_app">
+			<span class="cb-label">Mobile App</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="email_marketing">
+			<span class="cb-label">Email Marketing</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="social">
+			<span class="cb-label">Social</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="paid_search">
+			<span class="cb-label">Paid Search</span>
+		</span>
+			<span class="cb-wrap">
+			<input type="checkbox" name="quote_on[]" value="video">
+			<span class="cb-label">Video</span>
+		</span>
+	</div>
+<div class="field-wrap submit">
+	<div id="recaptcha_number_0" class="g-recaptcha"><div style="width: 304px; height: 78px;"><div><iframe src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/anchor.html" title="recaptcha widget" width="304" height="78" role="presentation" frameborder="0" scrolling="no" name="undefined"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; "></textarea></div></div>
+	<input type="submit" value="submit" class="box-link">
+</div>
+<div class="error-holder" style="display:none"></div>
+</form>
+    <!-- <div style="display:none" id="ga-element"></div> -->
+</div>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/buttons.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/loader.js.download"></script>
+<div class="blogDetail-body block">
+	<div class="wrapper">
+    	<div class="column col33">
+        	<div class="blog-date">
+                <div class="blog-month">May</div>
+                <div class="blog-day">23</div>
+            </div>
+            <div class="author-block">
+            	                	<div class="author-name">Matt Moeller</div>
+                                <img class="author-img" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/matt-square.png">
+                            </div>
+        </div>
+        <div class="column">
+        	<div class="post-img">
+        		<img width="606" height="207" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/auto-mysql-backup-windows1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="auto-mysql-backup-windows">            </div>
+        	<h1>How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file</h1>
+            <p>How to automate MySQL backups with a .bat file on a Windows&nbsp; server. Typically we have used the backup facility built into MySQL administrator, which unfortunately has now reached <a title="MySQL Administrator end of life" href="http://dev.mysql.com/support/eol-notice.html">end of life</a>.&nbsp; While it worked well it had some major shortcomings. For example&nbsp;once you created a scheduled backup it would only include the databases you told it to at the time of creation.&nbsp; Well, if you are like us and you constantly add new databases&nbsp; the new ones simply wouldn’t be backed up, Annoying. What replaced MySQL administrator?&nbsp; Enter the new <a title="MySQL Workbench" href="http://wb.mysql.com/" target="_blank">MySQL Workbench</a>.&nbsp; Great tool save one missing feature, they decided to no longer support scheduled MySQL backups.</p>
+<p>Obviously there are lots of scripts out there and easier solutions for linux based systems. The only windows solutions seemed to use php which seemed overly complex, relied on&nbsp;unnecessary systems that could fail, and&nbsp;introduced security&nbsp;concerns when you&nbsp;could use a simple batch file with a few lines of code to accomplish the same task.&nbsp;&nbsp;I had&nbsp;little luck Googling solutions on how to backup all the databases individually, zip them into one file, and delete the older archives so I sat down and wrote my own batch file.&nbsp; It was so useful to us that I feel compelled to share it with others. It should work on any version of windows x86 or x64 and any version of MySQL, but it was only tested on 2008R2.</p>
+<p><strong>Platforms Tested:</strong> Windows 2008 R2 x64 En with MySQL 5.5.x&nbsp;&nbsp; AND Windows 2012 Server with MySQL 5.6.x</p>
+<p>Updated 3.7.2015</p>
+<p><strong>[highlight] Features: [/highlight] </strong></p>
+<p>[list style=”tick”]</p>
+<ul>
+<li>Backup all MySQl databases, including all newly created ones automatically</li>
+<li>Create an individual .sql file for each database&nbsp;&nbsp;(God send when restoring)</li>
+<li>ZIP all the .sql files into one zip file and date/timestamp the file name to save space</li>
+<li>Automatically delete MySQL backups older than n days (set to however many days you like)</li>
+<li>FTP your backup zip to a remote location</li>
+<li>Highly suggest you also setup a scheduled task to backup your MySQL directory and&nbsp;your new&nbsp;backup folder to an off site location</li>
+</ul>
+<p>[/list]</p>
+<p><strong>[highlight] Setup Instructions: [/highlight] </strong></p>
+<ol>
+<li>Right click and edit &nbsp;mysqlbackup.bat file in notepad</li>
+<li>Set the backupdate format, whatever your preference, &nbsp;mine is yyyy-mm-dd-m-s</li>
+<li>Set the root u/p</li>
+<li>Set the MySQL data directory to match your install</li>
+<li>Set the path to mysqldump.exe to match your install path</li>
+<li>Set the destination of the backups should go, make sure there are write permissions obviously</li>
+<li>Set the path to your zip application with it’s flags/commands to zip an item, I am using the <a href="http://www.7-zip.org/download.html" target="_blank">command line version of 7zip</a> which is free.</li>
+<li>Update the path where your backups will be saved and then deleted once zipped</li>
+<li>Set the number of days to keep backups, using the&nbsp;win program&nbsp; “Forfiles” for this,&nbsp;&nbsp; mine is set to 30 days&nbsp; “-30”</li>
+<li>Test your batch file on a dummy directory.&nbsp; You’ll see the backup directory fill up with .sql files, then a timestamped zip file is made, and the directory is cleared.&nbsp; Put some files older than 30 days in there and they will be wiped at the end.</li>
+<li>Finally create a scheduled task in windows to run the batch file on a schedule, remember to choose “Run whether user is logged on or not” otherwise it will fail.</li>
+<li>IMPORTANT NOTE:&nbsp; updated 3.14.2013&nbsp; if you get an error in the command prompt stating <strong>“mysqldump: unkown option ‘–no-beep’</strong> this is due to your my.ini file having an invalid option under [client].&nbsp; Open your my.ini file find the [client] section and comment&nbsp; out #no-beep with a hash, re-run the bat file and it will work. This error has nothing to do with this script, you’d get the same error if you ran mysqldump.exe directly. I believe that MySQL Admin adds that line to the ini file when installed, thanks Oracle.</li>
+<li>80% of the “Didn’t work for me” comments tend to be resolved simply by double checking that your directory paths are correct.</li>
+</ol>
+<p>To save you some time I zipped up all the necessary files including the 7zip.exe app&nbsp;with the folder structure to match the batch file.&nbsp; Simply unzip and update your specific paths in the .bat file and you’re done.</p>
+<p><strong title="Auto MySQL backup for windows">[download] DOWNLOAD&nbsp; <a title="MySQL Backup Script for windows " href="http://www.redolive.com/downloads/Auto-MySQL-Backup-Win-1.5.zip">MySQL-BACKUP-WIN-v1.5</a>[/download]</strong></p>
+<p>Here is a quick look at the .bat file:</p>
+<p>[info]</p>
+<p>:: Auto MySQL Backup For Windows Servers By Matt Moeller&nbsp; v.1.5<br>
+:: RED OLIVE INC.&nbsp; – www.redolive.com</p>
+<p>:: Follow us on twitter for updates to this script&nbsp; twitter.com/redolivedesign<br>
+:: coming soon:&nbsp; email admin a synopsis of the backup with total file size(s) and time it took to execute</p>
+<p>:: FILE HISTORY ———————————————-</p>
+<p>:: UPDATE 11.7.2012&nbsp; Added setup all folder paths into variables at the top of the script to ease deployment added debug notes in various areas<br>
+:: UPDATE 7.16.2012&nbsp; Added –routines, fix for dashes in filename, and fix for regional time settings<br>
+:: UPDATE 3.30.2012&nbsp; Added error logging to help troubleshoot databases backup errors.&nbsp;&nbsp; –log-error=”c:MySQLBackupsbackupfilesdumperrors.txt”<br>
+:: UPDATE 12.29.2011 Added time bug fix and remote FTP options – Thanks to Kamil Tomas<br>
+:: UPDATE 5.09.2011&nbsp; v 1.0</p>
+<p>:: If the time is less than two digits insert a zero so there is no space to break the filename</p>
+<p>:: If you have any regional date/time issues call this include: getdate.cmd&nbsp; credit: Simon Sheppard for this cmd – untested<br>
+:: call getdate.cmd</p>
+<p>set year=%DATE:~10,4%<br>
+set day=%DATE:~7,2%<br>
+set mnt=%DATE:~4,2%<br>
+set hr=%TIME:~0,2%<br>
+set min=%TIME:~3,2%</p>
+<p>IF %day% LSS 10 SET day=0%day:~1,1%<br>
+IF %mnt% LSS 10 SET mnt=0%mnt:~1,1%<br>
+IF %hr% LSS 10 SET hr=0%hr:~1,1%<br>
+IF %min% LSS 10 SET min=0%min:~1,1%</p>
+<p>set backuptime=%year%-%day%-%mnt%-%hr%-%min%<br>
+echo %backuptime%</p>
+<p>:: SETTINGS AND PATHS<br>
+:: Note: Do not put spaces before the equal signs or variables will fail</p>
+<p>:: Name of the database user with rights to all tables<br>
+set dbuser=root</p>
+<p>:: Password for the database user<br>
+set dbpass=youradminpassword</p>
+<p>:: Error log path – Important in debugging your issues<br>
+set errorLogPath=”c:MySQLBackupsbackupfilesdumperrors.txt”</p>
+<p>:: MySQL EXE Path<br>
+set mysqldumpexe=”C:Program FilesMySQLMySQL Server 5.5binmysqldump.exe”</p>
+<p>:: Error log path<br>
+set backupfldr=c:MySQLBackupsbackupfiles</p>
+<p>:: Path to data folder which may differ from install dir<br>
+set datafldr=”C:ProgramDataMySQLMySQL Server 5.5data”</p>
+<p>:: Path to zip executable<br>
+set zipper=”c:MySQLBackupszip7za.exe”</p>
+<p>:: Number of days to retain .zip backup files<br>
+set retaindays=30</p>
+<p>:: DONE WITH SETTINGS</p>
+<p>:: GO FORTH AND BACKUP EVERYTHING!</p>
+<p>:: Switch to the data directory to enumerate the folders<br>
+pushd %datafldr%</p>
+<p>echo “Pass each name to mysqldump.exe and output an individual .sql file for each”</p>
+<p>:: Thanks to Radek Dolezel for adding the support for dashes in the db name<br>
+:: Added –routines thanks for the suggestion Angel</p>
+<p>:: turn on if you are debugging<br>
+@echo off</p>
+<p>FOR /D %%F IN (*) DO (</p>
+<p>IF NOT [%%F]==[performance_schema] (<br>
+SET %%F=!%%F:@002d=-!<br>
+%mysqldumpexe% –user=%dbuser% –password=%dbpass% –databases –routines –log-error=%errorLogPath% %%F &gt; “%backupfldr%%%F.%backuptime%.sql”<br>
+) ELSE (<br>
+echo Skipping DB backup for performance_schema<br>
+)<br>
+)</p>
+<p>echo “Zipping all files ending in .sql in the folder”</p>
+<p>:: .zip option clean but not as compressed<br>
+%zipper% a -tzip “%backupfldr%FullBackup.%backuptime%.zip” “%backupfldr%*.sql”</p>
+<p>echo “Deleting all the files ending in .sql only”</p>
+<p>del “%backupfldr%*.sql”</p>
+<p>echo “Deleting zip files older than x days now”<br>
+Forfiles -p %backupfldr% -s -m *.* -d -%retaindays% -c “cmd /c del /q @path”</p>
+<p>::FOR THOSE WHO WISH TO FTP YOUR FILE UNCOMMENT THESE LINES AND UPDATE – Thanks Kamil for this addition!</p>
+<p>::cd[path to directory where your file is saved]<br>
+::@echo off<br>
+::echo user [here comes your ftp username]&gt;ftpup.dat<br>
+::echo [here comes ftp password]&gt;&gt;ftpup.dat<br>
+::echo [optional line; you can put “cd” command to navigate through the folders on the ftp server; eg. cdfolder1folder2]&gt;&gt;ftpup.dat<br>
+::echo binary&gt;&gt;ftpup.dat<br>
+::echo put [file name comes here; eg. FullBackup.%backuptime%.zip]&gt;&gt;ftpup.dat<br>
+::echo quit&gt;&gt;ftpup.dat<br>
+::ftp -n -s:ftpup.dat [insert ftp server here; eg. myserver.com]<br>
+::del ftpup.dat</p>
+<p>echo “done”</p>
+<p>::return to the main script dir on end<br>
+popd</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>[/info]</p>
+<p>&nbsp;</p>
+<p><strong>This script is free to use and update as needed. All we ask is that you&nbsp;<a href="http://www.facebook.com/redolive">like us on Facebook</a> as a thanks.</strong></p>
+        </div>
+    </div>
+    <div class="blog-filters block">
+        <div class="wrapper">
+            <aside id="sidebar" role="complementary">
+<div id="primary" class="widget-area">
+<ul class="xoxo">
+<li id="search-3" class="widget-container widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.redolive.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li><li id="categories-4" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3><label class="screen-reader-text" for="cat">Categories</label><select name="cat" id="cat" class="postform">
+	<option value="-1">Select Category</option>
+	<option class="level-0" value="5">Advertising</option>
+	<option class="level-0" value="6">App Development</option>
+	<option class="level-0" value="24">ASP</option>
+	<option class="level-0" value="7">Branding and Identity</option>
+	<option class="level-0" value="25">CSS</option>
+	<option class="level-0" value="9">Events &amp; Conferences</option>
+	<option class="level-0" value="26">Flash ActionScript</option>
+	<option class="level-0" value="3">Home – News</option>
+	<option class="level-0" value="27">Javascript</option>
+	<option class="level-0" value="28">MySQL</option>
+	<option class="level-0" value="12">Off-topic</option>
+	<option class="level-0" value="13">Office Life</option>
+	<option class="level-0" value="29">PHP</option>
+	<option class="level-0" value="15">PPC</option>
+	<option class="level-0" value="16">Print Design</option>
+	<option class="level-0" value="17">Red Olive Creative</option>
+	<option class="level-0" value="18">Red Olive News</option>
+	<option class="level-0" value="19">SEO</option>
+	<option class="level-0" value="20">Social Media</option>
+	<option class="level-0" value="30">Tech Stuff</option>
+	<option class="level-0" value="1">Uncategorized</option>
+	<option class="level-0" value="22">Utah Graphic Design</option>
+	<option class="level-0" value="23">Utah Web Design</option>
+	<option class="level-0" value="4">Work – Featured</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			location.href = "http://www.redolive.com/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</li></ul>
+</div>
+</aside>        </div>
+    </div>
+</div>
+<style>
+    #sthoverbuttons #sthoverbuttonsMain {width: auto;}
+    #sthoverbuttons .sthoverbuttons-shade-r {background: none;}
+    #sthoverbuttons #sthoverbuttons-bottom,
+    #sthoverbuttons #sthoverbuttons-top {display: none;}
+    #sthoverbuttons .sthoverbuttons-label {font:bold 9px/1 'Lato'; text-transform: uppercase; margin: 5px 0 15px; color: #ccc;}
+    .stButton .stLarge {height: 24px; width: 24px; -webkit-background-size: contain;
+    background-size: contain;}
+    .stButton .stLarge:hover {background-position: -48px;}
+    @media (max-width: 768px){
+        #sthoverbuttons {display: none;}
+    }
+
+</style>
+<script type="text/javascript">stLight.options({publisher: "4f9f4042-271c-4312-b80b-eb24eb95aaa7", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script>
+var options={
+    "publisher": "4f9f4042-271c-4312-b80b-eb24eb95aaa7",
+    "position": "right",
+    "ad": {
+        "visible": false,
+        "openDelay": 5,
+        "closeDelay": 0
+    },
+    "chicklets": {
+        "items": ["twitter", "facebook", "pinterest", "googleplus", "linkedin"]
+    },
+    chicklets_params: {
+        twitter:{
+        "st_via":"redolive"
+      }
+   }
+};
+var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+</script>
+<footer class="footer block" style="background-position: 50% 289px;">
+	<div class="wrapper">
+    	<div class="footer-nav" itemscope="" itemtype="http://schema.org/LocalBusiness">
+        	<div class="info-wrap spacer">
+                <div class="ro-info">
+                    <div>
+                        <span itemprop="telephone">801.545<br>0410</span>
+                    </div>
+                </div>
+                <div class="ro-info">
+                    <div>
+                        <span>866.<span itemprop="name">RED OLIVE</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-wrap right" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+
+                    <div class="ro-info last">
+                        <div>
+                            <span><span itemprop="addressLocality">Sandy</span>,<br><span itemprop="addressRegion">Utah</span><br><span itemprop="postalCode">84070</span></span>
+                        </div>
+                    </div>
+                    <div class="ro-info">
+                        <div itemprop="streetAddress">
+                            9980 S<br>
+                            300 W <br>
+                            suite 300
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        <div class="soc-nav">
+			<div class="responsive-break">
+				<a class="soc-link" href="https://www.facebook.com/redolive" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/soc-fb.png"></a>
+				<a class="soc-link" href="http://www.pinterest.com/redolivedesign/" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/soc-pinterest.png"></a>
+				<a class="soc-link" href="https://twitter.com/redolivedesign" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/soc-twitter.png"></a>
+				<a class="soc-link" href="http://www.linkedin.com/company/red-olive-design-inc." target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/soc-linkedin.png"></a>
+			</div>
+			<div class="responsive-break">
+				<a class="soc-link" href="http://instagram.com/redolive" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/soc-instagram.png"></a>
+				<a class="soc-link" href="https://vimeo.com/redolive/" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/vimeo.png"></a>
+				<a class="soc-link" href="https://www.youtube.com/redolive" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/youtube.png"></a>
+				<a class="soc-link" href="https://plus.google.com/+redolive/posts" target="_blank"><img src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/gplus.png"></a>
+			</div>
+		</div>
+				<div class="footer-links"><a style="color:white;" href="http://www.redolive.com/privacy">Privacy Policy</a></div>
+        <div class="copyright" itemprop="name">© 2016 RED OLIVE</div>
+    </div>
+</footer>
+
+		<script>
+		jQuery(function($){
+			$data = {
+				action: 'roots_add_geoip',
+			}
+			$.post( 'http://www.redolive.com/wp-admin/admin-ajax.php', $data );
+		});
+		</script>
+		<script type="text/javascript">
+/* <![CDATA[ */
+var RootsAjax = {"ajaxurl":"http:\/\/www.redolive.com\/wp-admin\/admin-ajax.php","security":"d11b0a3510","userid":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/ro-ajax.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/wp-embed.min.js.download"></script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/api.js.download"></script>
+<script type="text/javascript">
+var RoAddCaptcha = function() { grecaptcha.render('recaptcha_number_0', {'sitekey' : '6LeP8QYUAAAAAMfjmnsYBXtQRK5PxNcp9ZQ_fxxQ'});grecaptcha.render('recaptcha_number_1', {'sitekey' : '6LeP8QYUAAAAAMfjmnsYBXtQRK5PxNcp9ZQ_fxxQ'}); };
+</script>
+
+<!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 972491738;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+</script>
+<script type="text/javascript" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/conversion.js.download"></script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+<noscript>
+	&lt;div style="display:inline;"&gt;
+		&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972491738/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+	&lt;/div&gt;
+</noscript>
+
+
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using memcached
+Database Caching 6/87 queries in 0.078 seconds using memcached
+Object Caching 1204/1435 objects using memcached
+
+ Served from: www.redolive.com @ 2016-11-15 11:12:28 by W3 Total Cache --><div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">ShareThis Copy and Paste</div><iframe id="stSegmentFrame" name="stSegmentFrame" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/getSegment.html" frameborder="0" scrolling="no" width="0px" height="0px" style="display:none;"></iframe><div id="stwrapper" class="stwrapper stwrapper5x" style="display: none;"><iframe allowtransparency="true" id="stLframe" class="stLframe" name="stLframe" frameborder="0" scrolling="no" src="./How to automatically backup all MySQL databases zip them and delete backups older than n days on windows with a batch file _ Red Olive_files/index.81a2652dee9811f1212f91e2970cd1e6.html"></iframe></div><div id="stOverlay" onclick="javascript:stWidget.closeWidget();"></div><div id="sthoverbuttons" class="sthoverbuttons-pos-right"><div id="sthoverbuttons-background" class="sthoverbuttons-background-r"><div id="sthoverbuttons-top" class="sthoverbuttons-top-r">&nbsp;</div><div id="sthoverbuttons-shade" class="sthoverbuttons-shade-r">&nbsp;</div><div id="sthoverbuttons-bottom" class="sthoverbuttons-bottom-r">&nbsp;</div></div><div id="sthoverbuttonsMain" class="sthoverbuttonsMain-r"><div class="sthoverbuttons-label"><span>Share</span></div><div class="sthoverbuttons-chicklets"><span class="st_twitter_large" st_via="redolive" style="display:block; height: 35px; float:left;" displaytext="" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(&quot;http://w.sharethis.com/images/twitter_32.png&quot;);"></span></span></span><span class="st_facebook_large" style="display:block; height: 35px; float:left;" displaytext="" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(&quot;http://w.sharethis.com/images/facebook_32.png&quot;);"></span></span></span><span class="st_pinterest_large" style="display:block; height: 35px; float:left;" displaytext="" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(&quot;http://w.sharethis.com/images/pinterest_32.png&quot;);"></span></span></span><span class="st_googleplus_large" style="display:block; height: 35px; float:left;" displaytext="" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(&quot;http://w.sharethis.com/images/googleplus_32.png&quot;);"></span></span></span><span class="st_linkedin_large" style="display:block; height: 35px; float:left;" displaytext="" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(&quot;http://w.sharethis.com/images/linkedin_32.png&quot;);"></span></span></span></div></div></div></body></html>

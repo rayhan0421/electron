@@ -1,0 +1,35 @@
+# open cmd 
+
+ftp
+open example.com
+#the give username
+.......
+#then give password
+
+.....
+
+# so already you in
+
+
+# upload a file to server
+
+ put test.txt
+
+# download file 
+
+get test.txt
+
+# see your current direnctory
+
+lcd
+
+#for help
+# Sent multiple files
+mput
+
+# Get multiple files.
+mget test.c
+
+
+
+

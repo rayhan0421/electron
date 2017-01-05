@@ -1,0 +1,35 @@
+FOR /F "eol=; tokens=2,3* delims=, " %i in (t.txt) do @echo %i %j %k
+
+# delimes replace systex with whitespace
+#token used for whice word will be used of line
+#here %i for first token %j for second token %k for third token
+
+#eol will not read line that start with ,/# may be used for comment skip 
+
+
+#############
+options:
+      delims=xxx   The delimiter character(s) (default = a space)
+
+      skip=n       A number of lines to skip at the beginning of the file. 
+                    (default = 0)
+ 
+      eol=;        Character at the start of each line to indicate a comment 
+                   The default is a semicolon ; 
+
+      tokens=n     Specifies which numbered items to read from each line 
+                  (default = 1)
+
+      usebackq     Use the alternate quoting style:                        
+                   - Use double quotes for long file names in "filenameset".
+                   - Use single quotes for 'Text string to process'
+                   - Use back quotes for `command to process`
+
+##############
+
+   %%parameter    A replaceable parameter:               
+                  in a batch file use %%G (on the command line %G instead of %%G)
+
+like %i, %k %j (see first line)
+
+ 
